@@ -11,6 +11,7 @@ require 'kaminari'
 require 'mobility'
 require 'rack-rewrite'
 require 'jsonb_accessor'
+require 'fast_jsonapi'
 
 module Spina
   class Engine < ::Rails::Engine
