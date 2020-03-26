@@ -19,7 +19,13 @@ module Spina
 
     test "Pages API returns homepage as first page" do
       get "/api/v1/pages"
-      assert_equal response.parsed_body[0]["name"], "homepage"
+      assert_equal response.parsed_body.dig("data", 0, "attributes", "title"), "Homepage"
+    end
+
+    test "Return a single page as json" do
+      page = Page.live.regular_pages.first
+      get "/api/v1/pages/#{page.id}"
+      assert_equal response.parsed_body.dig("data", "attributes", "title"), page.title
     end
 
   end
