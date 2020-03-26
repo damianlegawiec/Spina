@@ -7,7 +7,7 @@ module Spina
 
     # Custom attributes
     attribute :content do |page|
-      page.page_parts.map(&:to_json).to_h
+      page.page_parts.map {|p| [p.name, p.content] }.to_h
     end
   end
 end

@@ -28,5 +28,11 @@ module Spina
       assert_equal response.parsed_body.dig("data", "attributes", "title"), page.title
     end
 
+    test "Homepage has content" do
+      homepage = Page.live.regular_pages.find_by(name: "homepage")
+      get "/api/v1/pages/#{homepage.id}"
+      assert_not_nil response.parsed_body.dig("data", "attributes", "content")
+    end
+
   end
 end
