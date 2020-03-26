@@ -1,4 +1,11 @@
 Spina::Engine.routes.draw do
+  # API
+  namespace :api do
+    namespace :v1 do
+      resources :pages
+    end
+  end
+
   # Backend
   namespace :admin, path: Spina.config.backend_path do
     root to: "pages#index"
