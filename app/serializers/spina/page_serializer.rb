@@ -5,8 +5,6 @@ module Spina
     # Attributes
     attributes :title, :materialized_path, :name, :description, :view_template
 
-    # has_many :page_parts
-
     # Custom attributes
     attribute :content do |page|
       page.page_parts.map {|p| [p.name, p.content] }.to_h

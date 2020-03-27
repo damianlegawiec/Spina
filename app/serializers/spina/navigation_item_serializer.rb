@@ -1,8 +1,8 @@
 module Spina
-  class PagePartSerializer
+  class NavigationItemSerializer
     include FastJsonapi::ObjectSerializer
 
     # Attributes
-    attributes :name, :content
+    attributes :page_id, :position, :ancestry
   end
 end
