@@ -34,5 +34,16 @@ module Spina
       assert_not_nil response.parsed_body.dig("data", "attributes", "content")
     end
 
+    test "Navigations exist in the API" do
+      get "/api/v1/navigations"
+      assert response.parsed_body.dig("data").present?
+    end
+
+    test "Get navigation title through API" do
+      navigation = Spina::Navigation.first
+      get "/api/v1/navigations/#{navigation.id}"
+      assert_equal response.parsed_body.dig("data", "attributes", "label"), navigation.label
+    end
+
   end
 end

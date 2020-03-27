@@ -80,6 +80,15 @@
     view_template:  'demo'
   }]
 
+  theme.navigations = [{
+    name: 'mobile',
+    label: 'Mobile'  
+  }, {
+    name: 'main',
+    label: 'Main navigation',
+    auto_add_pages: true
+  }]
+
   theme.plugins = ['reviews']
 
 end

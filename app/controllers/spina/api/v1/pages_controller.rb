@@ -5,7 +5,7 @@ module Spina
 
         def index
           @pages = Page.regular_pages.sorted.live
-          render json: Spina::PageSerializer.new(@pages, include: [:page_parts]).serialized_json
+          render json: Spina::PageSerializer.new(@pages).serialized_json
         end
 
         def show
