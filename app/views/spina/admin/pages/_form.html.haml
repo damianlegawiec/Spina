@@ -9,6 +9,7 @@
         = icon('cross')
 
 = form_for [spina, :admin, @page], html: {id: 'page_form', autocomplete: "off"} do |f|
+  = f.submit
   %header#header
     .breadcrumbs
       = render_breadcrumbs separator: '<div class="divider"></div>'
