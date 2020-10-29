@@ -1,11 +1,6 @@
 // jQuery
 
 //= require jquery
-//= require rails-ujs
-
-// Turbolinks
-
-//= require turbolinks
 
 // Stimulus
 

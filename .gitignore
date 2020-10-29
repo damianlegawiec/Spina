@@ -16,3 +16,9 @@ coverage/*
 test/dummy/storage/*
 .idea/*
 .localeapp
+
+/node_modules
+/public/spina-packs
+yarn-debug.log*
+.yarn-integrity
+/yarn-error.log
