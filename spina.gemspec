@@ -34,4 +34,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'jsonb_accessor', '>= 1.0.0'
   s.add_dependency 'attr_json'
   s.add_dependency 'webpacker'
+  s.add_dependency 'view_component'
 end

@@ -18,6 +18,7 @@ PATH
       rails (>= 5.2)
       sass-rails
       turbolinks (~> 5)
+      view_component
       webpacker
 
 GEM
@@ -260,6 +261,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    view_component (2.21.0)
+      activesupport (>= 5.0.0, < 7.0)
     webpacker (5.2.1)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)

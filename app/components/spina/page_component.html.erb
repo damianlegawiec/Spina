@@ -1,0 +1,14 @@
+<li class="border-b border-gray-100">
+  <div class="flex items-center">
+    <div data-sortable-handle class="p-4 text-gray-300 hover:text-gray-600 cursor-move">
+      <svg class="w-4 h-4 -mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="M496 288H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-128H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z"/></svg>
+    </div>
+    <%= link_to @page.menu_title, helpers.edit_admin_page_path(@page), class: "block text-spina font-medium text-sm p-4" %>
+  </div>
+
+  <% if children.any? %>
+    <div class="pl-10 bg-gray-100 bg-opacity-50">
+      <%= render Spina::PageListComponent.new(pages: children) %>
+    </div>
+  <% end %>
+</li>

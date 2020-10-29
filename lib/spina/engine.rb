@@ -11,6 +11,7 @@ require 'mobility'
 require 'rack-rewrite'
 require 'jsonb_accessor'
 require 'attr_json'
+require 'view_component/engine'
 
 module Spina
   class Engine < ::Rails::Engine
