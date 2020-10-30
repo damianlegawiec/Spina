@@ -1,3 +1,4 @@
+// Rails and turbolinks
 require("@rails/ujs").start()
 require("turbolinks").start()
 

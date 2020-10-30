@@ -6,7 +6,7 @@ module.exports = {
   purge: [],
   theme: {
     fontFamily: {
-      // body: ['Metropolis', 'Proxima Nova']
+      body: ['Metropolis']
     },
     extend: {
       colors: {
