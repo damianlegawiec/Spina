@@ -60,7 +60,7 @@
     title: 'Default',
     usage: 'Use for your content',
     page_parts: [],
-    parts: ['attachment', 'option', 'body', 'image', 'repeater']
+    parts: ['body']
   }, {
     name: 'demo',
     title: 'Demo',

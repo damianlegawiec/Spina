@@ -1,0 +1,20 @@
+<div class="mt-6">
+  <label for="price" class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
+  <div class="mt-1 relative rounded-md shadow-sm">
+    <%= f.hidden_field :content, id: "#{f.object.object_id}_input" %>
+
+    <div id="<%= f.object.object_id %>_trix-toolbar" class="toolbar mb-2">
+      <!-- <button type="button" class="bg-white border rounded px-2 py-1" data-format="bold">B</button>
+      <button type="button" data-format="italic">I</button>
+      <button type="button" data-format="strike">Strike</button>
+      <button type="button" data-format="quote">Quote</button>
+      <button type="button" data-format="code">Code</button>
+      <button type="button" data-format="bullet">Unordered List</button>
+      <button type="button" data-format="number">Ordered List</button>
+      <button type="button" data-format="outdent">Outdent</button>
+      <button type="button" data-format="indent">Indent</button> -->
+    </div>
+
+    <trix-editor class="trix-content form-input p-4 text-sm" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input"></trix-editor>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 // Rails and turbolinks
 require("@rails/ujs").start()
 require("turbolinks").start()
+require("trix")
 
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
