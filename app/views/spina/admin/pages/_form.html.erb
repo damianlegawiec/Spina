@@ -1,4 +1,4 @@
-<%= form_with model: @page, url: spina.admin_page_path(@page) do |f| %>
+<%= form_with model: @page, url: @page.new_record? ? spina.admin_pages_path : spina.admin_page_path(@page) do |f| %>
   <div class="bg-white border-b border-gray-200 p-6 pl-8 sticky top-0 relative z-20">
     <div class="flex justify-between items-center">
       <div class="text-2xl font-normal text-gray-800 flex items-center">
@@ -6,7 +6,7 @@
         <svg class="w-5 h-5 mx-2 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
-        <%= @page.menu_title %>
+        <%= @page.menu_title || "New page" %>
       </div>
 
       <div class="flex">
