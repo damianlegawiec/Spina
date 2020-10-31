@@ -1,4 +1,5 @@
 <%= form_with model: @page, url: @page.new_record? ? spina.admin_pages_path : spina.admin_page_path(@page) do |f| %>
+
   <div class="bg-white border-b border-gray-200 p-6 pl-8 sticky top-0 relative z-20">
     <div class="flex justify-between items-center">
       <div class="text-2xl font-normal text-gray-800 flex items-center">
@@ -9,22 +10,20 @@
         <%= @page.menu_title || "New page" %>
       </div>
 
-      <div class="flex">
-        <button type="submit" class="flex items-center h-9 px-2 pr-4 ml-3 rounded-md border bg-spina border-spina-dark active:shadow-inner text-white text-sm font-medium leading-none hover:bg-spina leading-none shadow-sm">
-          <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-          </svg>
-          Save page
-        </button>
-      </div>
+      <button type="submit" class="flex items-center h-9 px-2 pr-4 ml-3 rounded-md border bg-green-500 border-green-600 active:shadow-inner text-white text-sm font-medium leading-none hover:bg-spina leading-none shadow-sm">
+        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        Save changes
+      </button>
     </div>
   </div>
 
-  <div class="p-8 grid grid-cols-4 gap-6">
-    <div class="col-span-3">
-      <div class="bg-white rounded-md border border-gray-200 shadow-sm p-6">
+  <div class="p-8 flex">
+    <div class="flex-1">
+      <div>
         <label class="font-medium text-gray-700">Title</label>
-        <input id="first_name" class="mt-1 form-input block w-full p-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-lg text-gray-700 font-medium sm:leading-5" placeholder="Title" value="<%= @page.title %>">
+        <input id="first_name" class="mt-1 form-input block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-md text-gray-700 font-medium sm:leading-5" placeholder="Title" value="<%= @page.title %>">
 
         <% parts = (current_theme.view_templates.find{|v|v[:name].to_s == f.object.view_template.to_s}&.dig(:parts) || []) %>
 
@@ -39,7 +38,7 @@
         <% end %>
       </div>
 
-      <div class="bg-white rounded-md border border-gray-200 shadow-sm mt-6 p-6">
+      <div class="bg-whitez rounded-md borderz border-gray-200 shadow-smz mt-12 p-6z">
         <div class="">
           <label for="first_name" class="block font-medium leading-5 text-gray-700 flex items-center">
             <svg class="h-4 w-4 mr-1 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -48,16 +47,16 @@
             SEO title and description
           </label>
           <div class="text-gray-400 text-sm">Ensure your search result looks good in search engines</div>
-          <input id="first_name" class="mt-3 block w-full py-2 px-3 border border-gray-300 border-b-0 rounded-t-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="SEO title">
+          <input id="first_name" class="form-input mt-3 block w-full py-2 px-3 border border-gray-300 shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="SEO title">
         </div>
 
         <div class="">
-          <textarea id="first_name" class="resize-none block w-full py-2 px-3 border border-gray-300 rounded-b-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="SEO description"></textarea>
+          <textarea id="first_name" class="form-input resize-none block w-full py-2 px-3 border border-gray-300 mt-3 shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="SEO description"></textarea>
         </div>
 
         <label for="first_name" class="mt-6 block font-medium leading-5 text-gray-700">Preview</label>
 
-        <div class="bg-cool-gray-100 bg-opacity-75 rounded-md p-6 mt-3 max-w-2xl">
+        <div class="bg-white border border-gray-200 shadow-sm rounded-md px-6 py-5 mt-3 max-w-2xl">
           <div class="text-xs text-gray-500">www.misterhop.com › ontdek › virtu...</div>
           <div class="text-lg text-blue-500">Virtuele bierproeverij organiseren? - Beleef het samen - Mr. Hop</div>
           <div class="text-gray-700 text-sm">
@@ -67,32 +66,10 @@
       </div>
     </div>
 
-    <div class="col-span-1">
+    <div class="max-w-xs flex-1 ml-6 border-l border-gray-200 pl-6 -mt-8 pt-8 -mr-8 pr-6">
       <div>
         <div class="mb-6">
-          <div class="">
-            <div class="relative">
-              <span class="inline-block w-full rounded-md shadow-sm">
-                <button type="button" aria-haspopup="listbox" aria-expanded="true" aria-labelledby="listbox-label" class="cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-4 text-gray-700 pr-10 py-3 text-left focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150 sm:text-md sm:leading-5">
-                  <div class="flex items-center space-x-3">
-                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                    <span class="block truncate font-medium">
-                      Published
-                    </span>
-                  </div>
-                  <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                    <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                      <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </button>
-              </span>
-              <div class="flex items-center justify-between leading-5 text-sm text-gray-400 p-2 px-3">
-                <%= @page.materialized_path %>
-                <a href="#" class="text-xs text-spina text-right hover:underline ml-2">edit slug</a>
-              </div>
-            </div>
-
+          <div class="mt-1">
             <% if false %>
               <div class="mt-6">
                 <div class="col-span-1 py-2">
@@ -108,36 +85,49 @@
               </div>
             <% end %>
 
-            <div class="text-md mt-10 font-medium text-gray-400 flex justify-end items-center leading-none">
-              Advanced options
-              <svg class="h-5 w-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-              </svg>
+            <div class="">
+              <div class="col-span-1">
+                <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Parent page</label>
+              </div>
+
+              <div class="col-span-2">
+                <select id="country" class="mt-1 text-gray-400 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                  <option>No parent</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="text-gray-400 font-medium text-right py-2 mt-4 text-sm">
+              <div class="flex items-center justify-end leading-none">
+                advanced settings
+                <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                </svg>
+              </div>
             </div>
 
             <% if false %>
-              <div class="mt-3">
-                <div class="col-span-2">
-                  <div class="bg-white rounded-md shadow-sm flex border border-gray-300">
-                    <label for="company_website" class="inline-flex items-center px-3 rounded-l-md border-r border-gray-200 font-medium bg-gray-50 text-gray-500 text-sm">
-                      Parent
-                    </label>
-                    <select id="country" class="block w-full py-3 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-none bg-transparent">
-                      <option>No parent</option>
-                    </select>
-                  </div>
-                </div>
+              <div class="col-span-1 mt-6">
+                <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Template</label>
               </div>
 
-              <div class="mt-3">
-                <div class="col-span-2">
-                  <div class="bg-white rounded-md shadow-sm flex border border-gray-300">
-                    <label for="company_website" class="inline-flex items-center px-3 rounded-l-md border-r border-gray-200 font-medium bg-gray-50 text-gray-500 text-sm">
-                      Template
-                    </label>
-                    <select id="country" class="block w-full py-3 px-3 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-none bg-transparent">
-                      <option>Default</option>
-                    </select>
+              <div class="col-span-2">
+                <select id="country" class="mt-1 text-gray-700 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                  <option>Default</option>
+                </select>
+              </div>
+            <% end %>
+
+
+            <% if false %>
+              <div class="mt-8">
+                <div class="flex items-start">
+                  <div class="flex items-center h-5">
+                    <input id="comments" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
+                  </div>
+                  <div class="ml-3 text-sm leading-5">
+                    <label for="comments" class="font-medium text-gray-700">Hide from navigation</label>
+                    <p class="text-gray-500">Don't show this page in nav</p>
                   </div>
                 </div>
               </div>
@@ -151,25 +141,22 @@
                 </div>
               </div>
 
-              <div class="mt-8">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input id="comments" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-                  </div>
-                  <div class="ml-3 text-sm leading-5">
-                    <label for="comments" class="font-medium text-gray-700">Hide from navigation</label>
-                    <p class="text-gray-500">Don't show this page in nav</p>
-                  </div>
+              <div class="mt-6">
+                <div class="text-sm leading-5 w-full">
+                  <label for="comments" class="font-medium text-gray-700">Slug</label>
+                  <p class="text-gray-500">Override the default slug</p>
+
+                  <input id="menu_label" type="text" class="form-input shadow-sm text-sm w-full mt-2" placeholder="<%= @page.slug %>" value="<%= @page.slug %>" />
                 </div>
               </div>
 
               <div class="mt-8">
                 <div class="flex items-start">
                   <div class="flex items-center h-5">
-                    <input id="comments" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                    <input id="redirect" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
                   </div>
                   <div class="ml-3 text-sm leading-5">
-                    <label for="comments" class="font-medium text-gray-700">301 Redirect</label>
+                    <label for="redirect" class="font-medium text-gray-700">301 Redirect</label>
                     <p class="text-gray-500">Forward this page to it's first child or to a URL</p>
                   </div>
                 </div>

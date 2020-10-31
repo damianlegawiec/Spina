@@ -1,9 +1,7 @@
 @import "spina/fonts";
+
 @import "tailwindcss/base";
-
-html {
-  @apply font-body;
-}
-
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "spina/configuration"

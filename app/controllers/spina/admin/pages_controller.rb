@@ -40,18 +40,13 @@ module Spina
       end
 
       def update
-        respond_to do |format|
-          Mobility.locale = @locale
-          if @page.update(page_params)
-            @page.touch
-            format.html { redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale}), flash: {success: t('spina.pages.saved')} }
-            format.js
-          else
-            format.html do
-              Mobility.locale = I18n.default_locale
-              render :edit, layout: 'spina/admin/admin'
-            end
-          end
+        Mobility.locale = @locale
+        if @page.update(page_params)
+          @page.touch
+          redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale}), flash: {success: t('spina.pages.saved')}
+        else
+          Mobility.locale = I18n.default_locale
+          render :edit, layout: 'spina/admin/admin'
         end
       end
 
