@@ -14,15 +14,17 @@
       <div class="text-gray-400 font-medium text-sm">Choose image</div>
     </div>
 
-    <div class="border absolute inset-0 w-36 h-36 bg-white flex items-center justify-center rounded-lg shadow-md overflow-hidden" data-target="media-picker.placeholder">
+    <div class="border absolute inset-0 w-36 h-36 bg-gray-100 rounded-lg shadow-md overflow-hidden" data-target="media-picker.thumbnail">
       <% if f.object.signed_blob_id.present? && f.object.spina_image.present? %>
-        <%= image_tag main_app.url_for(f.object.spina_image.variant(resize: "400x300^")), class: "object-fit" %>
+        <%= image_tag thumbnail_url(f.object.spina_image), class: 'object-contain h-36 w-full' %>
       <% end %>
     </div>
 
   </button>
 
   <%= f.text_field :alt, placeholder: "Alt text", class: "form-input w-full max-w-xs mt-3 shadow-sm text-sm block", data: {target: "media-picker.alt"} %>
+
+  <button data-action="media-picker#removeImage" type="button">Remove image</button>
 
   <div data-controller="modal" data-target="media-picker.modal" class="hidden fixed inset-0 bg-gray-700 bg-opacity-50 z-50 flex items-center justify-center p-6">
     <button type="button" class="fixed inset-0 cursor-default" tabindex="-1" data-action="modal#close"></button>
