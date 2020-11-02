@@ -23,7 +23,7 @@ module Spina
 
     def thumbnail_url(image)
       return "" if image.nil?
-      variant(image.file, resize: "400x300^", crop: "400x300+0+0")
+      variant(image.file, resize: "400x300^")
     end
 
     def embedded_image_url(image)

@@ -55,6 +55,11 @@ Spina::Engine.routes.draw do
         put 'folder/:id' => 'images#add_to_media_folder', as: :add_to_media_folder
       end
     end
+
+    namespace :media_picker do
+      resources :images
+    end
+
     get :media_picker, to: 'media_picker#show'
     post :media_picker, to: 'media_picker#select'
   end

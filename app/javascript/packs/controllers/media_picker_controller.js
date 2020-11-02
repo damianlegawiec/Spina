@@ -1,14 +1,19 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "modal", "filename", "signedBlobId", "imageId", "alt", "placeholder" ]
-
-  connect() {
-
-  }
+  static targets = [ "modal", "grid", "filename", "signedBlobId", "imageId", "alt", "placeholder" ]
 
   open() {
     this.modal.open()
+    this.loadImages()
+  }
+
+  loadImages() {
+    fetch(this.gridTarget.dataset.imagesPath)
+      .then(response => response.text())
+      .then(function(html) {
+        this.gridTarget.innerHTML = html
+      }.bind(this))
   }
 
   selectImage(event) {
