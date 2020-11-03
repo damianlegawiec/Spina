@@ -25,7 +25,7 @@
     }
 
     loadNextPage() {
-      if (this.hasLinkTarget) {
+      if (this.haskTarget) {
         let top = this.linkTarget.getBoundingClientRect().top
         if (top < window.innerHeight + 500) {
           this.linkTarget.dataset.disableWith = "..."

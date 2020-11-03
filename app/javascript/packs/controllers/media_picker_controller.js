@@ -1,24 +1,24 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "modal", "grid", "filename", "signedBlobId", "imageId", "alt", "placeholder" ]
+  static targets = [ "modal", "grid", "filename", "signedBlobId", "imageId", "alt", "thumbnail" ]
 
   connect() {
-
+    // Hide thumbnail if there's no image
+    if (this.thumbnailTarget.children.length == 0) this.hideThumbnail()
   }
 
   open() {
     this.modal.open()
-    this.fetchImages()
+    this.gridTarget.infiniteScroll.initialLoad()
   }
 
-  fetchImages() {
-    fetch(this.element.dataset.mediaPickerPath)
-      .then((response) => response.text())
-      .then(function(html) {
-        // Place images in grid
-        this.gridTarget.innerHTML = html
-    }.bind(this))
+  removeImage() {
+    this.filenameTarget.value = ""
+    this.signedBlobIdTarget.value = ""
+    this.imageIdTarget.value = ""
+    this.altTarget.value = ""
+    this.hideThumbnail()
   }
 
   selectImage(event) {
@@ -30,14 +30,23 @@ export default class extends Controller {
     this.imageIdTarget.value = image.dataset.imageId
 
     // Set placeholder
-    this.setPlaceholder(image.dataset.thumbnail)
+    this.setThumbnail(image.dataset.thumbnail)
 
     // Close modal
     this.modal.close()
   }
 
-  setPlaceholder(imageSrc) {
-    this.placeholderTarget.innerHTML = `<img src="${imageSrc}" class="shadow-md rounded-lg object-cover w-full h-full bg-gray-200" />`
+  setThumbnail(imageSrc) {
+    this.thumbnailTarget.innerHTML = `<img src="${imageSrc}" class="object-contain w-full h-36" />`
+    this.showThumbnail()
+  }
+
+  showThumbnail() {
+    this.thumbnailTarget.classList.remove('hidden')
+  }
+
+  hideThumbnail() {
+    this.thumbnailTarget.classList.add('hidden')
   }
 
   get modal() {

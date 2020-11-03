@@ -4,7 +4,7 @@ module Spina::Admin
 
       def index
         @images = Spina::Image.order(created_at: :desc).page(params[:page]).per(25)
-        render Spina::MediaPicker::ImageComponent.with_collection(@images)
+        render layout: false
       end
 
     end

@@ -1,0 +1,5 @@
+<%= render Spina::MediaPicker::ImageComponent.with_collection(@images) %>
+
+<% unless @images.last_page? %>
+  <button type="button" data-target="infinite-scroll.button" data-action="infinite-scroll#loadNextPage" data-path="<%= path_to_next_page(@images) %>">Load next page</button>
+<% end %>
