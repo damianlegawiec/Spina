@@ -57,14 +57,15 @@
     parts: ['headline', 'body', 'image_collection']
   }, {
     name: 'show',
-    title: 'Default',
+    title: 'Simple page',
+    description: "Default layout",
     usage: 'Use for your content',
     page_parts: [],
     parts: ['body']
   }, {
     name: 'demo',
     title: 'Demo',
-    description: 'Contains examples of every page part',
+    description: 'Example including all parts',
     page_parts: [],
     parts: ['repeater', 'repeater2', 'attachment', 'option', 'body', 'image_collection', 'image']
   }]

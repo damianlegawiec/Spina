@@ -1,4 +1,5 @@
 <%= form_with model: @page, url: @page.new_record? ? spina.admin_pages_path : spina.admin_page_path(@page) do |f| %>
+  <%= f.hidden_field :view_template %>
 
   <div class="bg-white border-b border-gray-200 p-6 pl-8 sticky top-0 relative z-20">
     <div class="flex justify-between items-center">
@@ -10,12 +11,27 @@
         <%= @page.menu_title || t("spina.pages.new") %>
       </div>
 
-      <button type="submit" class="flex items-center h-9 px-2 pr-4 ml-3 rounded-md border bg-green-500 border-green-600 active:shadow-inner text-white text-sm font-medium leading-none hover:bg-green-600 leading-none shadow-sm">
-        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-        <%= t("spina.pages.save") %>
-      </button>
+      <div class="flex items-center">
+        <button type="submit" class="flex items-center h-9 px-2 pr-4 ml-3 rounded-md border bg-white border-gray-300 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm">
+          <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+          <% if @page.draft? %>
+            Save draft
+          <% else %>
+            Save changes
+          <% end %>
+        </button>
+
+        <% if @page.persisted? && @page.draft? %>
+          <button type="submit" name="page[draft]" value="false" class="flex items-center h-9 px-4 ml-3 pl-3 rounded-md border bg-spina border-spina-dark active:shadow-inner text-white text-sm font-medium leading-none hover:bg-spina-dark leading-none shadow-sm">
+            <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
+            </svg>
+            Publish page
+          </button>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -104,7 +120,7 @@
             <div data-controller="reveal">
               <div class="flex justify-end">
                 <button type="button" class="text-gray-400 font-medium py-2 mt-4 text-sm flex items-center justify-end leading-none" data-action="reveal#toggle">
-                  advanced settings
+                  options
                   <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                   </svg>
@@ -112,6 +128,31 @@
               </div>
 
               <div data-reveal hidden data-transition>
+                <% unless @page.draft? %>
+                  <div class="mt-8">
+                    <div class="col-span-1 mt-6">
+                      <label for="country" class="block text-sm font-medium leading-5 text-gray-700">
+                        <%= Spina::Page.human_attribute_name :draft %>  
+                      </label>
+
+                      <div class="text-sm leading-5">
+                        <p class="text-gray-500"><%= Spina::Page.human_attribute_name :draft_description %></p>
+                      </div>
+                    </div>
+
+                    <div class="mt-1">
+                      <button type="button" data-controller="switch" data-action="click->switch#toggle">
+                        <%= f.check_box :draft, hidden: true, data: {target: "switch.checkbox"} %>
+
+                        <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
+                          <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                <% end %>
+
+
                 <div class="mt-8">
                   <div class="col-span-1 mt-6">
                     <label for="country" class="block text-sm font-medium leading-5 text-gray-700">
@@ -175,15 +216,17 @@
                   </div>
                 </div>
 
-                <% if @page.persisted? %>
+                <% if @page.persisted? && !@page.custom_page? %>
                   <div class="mt-8">
                     <a href="<%= spina.edit_template_admin_page_path(@page) %>" data-controller="remote-modal" class="flex items-center justify-center h-9 px-2 pr-4 rounded-md border bg-white hover:bg-gray-100 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm">
                       Change page template...
                     </a>
 
-                    <a href="#" class="flex items-center justify-center h-9 px-2 pr-4 rounded-md bg-transparent text-red-500 hover:bg-gray-100 active:shadow-inner text-sm font-semibold mt-3 leading-none leading-none">
-                      Destroy page
-                    </a>
+                    <% if @page.deletable? %>
+                      <%= link_to spina.admin_page_path(@page), class: "flex items-center justify-center h-9 px-2 pr-4 rounded-md bg-transparent text-red-500 hover:bg-gray-100 active:shadow-inner text-sm font-semibold mt-3 leading-none leading-none", method: :delete, data: {confirm: "Are you sure?"} do %>
+                        Destroy page
+                      <% end %>
+                    <% end %>
                   </div>
                 <% end %>
               </div>

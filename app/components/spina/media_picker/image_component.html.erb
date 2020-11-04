@@ -1,10 +1,14 @@
-<button type="button" 
-  data-action="media-picker#selectImage reveal#hide" 
-  data-image-id="<%= @image.id %>"
-  data-signed-blob-id="<%= @image.file.blob.signed_id %>"
-  data-filename="<%= @image.file.filename %>"
-  data-thumbnail="<%= helpers.thumbnail_url(@image) %>"
-  class="w-full h-40 bg-gray-100 rounded-md overflow-hidden">
+<div>
+  <button type="button" 
+    data-action="media-picker#selectImage reveal#hide" 
+    data-image-id="<%= @image.id %>"
+    data-signed-blob-id="<%= @image.file.blob.signed_id %>"
+    data-filename="<%= @image.file.filename %>"
+    data-thumbnail="<%= helpers.thumbnail_url(@image) %>"
+    class="w-full h-40 overflow-hidden transform transition-transform duration-200 hover:scale-105">
 
-  <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>
-</button>
+    <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>
+  </button>
+
+  <div class="text-xs text-gray-400 text-center"><%= @image.file.filename %></div>
+</div>
