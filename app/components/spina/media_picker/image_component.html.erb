@@ -10,5 +10,6 @@
     <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>
   </button>
 
-  <div class="text-xs text-gray-400 text-center"><%= @image.file.filename %></div>
+  <div class="text-xs text-gray-600 text-center"><%= @image.file.filename %></div>
+  <div class="text-xs text-gray-400 text-center"><%= number_to_human_size @image.file.byte_size %></div>
 </div>
