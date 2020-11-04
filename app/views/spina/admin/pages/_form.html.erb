@@ -7,14 +7,14 @@
         <svg class="w-5 h-5 mx-2 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
-        <%= @page.menu_title || "New page" %>
+        <%= @page.menu_title || t("spina.pages.new") %>
       </div>
 
       <button type="submit" class="flex items-center h-9 px-2 pr-4 ml-3 rounded-md border bg-green-500 border-green-600 active:shadow-inner text-white text-sm font-medium leading-none hover:bg-green-600 leading-none shadow-sm">
         <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
-        Save changes
+        <%= t("spina.pages.save") %>
       </button>
     </div>
   </div>
@@ -22,8 +22,11 @@
   <div class="p-8 flex">
     <div class="flex-1">
       <div>
-        <label class="font-medium text-gray-700">Title</label>
-        <input id="first_name" class="mt-1 form-input block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-md text-gray-700 font-medium sm:leading-5" placeholder="Title" value="<%= @page.title %>">
+        <label class="font-medium text-gray-700">
+          <%= Spina::Page.human_attribute_name(:title) %>
+        </label>
+
+        <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-md text-gray-700 font-medium sm:leading-5" %>
 
         <% parts = (current_theme.view_templates.find{|v|v[:name].to_s == f.object.view_template.to_s}&.dig(:parts) || []) %>
 
@@ -54,15 +57,17 @@
           <textarea id="first_name" class="form-input resize-none block w-full py-2 px-3 border border-gray-300 mt-3 shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="SEO description"></textarea>
         </div>
 
-        <label for="first_name" class="mt-6 block font-medium leading-5 text-gray-700">Preview</label>
+        <% if false %>
+          <label for="first_name" class="mt-6 block font-medium leading-5 text-gray-700">Preview</label>
 
-        <div class="bg-white border border-gray-200 shadow-sm rounded-md px-6 py-5 mt-3 max-w-2xl">
-          <div class="text-xs text-gray-500">www.misterhop.com › ontdek › virtu...</div>
-          <div class="text-lg text-blue-500">Virtuele bierproeverij organiseren? - Beleef het samen - Mr. Hop</div>
-          <div class="text-gray-700 text-sm">
-            Ben je met meer dan 4 personen maak dan gebruik van bijvoorbeeld Facetime, Skype, Google Hangouts, Zoom, Microsoft Teams of het populaire Houseparty.
+          <div class="bg-white border border-gray-200 shadow-sm rounded-md px-6 py-5 mt-3 max-w-2xl">
+            <div class="text-xs text-gray-500">www.misterhop.com › ontdek › virtu...</div>
+            <div class="text-lg text-blue-500">Virtuele bierproeverij organiseren? - Beleef het samen - Mr. Hop</div>
+            <div class="text-gray-700 text-sm">
+              Ben je met meer dan 4 personen maak dan gebruik van bijvoorbeeld Facetime, Skype, Google Hangouts, Zoom, Microsoft Teams of het populaire Houseparty.
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
 
@@ -97,71 +102,73 @@
               </div>
             </div>
 
-            <div class="text-gray-400 font-medium text-right py-2 mt-4 text-sm">
-              <div class="flex items-center justify-end leading-none">
-                advanced settings
-                <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            </div>
-
-            <% if false %>
-              <div class="col-span-1 mt-6">
-                <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Template</label>
+            <div data-controller="toggle">
+              <div class="flex justify-end">
+                <button type="button" class="text-gray-400 font-medium py-2 mt-4 text-sm flex items-center justify-end leading-none" data-action="toggle#toggle">
+                  advanced settings
+                  <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                  </svg>
+                </button>
               </div>
 
-              <div class="col-span-2">
-                <select id="country" class="mt-1 text-gray-700 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                  <option>Default</option>
-                </select>
-              </div>
-            <% end %>
+              <div data-target="toggle.container" class="hidden">
+                <div class="col-span-1 mt-6">
+                  <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Template</label>
+                </div>
 
+                <div class="col-span-2">
+                  <select id="country" class="mt-1 text-gray-700 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                    <option>Default</option>
+                  </select>
+                </div>
 
-            <% if false %>
-              <div class="mt-8">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input id="comments" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
+                <div class="mt-8">
+                  <div class="col-span-1 mt-6">
+                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Hide from navigation</label>
+                    <div class="text-sm leading-5">
+                      <p class="text-gray-500">Don't show this page in nav</p>
+                    </div>
                   </div>
-                  <div class="ml-3 text-sm leading-5">
-                    <label for="comments" class="font-medium text-gray-700">Hide from navigation</label>
-                    <p class="text-gray-500">Don't show this page in nav</p>
+
+                  <label class="flex items-start mt-1">
+                    <div class="flex items-center h-5">
+                      <input id="comments" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
+                    </div>
+                    
+                  </label>
+                </div>
+
+                <div class="mt-6">
+                  <div class="text-sm leading-5 w-full">
+                    <label for="comments" class="font-medium text-gray-700">Menu label</label>
+                    <p class="text-gray-500">Default menu label is page title</p>
+
+                    <input id="menu_label" type="text" class="form-input shadow-sm text-sm w-full mt-2" placeholder="Menu title" />
+                  </div>
+                </div>
+
+                <div class="mt-6">
+                  <div class="text-sm leading-5 w-full">
+                    <label for="comments" class="font-medium text-gray-700">Slug</label>
+                    <p class="text-gray-500">Override the default slug</p>
+
+                    <input id="menu_label" type="text" class="form-input shadow-sm text-sm w-full mt-2" placeholder="<%= @page.slug %>" value="<%= @page.slug %>" />
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                      <input id="redirect" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
+                    </div>
+                    <div class="ml-3 text-sm leading-5">
+                      <label for="redirect" class="font-medium text-gray-700">301 Redirect</label>
+                      <p class="text-gray-500">Forward this page to it's first child or to a URL</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div class="mt-6">
-                <div class="text-sm leading-5 w-full">
-                  <label for="comments" class="font-medium text-gray-700">Menu label</label>
-                  <p class="text-gray-500">Default menu label is page title</p>
-
-                  <input id="menu_label" type="text" class="form-input shadow-sm text-sm w-full mt-2" placeholder="Menu title" />
-                </div>
-              </div>
-
-              <div class="mt-6">
-                <div class="text-sm leading-5 w-full">
-                  <label for="comments" class="font-medium text-gray-700">Slug</label>
-                  <p class="text-gray-500">Override the default slug</p>
-
-                  <input id="menu_label" type="text" class="form-input shadow-sm text-sm w-full mt-2" placeholder="<%= @page.slug %>" value="<%= @page.slug %>" />
-                </div>
-              </div>
-
-              <div class="mt-8">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input id="redirect" type="checkbox" class="form-checkbox h-4 w-4 text-spina transition duration-150 ease-in-out">
-                  </div>
-                  <div class="ml-3 text-sm leading-5">
-                    <label for="redirect" class="font-medium text-gray-700">301 Redirect</label>
-                    <p class="text-gray-500">Forward this page to it's first child or to a URL</p>
-                  </div>
-                </div>
-              </div>
-            <% end %>
           </div>
         </div>
       </div>

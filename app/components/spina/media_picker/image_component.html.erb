@@ -6,5 +6,5 @@
   data-thumbnail="<%= helpers.thumbnail_url(@image) %>"
   class="w-full h-40 bg-gray-100 rounded-md overflow-hidden">
 
-  <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full' %>
+  <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>
 </button>
