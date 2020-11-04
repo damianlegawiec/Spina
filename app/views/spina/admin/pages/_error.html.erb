@@ -1,0 +1,6 @@
+<div class="text-red-700 font-medium py-3 px-4 rounded w-full max-w-sm bg-red-200 bg-opacity-75 border border-red-200 mb-6">
+  Your page could not be saved
+  <ul class="list-disc pl-5 font-normal">
+    <li><%= @page.errors.full_messages.join(", ") %></li>
+  </ul>
+</div>

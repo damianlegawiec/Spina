@@ -29,7 +29,7 @@ module Spina
           @page.navigations << Spina::Navigation.where(auto_add_pages: true)
           redirect_to spina.edit_admin_page_url(@page), flash: {success: t('spina.pages.saved')}
         else
-          render :new, layout: 'spina/admin/admin'
+          render partial: 'error', status: :unprocessable_entity
         end
       end
 
@@ -49,8 +49,7 @@ module Spina
           @page.touch
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale}), flash: {success: t('spina.pages.saved')}
         else
-          Mobility.locale = I18n.default_locale
-          render :edit, layout: 'spina/admin/admin'
+          render partial: 'error', status: :unprocessable_entity
         end
       end
 
