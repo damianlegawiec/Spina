@@ -1,0 +1,52 @@
+<!-- Gray overlay -->
+<div class="fixed z-50 inset-0 bg-gray-700 bg-opacity-50 w-full h-full"></div>
+
+<div class="fixed z-50 inset-0">
+
+  <!-- Overlay button to close -->
+  <button type="button" class="w-full h-full fixed inset-0" tabindex="-1" data-action="reveal#hide"></button>
+
+  <!-- Modal positioning -->
+  <div class="flex items-center justify-center p-6 h-full">
+
+    <!-- Modal window -->
+    <div class="bg-white rounded-lg overflow-hidden w-full max-w-lg shadow-lg relative">
+
+      <%= form_with model: @page, url: spina.admin_page_path(@page) do |f| %>
+        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mt-3 text-center sm:mt-0 sm:text-left">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                Change page template
+              </h3>
+              <div class="mt-2">
+                <p class="text-sm leading-5 text-gray-500 mb-4">
+                  Are you sure you want to change your page template? Page content that does not belong in the new template will be lost.
+                </p>
+
+                <label for="page[view_template]" class="block text-sm font-medium leading-5 text-gray-700">
+                  <%= Spina::Page.human_attribute_name :view_template %>
+                </label>
+
+                <%= f.select :view_template, options_for_select(current_theme.view_templates.map { |template| [template[:title], template[:name], {'data-page-parts' => template[:page_parts]}] }, @page.view_template), {}, class: "mt-1 text-gray-700 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+            <button type="submit" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-spina text-base leading-6 font-medium text-white shadow-sm hover:bg-spina-dark focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+              Change page template
+            </button>
+          </span>
+          <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+            <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+              Cancel
+            </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

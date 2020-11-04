@@ -112,16 +112,6 @@
               </div>
 
               <div data-reveal hidden data-transition>
-                <% unless @page.custom_page? %>
-                  <div class="col-span-1 mt-6">
-                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700"><%= Spina::Page.human_attribute_name :view_template %></label>
-                  </div>
-
-                  <div class="col-span-2">
-                    <%= f.select :view_template, options_for_select(current_theme.view_templates.map { |template| [template[:title], template[:name], {'data-page-parts' => template[:page_parts]}] }, @page.view_template), {}, {class: "mt-1 text-gray-700 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"} %>
-                  </div>
-                <% end %>
-
                 <div class="mt-8">
                   <div class="col-span-1 mt-6">
                     <label for="country" class="block text-sm font-medium leading-5 text-gray-700">
@@ -184,6 +174,18 @@
                     </button>
                   </div>
                 </div>
+
+                <% if @page.persisted? %>
+                  <div class="mt-8">
+                    <a href="<%= spina.edit_template_admin_page_path(@page) %>" data-controller="remote-modal" class="flex items-center justify-center h-9 px-2 pr-4 rounded-md border bg-white hover:bg-gray-100 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm">
+                      Change page template...
+                    </a>
+
+                    <a href="#" class="flex items-center justify-center h-9 px-2 pr-4 rounded-md bg-transparent text-red-500 hover:bg-gray-100 active:shadow-inner text-sm font-semibold mt-3 leading-none leading-none">
+                      Destroy page
+                    </a>
+                  </div>
+                <% end %>
               </div>
           </div>
         </div>

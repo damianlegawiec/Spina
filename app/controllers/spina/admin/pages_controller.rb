@@ -3,7 +3,7 @@ module Spina
     class PagesController < AdminController
       before_action :set_tabs, only: [:new, :create, :edit, :update]
       before_action :set_locale
-      before_action :set_page, only: [:edit, :update, :destroy, :children]
+      before_action :set_page, only: [:edit, :edit_template, :update, :destroy, :children]
 
       def index
         add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path
@@ -37,6 +37,10 @@ module Spina
         add_index_breadcrumb
         add_breadcrumb @page.title
         render layout: 'spina/admin/admin'
+      end
+
+      def edit_template
+        render layout: false
       end
 
       def update

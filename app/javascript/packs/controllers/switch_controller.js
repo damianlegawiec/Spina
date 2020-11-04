@@ -13,15 +13,9 @@ export default class extends Controller {
   }
 
   renderKnob() {
-    if (this.checked) {
-      this.containerTarget.classList.remove('bg-gray-200')
-      this.containerTarget.classList.add('bg-green-500')
-      this.knobTarget.classList.add('translate-x-6')
-    } else {
-      this.containerTarget.classList.add('bg-gray-200')
-      this.containerTarget.classList.remove('bg-green-500')
-      this.knobTarget.classList.remove('translate-x-6')
-    }
+    this.containerTarget.classList.toggle('bg-gray-200', !this.checked)
+    this.containerTarget.classList.toggle('bg-green-500', this.checked)
+    this.knobTarget.classList.toggle('translate-x-6', this.checked)
   }
 
   get checked() {
