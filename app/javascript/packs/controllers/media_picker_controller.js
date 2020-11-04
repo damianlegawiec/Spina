@@ -1,16 +1,11 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "modal", "grid", "filename", "signedBlobId", "imageId", "alt", "thumbnail" ]
+  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail" ]
 
   connect() {
     // Hide thumbnail if there's no image
     if (this.thumbnailTarget.children.length == 0) this.hideThumbnail()
-  }
-
-  open() {
-    this.modal.open()
-    this.gridTarget.infiniteScroll.initialLoad()
   }
 
   removeImage() {
@@ -31,9 +26,6 @@ export default class extends Controller {
 
     // Set placeholder
     this.setThumbnail(image.dataset.thumbnail)
-
-    // Close modal
-    this.modal.close()
   }
 
   setThumbnail(imageSrc) {
@@ -47,10 +39,6 @@ export default class extends Controller {
 
   hideThumbnail() {
     this.thumbnailTarget.classList.add('hidden')
-  }
-
-  get modal() {
-    return this.modalTarget.modal
   }
 
 }
