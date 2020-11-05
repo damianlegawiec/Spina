@@ -5,6 +5,7 @@
     data-signed-blob-id="<%= @image.file.blob.signed_id %>"
     data-filename="<%= @image.file.filename %>"
     data-thumbnail="<%= helpers.thumbnail_url(@image) %>"
+    data-embedded-url="<%= helpers.embedded_image_url(@image) %>"
     class="w-full h-40 overflow-hidden transform transition-transform duration-200 hover:scale-105">
 
     <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>

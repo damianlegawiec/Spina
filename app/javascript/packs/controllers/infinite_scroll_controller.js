@@ -17,6 +17,11 @@ export default class extends Controller {
     this.load(this.element.dataset.infiniteScrollPath)
   }
 
+  changePath(event) {
+    this.containerTarget.innerHTML = ''
+    this.load(event.currentTarget.dataset.infiniteScrollPath) 
+  }
+
   loadNextPage() {
     if (this.hasButtonTarget) {
       let path = this.buttonTarget.dataset.path

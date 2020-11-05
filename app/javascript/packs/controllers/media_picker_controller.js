@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     // Hide thumbnail if there's no image
-    if (this.thumbnailTarget.children.length == 0) this.hideThumbnail()
+    if (this.hasThumbnailTarget && this.thumbnailTarget.children.length == 0) this.hideThumbnail()
   }
 
   removeImage() {
@@ -20,7 +20,7 @@ export default class extends Controller {
     let image = event.currentTarget
 
     if (this.element.dataset.mediaPickerInsertType === "trix") {
-      let attachment = new Trix.Attachment({content: `<img src='${image.dataset.thumbnail}' />`})
+      let attachment = new Trix.Attachment({content: `<img src='${image.dataset.embeddedUrl}' />`})
       this.trixTarget.editor.insertAttachment(attachment)
     } else {
       // Set fields

@@ -59,6 +59,7 @@ Spina::Engine.routes.draw do
 
     namespace :media_picker do
       resources :images
+      resources :media_folders
     end
 
     get :media_picker, to: 'media_picker#show'

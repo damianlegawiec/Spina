@@ -1,11 +1,11 @@
 <div class="mt-6" data-controller="media-picker reveal" data-media-picker-insert-type="trix">
   <label for="price" class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
-  <div class="mt-1 relative rounded-md shadow-sm">
+  <div class="mt-1 relative">
     <%= f.hidden_field :content, id: "#{f.object.object_id}_input" %>
 
     <div class="relative">
       <trix-toolbar class="absolute top-4 left-4" id="<%= f.object.object_id %>_trix-toolbar"></trix-toolbar>
-      <trix-editor class="prose prose-sm form-input p-4 pt-16" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-action-invoke->trix#invokeAction trix-file-accept->trix#preventDefault"></trix-editor>
+      <trix-editor class="prose prose-sm form-input p-4 pt-16 shadow-sm max-w-3xl" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-action-invoke->trix#invokeAction trix-file-accept->trix#preventDefault"></trix-editor>
     </div>
   </div>
 
