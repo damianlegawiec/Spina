@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail" ]
+  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail", "trix" ]
 
   connect() {
     // Hide thumbnail if there's no image
@@ -19,13 +19,18 @@ export default class extends Controller {
   selectImage(event) {
     let image = event.currentTarget
 
-    // Set fields
-    this.filenameTarget.value = image.dataset.filename
-    this.signedBlobIdTarget.value = image.dataset.signedBlobId
-    this.imageIdTarget.value = image.dataset.imageId
+    if (this.element.dataset.mediaPickerInsertType === "trix") {
+      let attachment = new Trix.Attachment({content: `<img src='${image.dataset.thumbnail}' />`})
+      this.trixTarget.editor.insertAttachment(attachment)
+    } else {
+      // Set fields
+      this.filenameTarget.value = image.dataset.filename
+      this.signedBlobIdTarget.value = image.dataset.signedBlobId
+      this.imageIdTarget.value = image.dataset.imageId
 
-    // Set placeholder
-    this.setThumbnail(image.dataset.thumbnail)
+      // Set placeholder
+      this.setThumbnail(image.dataset.thumbnail)
+    }
   }
 
   setThumbnail(imageSrc) {

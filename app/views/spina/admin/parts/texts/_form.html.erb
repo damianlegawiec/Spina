@@ -1,22 +1,69 @@
-<div class="mt-6">
+<div class="mt-6" data-controller="media-picker reveal" data-media-picker-insert-type="trix">
   <label for="price" class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
   <div class="mt-1 relative rounded-md shadow-sm">
     <%= f.hidden_field :content, id: "#{f.object.object_id}_input" %>
 
-    <div id="<%= f.object.object_id %>_trix-toolbar" class="toolbar mb-2 flex items-center">
-      <div class="mr-2 flex">
-        <button type="button" class="bg-white border rounded px-2 py-1 w-10" data-format="bold">B</button>
-        <button type="button" class="bg-white border border-l-0 w-10 rounded px-2 py-1" data-format="italic">I</button>
-      </div>
-      <button type="button" data-format="strike">S</button>
-      <button type="button" data-format="quote">Q</button>
-      <button type="button" data-format="code">C</button>
-      <button type="button" data-format="bullet">UL</button>
-      <button type="button" data-format="number">OL</button>
-      <button type="button" data-format="outdent">></button>
-      <button type="button" data-format="indent"><</button>
+    <div class="relative">
+      <trix-toolbar class="absolute top-4 left-4" id="<%= f.object.object_id %>_trix-toolbar"></trix-toolbar>
+      <trix-editor class="prose prose-sm form-input p-4 pt-16" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-action-invoke->trix#invokeAction trix-file-accept->trix#preventDefault"></trix-editor>
     </div>
+  </div>
 
-    <trix-editor class="trix-content form-input p-4 text-sm" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input"></trix-editor>
+  <!-- Gray overlay -->
+  <div hidden data-reveal class="fixed z-50 inset-0 bg-gray-700 bg-opacity-50 w-full h-full"></div>
+
+  <div hidden class="fixed z-50 inset-0"
+    data-reveal 
+    data-transition 
+    data-controller="infinite-scroll" 
+    data-action="reveal:show->infinite-scroll#initialLoad" 
+    data-infinite-scroll-path="<%= spina.admin_media_picker_images_path %>">
+
+    <!-- Overlay button to close -->
+    <button type="button" class="w-full h-full fixed inset-0" tabindex="-1" data-action="reveal#hide"></button>
+
+    <!-- Modal positioning -->
+    <div class="flex items-center justify-center p-6 h-full">
+
+      <!-- Modal window -->
+      <div class="bg-white rounded-lg overflow-hidden w-full max-h-full h-full max-w-5xl shadow-lg relative">
+        <div class="flex flex-col h-full w-full ">
+          <div class="flex flex-1 h-full w-full">
+            <div class="w-64 p-6 border-r border-gray-200 shadow-lg bg-white flex flex-col justify-between">
+              <div>
+                <div class="font-medium bg-gray-200 text-gray-900 px-3 py-2 rounded-lg flex items-center justify-between -mx-3 -mt-2">
+                  Recent images
+
+                  <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+
+                <% Spina::MediaFolder.all.each do |media_library| %>
+                  <div class="font-medium text-gray-600 hover:bg-gray-50 px-3 -mx-3 py-2 cursor-pointer rounded-lg flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
+                    </svg>
+                    <%= media_library.name %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="font-medium text-gray-600 hover:bg-gray-50 px-3 py-2 pl-1 cursor-pointer rounded-md flex items-center mt-6 bg-white border border-gray-200 shadow-sm justify-center">
+                <svg class="w-4 h-4 mr-2 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                </svg>
+                Upload image
+              </div>
+            </div>
+
+            <div class="flex-1 h-full w-full overflow-scroll grid sm:grid-cols-3 md:grid-cols-4 gap-6 auto-rows-min p-6 bg-gray-200 bg-opacity-50" data-target="infinite-scroll.container">          
+              <!-- Buttons here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

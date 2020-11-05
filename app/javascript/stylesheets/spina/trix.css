@@ -1,0 +1,39 @@
+trix-toolbar {
+  button {
+    @apply text-gray-700 w-9 h-9 flex items-center justify-center;
+  }
+
+  button[data-trix-active] {
+    @apply text-white bg-spina;
+  }
+
+  button[disabled] {
+    @apply bg-gray-100 text-gray-400;
+  }
+}
+
+trix-editor {
+  
+  [data-trix-mutable]:not(.attachment__captain-editor) {
+    @apply select-none
+  }
+
+  figure.attachment img {
+    max-height: 150px;
+    max-width: 150px;
+    @apply border-2 border-transparent
+  }
+
+  figure[data-trix-mutable].attachment img {
+    @apply shadow-lg border-blue-500
+  }
+
+  figure .attachment__caption {
+    @apply hidden
+  }
+
+  figure .attachment__toolbar {
+    @apply hidden
+  }
+
+}

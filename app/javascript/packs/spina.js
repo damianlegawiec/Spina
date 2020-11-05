@@ -1,7 +1,10 @@
 // Rails and turbolinks
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("trix")
+
+// Trix
+window.Trix = require("trix")
+require("./trix_customization")
 
 import { Application } from "stimulus"
 import RevealController from "stimulus-reveal"
