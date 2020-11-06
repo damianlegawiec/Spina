@@ -4,5 +4,5 @@
   <%= f.hidden_field :signed_blob_id, data: {target: 'attachment-picker.signedBlobId'} %>
   <%= f.hidden_field :filename, data: {target: 'attachment-picker.filename'} %>
 
-  <%= f.select :attachment_id, Spina::Attachment.sorted.map{|attachment| [attachment.file&.filename, attachment.id, data: {signed_blob_id: attachment.file&.blob&.signed_id, filename: attachment.file&.filename}]}, {include_blank: t("spina.attachments.choose_attachment")}, {class: "mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: {action: "attachment-picker#chooseAttachment"}} %>
+  <%= f.select :attachment_id, Spina::Attachment.sorted.map{|attachment| [attachment.file&.filename, attachment.id, data: {signed_blob_id: attachment.file&.blob&.signed_id, filename: attachment.file&.filename}]}, {include_blank: t("spina.attachments.choose_attachment")}, {class: "mt-1 block form-select pr-10 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", data: {action: "attachment-picker#chooseAttachment"}} %>
 </div>
