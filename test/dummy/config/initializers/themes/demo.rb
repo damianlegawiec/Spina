@@ -30,7 +30,8 @@
   }, {
     name: 'image',
     title: "Image",
-    part_type: "Spina::Parts::Image"
+    part_type: "Spina::Parts::Image",
+    ratio: "wide" # Square (default) / tall (3:4) / wide (16:9) / ultrawide (21:9)
   }, {
     name: 'headline',
     title: "Headline",

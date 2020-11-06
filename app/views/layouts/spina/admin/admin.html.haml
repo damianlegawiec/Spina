@@ -65,9 +65,10 @@
                 .text-white.font-semibold.text-sm.text-opacity-0 Website
 
               %ul.h-screen.bg-gradient-to-b.from-spina-dark.to-spina-light.absolute.right-0.top-0.px-3.py-5{class: "w-9/12"}
-                %li= link_to "Pages", '#', class: 'block p-3 leading-none text-white font-semibold text-sm'
-                %li= link_to "Media Library", '#', class: 'block p-3 text-white text-opacity-50 font-semibold leading-none hover:text-opacity-100 text-sm'
-                %li= link_to "Landing pages", '#', class: 'block p-3 text-white text-opacity-50 font-semibold leading-none hover:text-opacity-100 text-sm'
+                %li
+                  = link_to spina.admin_pages_path, class: 'block p-3 leading-none text-white font-semibold text' do
+                    Pages
+                %li= link_to "Media Library", spina.admin_images_path, class: 'block p-3 text-white text-opacity-50 font-semibold leading-none hover:text-opacity-100'
 
             %li
               = button_tag type: :button, class: "flex w-full items-center p-3" do
@@ -80,7 +81,7 @@
                 <svg class="text-opacity-50 text-white h-8 w-8 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>
                 .text-white.font-semibold.text-sm.text-opacity-0 Logout
 
-      %section.w-full.bg-gray-100.h-screen.overflow-scroll= yield
+      %section.w-full.h-screen.overflow-scroll{style: "background-color: #F5F5FA"}= yield
 
     - if false
       = render 'spina/admin/shared/primary_navigation'

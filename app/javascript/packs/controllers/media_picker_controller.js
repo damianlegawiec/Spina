@@ -36,7 +36,7 @@ export default class extends Controller {
   }
 
   setThumbnail(imageSrc) {
-    this.thumbnailTarget.innerHTML = `<img src="${imageSrc}" class="object-contain w-full h-36" />`
+    this.thumbnailTarget.innerHTML = `<img src="${imageSrc}" class="object-cover w-full h-36" />`
     this.showThumbnail()
   }
 
