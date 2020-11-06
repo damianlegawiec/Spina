@@ -1,0 +1,29 @@
+<div class="mt-6" data-controller="repeater">
+  <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
+
+  <div class="flex mt-1">
+    <div class="w-64 mr-6">
+      <div data-target="repeater.list" class="flex flex-col">
+        <% (f.object.content || []).each.with_index do |repeater_content, index| %>
+          <button type="button" class="bg-white w-full px-4 py-2 border border-gray-200"><%= strip_tags(repeater_content.parts&.first&.content) %></button>
+        <% end %>
+      </div>
+
+      <% 
+        # Fields
+        repeater_content = Spina::Parts::RepeaterContent.new(name: f.object.name, title: f.object.title)
+        fields = f.fields_for(:content, [repeater_content], child_index: "#{f.object.object_id}_new_association") do |builder|
+          render("spina/admin/parts/repeaters/fields", f: builder)
+        end.gsub("\n", "")
+      %>
+
+      <button type="button" class="bg-white block" data-action="repeater#add" data-fields="<%= fields %>" data-child-index="<%= "#{f.object.object_id}_new_association" %>">Plus</button>
+    </div>
+
+    <div class="flex-1" data-target="repeater.content">
+      <%= f.fields_for :content do |ff| %>
+        <%= render 'spina/admin/parts/repeaters/fields', f: ff %>
+      <% end %>
+    </div>
+  </div>
+</div>

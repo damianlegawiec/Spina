@@ -8,7 +8,7 @@ module Spina
           render("spina/admin/parts/repeaters/fields", f: builder)
         end
         link_to '#', class: "add_structure_item_fields button button-link", data: {id: repeater_content.object_id, fields: fields.gsub("\n", "")} do
-          icon('plus')
+          "plussie"
         end
       end
 
