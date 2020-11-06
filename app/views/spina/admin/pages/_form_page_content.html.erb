@@ -1,0 +1,17 @@
+<label class="font-medium text-gray-700">
+  <%= Spina::Page.human_attribute_name(:title) %>
+</label>
+
+<%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-md text-gray-700 font-medium sm:leading-5" %>
+
+<% parts = (current_theme.view_templates.find{|v|v[:name].to_s == f.object.view_template.to_s}&.dig(:parts) || []) %>
+
+<%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, parts) do |ff| %>
+  <%= ff.hidden_field :type, value: ff.object.class %>
+  <%= ff.hidden_field :name %>
+  <%= ff.hidden_field :title %>
+
+  <div data-name="<%= ff.object.name %>">
+    <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
+  </div>
+<% end %>

@@ -12,8 +12,8 @@ module Spina
       def create
         user = User.where(email: params[:email]).first
         if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
-          user.update_last_logged_in!
+          cookies.permanent[:user_id] = user.id
+          user.touch(:last_logged_in)
           redirect_to spina.admin_root_url
         else
           flash.now[:alert] = I18n.t('spina.notifications.wrong_username_or_password')
@@ -22,7 +22,7 @@ module Spina
       end
 
       def destroy
-        session[:user_id] = nil
+        cookies.destroy(:user_id)
         redirect_to "/"
       end
     end

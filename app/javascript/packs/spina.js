@@ -4,7 +4,7 @@ require("turbolinks").start()
 
 // Trix
 window.Trix = require("trix")
-require("./trix_customization")
+require("./config/trix")
 
 import { Application } from "stimulus"
 import RevealController from "stimulus-reveal"

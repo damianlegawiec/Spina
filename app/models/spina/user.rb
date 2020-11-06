@@ -16,11 +16,6 @@ module Spina
       name
     end
 
-    def update_last_logged_in!
-      self.last_logged_in = Time.now
-      self.save!
-    end
-
     private
 
     def uniqueness_of_email

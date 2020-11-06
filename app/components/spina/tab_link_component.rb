@@ -17,9 +17,9 @@ module Spina
 
       def classes
         if @active
-          "mx-4 block leading-loose text-gray-800 border-b-4 border-spina font-semibold text-sm"
+          "mx-4 block leading-loose text-gray-800 border-b-4 border-spina font-semibold text-xs uppercase"
         else
-          "px-4 block leading-loose hover:text-gray-800 text-gray-400 font-semibold text-sm"
+          "px-4 block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase"
         end
       end
 
