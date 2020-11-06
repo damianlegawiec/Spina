@@ -5,7 +5,7 @@
 
     <div class="relative">
       <trix-toolbar class="absolute top-4 left-4" id="<%= f.object.object_id %>_trix-toolbar"></trix-toolbar>
-      <trix-editor class="prose prose-sm form-input p-4 pt-16 shadow-sm max-w-3xl" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-action-invoke->trix#invokeAction trix-file-accept->trix#preventDefault"></trix-editor>
+      <trix-editor class="prose prose-sm form-input p-4 pt-16 shadow-sm max-w-3xl" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
     </div>
   </div>
 

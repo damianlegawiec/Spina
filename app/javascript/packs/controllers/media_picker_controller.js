@@ -20,7 +20,9 @@ export default class extends Controller {
     let image = event.currentTarget
 
     if (this.element.dataset.mediaPickerInsertType === "trix") {
-      let attachment = new Trix.Attachment({content: `<img src='${image.dataset.embeddedUrl}' />`})
+      let attachment = new Trix.Attachment({content: `<span class="trix-attachment-spina-image">
+        <img src='${image.dataset.embeddedUrl}' />
+      </span>`})
       this.trixTarget.editor.insertAttachment(attachment)
     } else {
       // Set fields

@@ -18,10 +18,14 @@ trix-editor {
     @apply select-none
   }
 
+  figure.attachment {
+    @apply m-0 inline-block
+  }
+
   figure.attachment img {
-    max-height: 150px;
-    max-width: 150px;
-    @apply border-2 border-transparent
+    max-height: 200px;
+    max-width: 200px;
+    @apply m-0 border-2 border-transparent
   }
 
   figure[data-trix-mutable].attachment img {
@@ -37,3 +41,10 @@ trix-editor {
   }
 
 }
+
+trix-editor [data-trix-mutable]::-moz-selection,
+trix-editor [data-trix-cursor-target]::-moz-selection, trix-editor [data-trix-mutable] ::-moz-selection {
+  background: none; }
+trix-editor [data-trix-mutable]::selection,
+trix-editor [data-trix-cursor-target]::selection, trix-editor [data-trix-mutable] ::selection {
+  background: none; }
