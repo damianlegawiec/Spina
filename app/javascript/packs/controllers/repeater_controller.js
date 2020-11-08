@@ -1,10 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "list", "content", "button" ]
+  static targets = [ "list", "content" ]
 
-  add(event) {
-    // this.listTarget.insertAdjacentHTML('beforeend', "<button>Another new thing</button>")
+  addFields(event) {
     let button = event.currentTarget
     let childIndex = button.dataset.childIndex
 
@@ -13,8 +12,26 @@ export default class extends Controller {
     let regex = new RegExp(childIndex, 'g')
     let html = button.dataset.fields.replace(regex, time)
 
+    // Insert button
+    this.listTarget.insertAdjacentHTML('beforeend', this.buttonHTML(time))
+
     // Insert fields
     this.contentTarget.insertAdjacentHTML('beforeend', html)
+  }
+
+  removeFields(event) {
+    let id = event.currentTarget.dataset.id
+    let button = this.listTarget.querySelector(`button[data-pane-id="${id}"]`)
+    let pane = document.getElementById(id)
+    this.listTarget.removeChild(button)
+    this.contentTarget.removeChild(pane)
+  }
+
+  buttonHTML(pane_id) {
+    return `<button type="button" class="text-gray-600 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-controller="exists" data-action="tabs#show" data-target="tabs.button" data-pane-id="pane_${pane_id}">
+      <svg class="w-4 h-4 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
+      ...
+    </button>`
   }
 
 }

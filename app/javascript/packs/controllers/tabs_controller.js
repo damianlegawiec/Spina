@@ -4,13 +4,28 @@ export default class extends Controller {
   static targets = [ "pane", "button" ]
 
   connect() {
+    this.element[this.identifier] = this
+
     this.hideAllPanes()
     this.deactiveAllButtons()
 
     let firstButton = this.buttonTargets[0]
-    let firstPane = document.getElementById(firstButton.dataset.paneId)
-    this.activateButton(firstButton)
-    firstPane.hidden = false
+    if (firstButton) {
+      let firstPane = document.getElementById(firstButton.dataset.paneId)
+      this.activateButton(firstButton)
+      firstPane.hidden = false
+    }
+  }
+
+  added(event) {
+    let button = event.target
+    let pane = document.getElementById(button.dataset.paneId)
+
+    this.hideAllPanes()
+    this.deactiveAllButtons()
+
+    this.activateButton(button)
+    pane.hidden = false
   }
 
   show(event) {

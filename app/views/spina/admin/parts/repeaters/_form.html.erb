@@ -6,27 +6,29 @@
       <% 
         # Fields
         repeater_content = Spina::Parts::RepeaterContent.new(name: f.object.name, title: f.object.title)
-        fields = f.fields_for(:content, [repeater_content], child_index: "#{f.object.object_id}_new_association") do |builder|
+        fields = f.fields_for(:content, [repeater_content], child_index: repeater_content.object_id) do |builder|
           render("spina/admin/parts/repeaters/fields", f: builder)
         end.gsub("\n", "")
       %>
 
-      <div data-target="repeater.list" class="pt-6 -ml-3">
-        <% (f.object.content || []).each.with_index do |repeater_content, index| %>
-          <button type="button" class="text-gray-600 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="<%= "pane_#{repeater_content.object_id}" %>">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
-            <%= strip_tags(repeater_content.parts&.first&.content) %>
-          </button>
-        <% end %>
+      <div class="pt-6 -ml-3">
+        <div data-target="repeater.list tabs.list" data-action="exists->tabs#added">
+          <% (f.object.content || []).each.with_index do |repeater_content, index| %>
+            <button type="button" class="text-gray-600 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="<%= "pane_#{repeater_content.object_id}" %>">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
+              <%= strip_tags(repeater_content.parts&.first&.content) %>
+            </button>
+          <% end %>
+        </div>
 
-        <button type="button" class="text-gray-400 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="repeater#add" data-fields="<%= fields %>" data-child-index="<%= "#{f.object.object_id}_new_association" %>">
+        <button type="button" class="text-gray-400 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="repeater#addFields" data-fields="<%= fields %>" data-child-index="<%= repeater_content.object_id %>">
           <svg class="w-4 h-4 mr-2 opacity-75" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
           New entry
         </button>
       </div>
     </div>
 
-    <div class="flex-1">
+    <div class="flex-1" data-target="repeater.content">
       <%= f.fields_for :content do |ff| %>
         <%= render 'spina/admin/parts/repeaters/fields', f: ff %>
       <% end %>
