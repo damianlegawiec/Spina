@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "list", "content" ]
+  static targets = [ "list", "content", "button" ]
 
   add(event) {
     // this.listTarget.insertAdjacentHTML('beforeend', "<button>Another new thing</button>")

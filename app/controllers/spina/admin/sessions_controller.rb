@@ -12,7 +12,7 @@ module Spina
       def create
         user = User.where(email: params[:email]).first
         if user && user.authenticate(params[:password])
-          cookies.permanent[:user_id] = user.id
+          cookies.signed.permanent[:spina_user_id] = user.id
           user.touch(:last_logged_in)
           redirect_to spina.admin_root_url
         else
@@ -22,7 +22,7 @@ module Spina
       end
 
       def destroy
-        cookies.destroy(:user_id)
+        cookies.delete(:spina_user_id)
         redirect_to "/"
       end
     end

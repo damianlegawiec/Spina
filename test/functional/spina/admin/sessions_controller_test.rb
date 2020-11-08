@@ -15,17 +15,17 @@ module Spina
 
       test "should be able to login" do
         post :create, params: {email: @user.email, password: "password"}
-        assert_not_nil cookies[:user_id]
+        assert_not_nil cookies.signed[:spina_user_id]
       end
 
       test "should be able to logout" do
         get :destroy
-        assert_nil cookies[:user_id]
+        assert_nil cookies.signed[:spina_user_id]
       end
 
       test "should alert the user when wrong password" do
         post :create, params: {email: @user.email, password: "1234"}
-        assert_nil cookies[:user_id]
+        assert_nil cookies.signed[:spina_user_id]
         assert_not_empty flash[:alert]
       end
     end
