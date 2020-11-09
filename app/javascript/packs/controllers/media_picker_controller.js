@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail", "trix" ]
+  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail", "clearButton", "trix" ]
 
   connect() {
     // Hide thumbnail if there's no image
@@ -42,10 +42,12 @@ export default class extends Controller {
 
   showThumbnail() {
     this.thumbnailTarget.classList.remove('hidden')
+    this.clearButtonTarget.classList.remove('hidden')
   }
 
   hideThumbnail() {
     this.thumbnailTarget.classList.add('hidden')
+    this.clearButtonTarget.classList.add('hidden')
   }
 
 }

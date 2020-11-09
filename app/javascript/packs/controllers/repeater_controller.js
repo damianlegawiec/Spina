@@ -1,7 +1,25 @@
 import { Controller } from "stimulus"
+import Sortable from "sortablejs"
 
 export default class extends Controller {
   static targets = [ "list", "content" ]
+
+  connect() {
+    this.sortable = Sortable.create(this.listTarget, {
+      handle: 'button svg',
+      dataIdAttr: "data-pane-id",
+      onEnd: this.sort.bind(this)
+    })
+  }
+
+  sort(event) {
+    let ids = this.sortable.toArray()
+
+    // Sort the DOM elements containing the repeater fields
+    this.panes
+      .sort((a, b) => ids.indexOf(a.id) > ids.indexOf(b.id))
+      .map(node => this.contentTarget.appendChild(node))
+  }
 
   addFields(event) {
     let button = event.currentTarget
@@ -32,6 +50,10 @@ export default class extends Controller {
       <svg class="w-4 h-4 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
       ...
     </button>`
+  }
+
+  get panes() {
+    return [...this.contentTarget.children]
   }
 
 }
