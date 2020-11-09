@@ -42,6 +42,8 @@
     <ul class="flex">
       <%= render Spina::TabLinkComponent.new(label: t('spina.website.all_pages'), href: spina.admin_pages_path, active: controller_name == "pages") %>
 
+      <%= render Spina::TabLinkComponent.new(label: "Other content", href: '#') %>
+
       <% Spina::Navigation.sorted.each do |nav| %>
         <%= render Spina::TabLinkComponent.new(label: nav.label, href: spina.admin_navigation_path(nav)) %>
       <% end %>

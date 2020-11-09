@@ -14,13 +14,5 @@ module Spina
       @children ||= @page.children.active.sorted.regular_pages
     end
 
-    def missing_locales
-      Spina.config.locales.map(&:to_sym) - existing_locales
-    end
-
-    def existing_locales
-      @existing_locales ||= @page.translations.pluck(:locale).map(&:to_sym)
-    end
-
   end
 end
