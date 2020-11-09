@@ -1,5 +1,5 @@
 <%= form_with model: @page, url: (@page.new_record? ? spina.admin_pages_path : spina.admin_page_path(@page)), data: {controller: "notifications tabs", action: "ajax:error->notifications#setError", tabs_active: "cursor-default mx-4 text-gray-800 border-spina", tabs_inactive: "cursor-pointer px-4 text-gray-400 border-transparent"} do |f| %>
-  <%= f.hidden_field :view_template %>
+  <%= hidden_field_tag :locale, @locale %>
 
   <div class="bg-white border-b border-gray-200 p-6 pl-8 sticky top-0 relative z-20">
     <div class="flex justify-between items-center">
