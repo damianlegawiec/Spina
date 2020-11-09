@@ -9,9 +9,41 @@
           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
         </svg>
         <%= @page.menu_title || t("spina.pages.new") %>
+
+        <% if @page.persisted? && @page.draft? %>
+          <span class="text-gray-400 ml-2 text-sm">(draft)</span>
+        <% end %>
       </div>
 
       <div class="flex items-center">
+        <div class="relative" data-controller="reveal" data-reveal-away>
+          <button type="button" class="btn pr-3" data-action="reveal#toggle">
+            Actions
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+            <div class="rounded-md bg-white shadow-xs">
+              <div class="py-1">
+                <% if !@page.custom_page? %>
+                  <%= link_to spina.edit_template_admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller:  "remote-modal"} do %>
+                    Change view template
+                  <% end %>
+                <% end %>
+                <% if @page.deletable? %>
+                  <%= link_to spina.admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 text-red-500 hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {method: :delete, confirm: "Are you sure?"} do %>
+                    Delete page
+                  <% end %>
+                <% else %>
+                  <span class="block px-4 py-2 text-sm leading-5 text-gray-400">Page can't be deleted</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button type="submit" class="btn pl-2 ml-3">
           <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
@@ -24,7 +56,7 @@
         </button>
 
         <% if @page.persisted? && @page.draft? %>
-          <button type="submit" name="page[draft]" value="false" class="btn btn-primary ml-3 pl-3">
+          <button type="submit" name="page[draft]" value="false" class="btn bg-green-500 border-green-600 hover:bg-green-600 text-white ml-3 pl-3">
             <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
             </svg>

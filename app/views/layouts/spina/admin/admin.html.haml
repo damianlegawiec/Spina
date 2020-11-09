@@ -22,7 +22,7 @@
         - if lookup_context.exists? "spina/admin/hooks/#{ plugin.namespace }/_head"
           = render "spina/admin/hooks/#{ plugin.namespace }/head"
 
-  %body
+  %body{data: {controller: "confetti"}}
     .flex.h-screen
       - if false
         %nav.w-full.max-w-xs.bg-gradient-to-b.from-spina-dark.to-spina-light.p-3.pt-6.flex.flex-col

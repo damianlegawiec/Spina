@@ -23,4 +23,8 @@
   @apply bg-spina-dark;
 }
 
+.btn-success {
+  @apply bg-green-500
+}
+
 /* Forms */

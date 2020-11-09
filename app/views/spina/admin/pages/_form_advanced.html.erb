@@ -104,18 +104,4 @@
       </div>
     <% end %>
   </div>
-
-  <% if @page.persisted? && !@page.custom_page? %>
-    <div class="mt-8">
-      <a href="<%= spina.edit_template_admin_page_path(@page) %>" data-controller="remote-modal" class="flex items-center justify-center h-9 px-2 pr-4 rounded-md border bg-white hover:bg-gray-100 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm">
-        Change page template...
-      </a>
-
-      <% if @page.deletable? %>
-        <%= link_to spina.admin_page_path(@page), class: "flex items-center justify-center h-9 px-2 pr-4 rounded-md bg-transparent text-red-500 hover:bg-gray-100 active:shadow-inner text-sm font-semibold mt-3 leading-none leading-none", method: :delete, data: {confirm: "Are you sure?"} do %>
-          Destroy page
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
 </div>
