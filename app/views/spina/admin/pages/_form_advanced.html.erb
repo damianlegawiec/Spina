@@ -1,4 +1,4 @@
-<div class="max-w-5xl grid grid-cols-4 gap-6 gap-y-12">
+<div class="max-w-5xl grid grid-cols-3 gap-6">
   <div class="col-span-1">
     <label for="ancestry" class="block text-sm font-medium leading-5 text-gray-700">
       <%= Spina::Page.human_attribute_name :ancestry %>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="col-span-3">
+  <div class="col-span-2">
     <%= f.select :parent_id, page_ancestry_options(f.object), {include_blank: Spina::Page.human_attribute_name(:no_parent)}, class: "text-gray-700 block form-select py-2 pr-10 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
   </div>
 
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="col-span-3 mt-1">
+    <div class="col-span-2 mt-1">
       <button type="button" data-controller="switch" data-action="click->switch#toggle">
         <%= f.check_box :draft, hidden: true, data: {target: "switch.checkbox"} %>
 
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class="col-span-3 mt-1">
+  <div class="col-span-2 mt-1">
     <button type="button" data-controller="switch" data-action="click->switch#toggle">
       <%= f.check_box :show_in_menu, hidden: true, data: {target: "switch.checkbox"} %>
 
@@ -56,13 +56,32 @@
   </div>
 
   <div class="col-span-1">
-    <label for="comments" class="font-medium text-sm leading-5 w-full text-gray-700">
+    <label class="font-medium text-sm leading-5 w-full text-gray-700">
       <%= Spina::Page.human_attribute_name :menu_title %>
     </label>
   </div>
 
-  <div class="col-span-3">
+  <div class="col-span-2">
     <%= f.text_field :menu_title, placeholder: Spina::Page.human_attribute_name(:show_in_menu_placeholder), value: f.object.menu_title(fallback: false, default: nil), class: "form-input shadow-sm text-sm w-full" %>
+  </div>
+
+  <div class="col-span-1">
+    <label class="font-medium text-sm leading-5 w-full text-gray-700">
+      <%= Spina::Page.human_attribute_name :skip_to_first_child %>
+    </label>
+    <div class="text-sm leading-5">
+      <p class="text-gray-500"><%= Spina::Page.human_attribute_name :skip_to_first_child_description %></p>
+    </div>
+  </div>
+
+  <div class="col-span-2">
+    <button type="button" data-controller="switch" data-action="click->switch#toggle">
+      <%= f.check_box :skip_to_first_child, hidden: true, data: {target: "switch.checkbox"} %>
+
+      <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
+        <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
+      </div>
+    </button>
   </div>
 
 </div>
@@ -84,42 +103,6 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-
-  <div class="mt-6">
-    
-  </div>
-
-  <div class="mt-6">
-    <div class="text-sm leading-5 w-full">
-      <label for="comments" class="font-medium text-gray-700"><%= Spina::Page.human_attribute_name(:url_title) %></label>
-      <p class="text-gray-500"><%= Spina::Page.human_attribute_name :url_title_description %></p>
-
-      <%= f.text_field :url_title, class: "form-input shadow-sm text-sm w-full mt-2", placeholder: f.object.slug || Spina::Page.human_attribute_name(:url_title_placeholder), value: f.object.url_title(fallback: false, default: nil)&.parameterize %>
-    </div>
-  </div>
-
-  <div class="mt-8">
-    <div class="col-span-1 mt-6">
-      <label for="country" class="block text-sm font-medium leading-5 text-gray-700">
-        <%= Spina::Page.human_attribute_name :skip_to_first_child %>  
-      </label>
-
-      <div class="text-sm leading-5">
-        <p class="text-gray-500"><%= Spina::Page.human_attribute_name :skip_to_first_child_description %></p>
-      </div>
-    </div>
-
-    <div class="mt-1">
-      <button type="button" data-controller="switch" data-action="click->switch#toggle">
-        <%= f.check_box :skip_to_first_child, hidden: true, data: {target: "switch.checkbox"} %>
-
-        <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
-          <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
-        </div>
-      </button>
-    </div>
   </div>
 
   <% if @page.persisted? && !@page.custom_page? %>

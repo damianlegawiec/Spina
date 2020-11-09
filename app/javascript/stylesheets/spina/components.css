@@ -1,0 +1,26 @@
+/* Buttons */
+
+.btn {
+  @apply flex items-center rounded-md border bg-white border-gray-300 shadow-sm;
+  @apply h-9 px-4;
+  @apply text-gray-700 text-sm font-medium leading-none;
+  @apply transition-colors duration-200;
+}
+
+.btn:hover {
+  @apply bg-gray-100;
+}
+
+.btn:active {
+  @apply shadow-inner bg-gray-100;
+}
+
+.btn-primary {
+  @apply bg-spina border-spina-dark text-white;
+}
+
+.btn-primary:hover {
+  @apply bg-spina-dark;
+}
+
+/* Forms */

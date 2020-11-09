@@ -30,8 +30,10 @@
   }, {
     name: 'image',
     title: "Image",
-    part_type: "Spina::Parts::Image",
-    ratio: "wide" # Square (default) / tall (3:4) / wide (16:9) / ultrawide (21:9)
+    part_type: "Spina::Parts::Image"
+  }, {name: 'portrait', part_type: 'Spina::Parts::Image', options: {ratio: "portrait"}
+  }, {name: 'landscape', part_type: 'Spina::Parts::Image', options: {ratio: "landscape"}
+  }, {name: 'wide', part_type: 'Spina::Parts::Image', options: {ratio: "wide"}
   }, {
     name: 'headline',
     title: "Headline",
@@ -68,7 +70,7 @@
     title: 'Demo',
     description: 'Example including all parts',
     page_parts: [],
-    parts: ['repeater', 'repeater2', 'attachment', 'option', 'body', 'image_collection', 'image']
+    parts: ['repeater', 'repeater2', 'attachment', 'option', 'body', 'image_collection', 'image', 'portrait', 'landscape', 'wide']
   }]
 
   theme.custom_pages = [{

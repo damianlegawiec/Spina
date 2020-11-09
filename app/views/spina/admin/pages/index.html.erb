@@ -5,15 +5,15 @@
     </div>
 
     <div class="flex">
-      <button type="button" class="flex items-center h-9 px-2 pr-4 rounded-md border bg-white hover:bg-gray-100 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm">
-        <svg class="w-5 h-5 mr-2 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <button type="button" class="btn pl-3">
+        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path d="M5 12a1 1 0 102 0V6.414l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L5 6.414V12zM15 8a1 1 0 10-2 0v5.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L15 13.586V8z" />
         </svg>
         Change order
       </button>
 
       <div class="relative" data-controller="reveal" data-reveal-away>
-        <button type="button" class="flex items-center ml-3 h-9 px-2 pr-4 rounded-md border bg-white hover:bg-gray-100 active:shadow-inner text-gray-700 text-sm font-medium leading-none leading-none shadow-sm" data-action="reveal#toggle">
+        <button type="button" class="btn btn-primary pl-2 ml-3" data-action="reveal#toggle">
           <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
           </svg>
@@ -24,7 +24,7 @@
           <div class="rounded-md bg-white shadow-xs">
             <div class="py-1">
               <% current_theme.new_page_templates.each do |template| %>
-                <%= link_to spina.new_admin_page_path(view_template: template[0]), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" do %>
+                <%= link_to spina.new_admin_page_path(view_template: template[0], format: :modal), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller: "remote-modal"} do %>
                   <div class="font-medium text-gray-700"><%= template[1] %></div>
                   <div class="text-gray-400"><%= template[2] %></div>
                 <% end %>

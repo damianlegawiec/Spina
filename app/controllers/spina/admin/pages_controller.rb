@@ -13,13 +13,12 @@ module Spina
 
       def new
         @resource = Resource.find_by(id: params[:resource_id])
-        @page = Page.new(draft: true, resource: @resource, parent: Page.find_by(id: params[:parent_id]))
+        @page = Page.new(view_template: params[:view_template], resource: @resource)
         add_index_breadcrumb
         if current_theme.new_page_templates.any? { |template| template[0] == params[:view_template] }
           @page.view_template = params[:view_template]
         end
         add_breadcrumb I18n.t('spina.pages.new')
-        render layout: 'spina/admin/admin'
       end
 
       def create
@@ -36,7 +35,6 @@ module Spina
       def edit        
         add_index_breadcrumb
         add_breadcrumb @page.title
-        render layout: 'spina/admin/admin'
       end
 
       def edit_template

@@ -12,8 +12,8 @@ export default class extends Controller {
     
     fetch(this.element.href)
       .then(response => response.text())
-      .then(function(html) {
-        document.body.insertAdjacentHTML("beforeend", html)
+      .then(function(modal) {
+        document.body.insertAdjacentHTML("beforeend", modal)
       })
   }
 
