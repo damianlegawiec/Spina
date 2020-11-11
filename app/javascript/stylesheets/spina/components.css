@@ -28,3 +28,25 @@
 }
 
 /* Forms */
+
+.form-select {
+  @apply text-sm;
+}
+
+.form-input, .form-select {
+  @apply text-gray-700;
+  @apply shadow-sm;
+  @apply transition duration-150 ease-in-out;
+}
+
+/* Modals */
+
+.modal {
+  @apply flex items-center justify-center;
+  @apply fixed z-50 inset-0 h-full p-6;
+}
+
+.modal-window {
+  @apply w-full max-w-lg overflow-hidden relative;
+  @apply bg-white shadow-lg rounded-lg;
+}

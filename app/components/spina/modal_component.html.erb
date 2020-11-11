@@ -1,23 +1,7 @@
-<div data-controller="modal">
-  <!-- Gray overlay -->
-  <div class="fixed z-50 inset-0 bg-gray-700 bg-opacity-50 w-full h-full"></div>
+<div class="modal" data-controller="modal">
+  <div class="modal-window">
 
-  <div class="fixed z-50 inset-0">
-
-    <!-- Overlay button to close -->
-    <button type="button" class="w-full h-full fixed inset-0" tabindex="-1" data-action="modal#close"></button>
-
-    <!-- Modal positioning -->
-    <div class="flex items-center justify-center p-6 h-full">
-
-      <!-- Modal window -->
-      <div class="bg-white rounded-lg overflow-hidden w-full max-w-lg shadow-lg relative">
-
-        <%= body %>
-
-      </div>
-
-    </div>
+    <%= body %>
 
   </div>
 </div>

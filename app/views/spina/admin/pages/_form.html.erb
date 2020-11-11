@@ -30,12 +30,12 @@
             <div class="rounded-md bg-white shadow-xs">
               <div class="py-1">
                 <% if !@page.custom_page? %>
-                  <%= link_to spina.edit_template_admin_page_path(@page, format: :modal), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller:  "remote-modal"} do %>
+                  <%= link_to spina.edit_template_admin_page_path(@page, format: :modal), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller:  "remote-modal"} do %>
                     Change view template
                   <% end %>
                 <% end %>
                 <% if @page.deletable? %>
-                  <%= link_to spina.admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 text-red-500 hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {method: :delete, confirm: "Are you sure?"} do %>
+                  <%= link_to spina.admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 font-medium text-red-500 hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure you want to <strong>delete</strong> that page?"} do %>
                     Delete page
                   <% end %>
                 <% else %>
