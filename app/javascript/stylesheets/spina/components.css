@@ -1,9 +1,9 @@
 /* Buttons */
 
 .btn {
-  @apply flex items-center rounded-md border bg-white border-gray-300 shadow-sm;
+  @apply flex items-center justify-center rounded-md border bg-white border-gray-300 shadow-sm;
   @apply h-9 px-4;
-  @apply text-gray-700 text-sm font-medium leading-none;
+  @apply text-gray-700 text-sm font-medium leading-none whitespace-no-wrap;
   @apply transition-colors duration-200;
 }
 

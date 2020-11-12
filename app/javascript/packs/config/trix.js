@@ -11,8 +11,8 @@ module.exports = function() {
   // Custom toolbar
   Trix.config.toolbar.getDefaultHTML = function() {
     return `
-      <div class="flex items-center">
-        <div class="flex items-center bg-gray-200 rounded overflow-hidden">
+      <div class="flex items-center flex-wrap">
+        <div class="flex items-center bg-gray-200 rounded overflow-hidden mb-3 mr-3">
           <button type="button" class="" data-trix-attribute="bold" data-trix-key="b" title="${Trix.config.lang.bold}" tabindex="-1">
             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M333.49 238a122 122 0 0 0 27-65.21C367.87 96.49 308 32 233.42 32H34a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h31.87v288H34a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h209.32c70.8 0 134.14-51.75 141-122.4 4.74-48.45-16.39-92.06-50.83-119.6zM145.66 112h87.76a48 48 0 0 1 0 96h-87.76zm87.76 288h-87.76V288h87.76a56 56 0 0 1 0 112z"/></svg>
           </button>
@@ -24,7 +24,7 @@ module.exports = function() {
           </button>
         </div>
 
-        <div class="flex items-center bg-gray-200 rounded overflow-hidden ml-3" data-trix-button-group="block-tools">
+        <div class="flex items-center bg-gray-200 rounded overflow-hidden mr-3 mb-3" data-trix-button-group="block-tools">
           <button type="button" data-trix-attribute="heading1" title="${Trix.config.lang.heading1}" tabindex="-1">
             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M304 96h-98.94A13.06 13.06 0 0 0 192 109.06v21.88A13.06 13.06 0 0 0 205.06 144H232v88H88v-88h26.94A13.06 13.06 0 0 0 128 130.94V112a16 16 0 0 0-16-16H16a16 16 0 0 0-16 16v18.94A13.06 13.06 0 0 0 13.06 144H40v224H13.06A13.06 13.06 0 0 0 0 381.06V400a16 16 0 0 0 16 16h98.94A13.06 13.06 0 0 0 128 402.94v-21.88A13.06 13.06 0 0 0 114.94 368H88v-88h144v88h-26.94A13.06 13.06 0 0 0 192 381.06V400a16 16 0 0 0 16 16h96a16 16 0 0 0 16-16v-18.94A13.06 13.06 0 0 0 306.94 368H280V144h26.94A13.06 13.06 0 0 0 320 130.94V112a16 16 0 0 0-16-16zm256 272h-56V120a24 24 0 0 0-24-24h-24a24 24 0 0 0-21.44 13.26l-24 48A24 24 0 0 0 432 192h24v176h-56a16 16 0 0 0-16 16v16a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-16a16 16 0 0 0-16-16z"/></svg>
           </button>
@@ -39,7 +39,7 @@ module.exports = function() {
           </button>
         </div>
 
-        <div class="flex items-center bg-gray-200 rounded overflow-hidden ml-3">
+        <div class="flex items-center bg-gray-200 rounded overflow-hidden mr-3 mb-3">
           <button type="button" data-trix-action="x-media-picker" data-action="reveal#show" title="${Trix.config.lang.image}" tabindex="-1">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />

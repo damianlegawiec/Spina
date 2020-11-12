@@ -1,89 +1,96 @@
 <%= form_with model: @page, url: spina.admin_page_path(@page), data: {controller: "notifications tabs", action: "ajax:error->notifications#setError", tabs_active: "cursor-default mx-4 text-gray-800 border-spina", tabs_inactive: "cursor-pointer px-4 text-gray-400 border-transparent"} do |f| %>
   <%= hidden_field_tag :locale, @locale %>
 
-  <div class="bg-white border-b border-gray-200 p-6 pl-8 sticky top-0 relative z-20">
-    <div class="flex justify-between items-center">
-      <div class="text-2xl font-normal text-gray-800 flex items-center">
-        <%= link_to 'Pages', spina.admin_pages_path, class: 'text-gray-400' %>
-        <svg class="w-5 h-5 mx-2 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-        </svg>
-        <%= @page.menu_title %>
+  <div class="relative">
+    <div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
+      <div class="flex justify-between items-center">
+        <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row">
+          <div class="flex items-center">
+            <%= link_to 'Pages', spina.admin_pages_path, class: 'text-gray-400' %>
+            <svg class="w-5 h-5 mx-2 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
 
-        <div class="ml-3"><%= render Spina::PageTranslationsComponent.new(@page, label: @locale.upcase) %></div>
+          <div class="flex items-center text-2xl">
+            <%= @page.menu_title %>
 
-        <% if @page.persisted? && @page.draft? %>
-          <span class="text-gray-400 ml-2 text-sm">(draft)</span>
-        <% end %>
+            <div class="ml-3"><%= render Spina::PageTranslationsComponent.new(@page, label: @locale.upcase) %></div>
+
+            <% if @page.persisted? && @page.draft? %>
+              <span class="text-gray-400 ml-2 text-sm">(draft)</span>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <div class="flex items-center">
-        <div class="relative" data-controller="reveal" data-reveal-away>
-          <button type="button" class="btn pr-3" data-action="reveal#toggle">
-            Actions
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
+      <nav class="-ml-4 -mb-6 mt-2">
+        <ul class="flex">
+          <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+            Page content
           </button>
+          <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="seo">
+            SEO
+          </button>
+          <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="advanced">
+            Advanced
+          </button>
+        </ul>
+      </nav>
+    </div>
 
-          <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
-            <div class="rounded-md bg-white shadow-xs">
-              <div class="py-1">
-                <% if !@page.custom_page? %>
-                  <%= link_to spina.edit_template_admin_page_path(@page, format: :modal), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller:  "remote-modal"} do %>
-                    Change view template
-                  <% end %>
+    <div class="flex p-4 items-center relative md:z-20 md:absolute md:top-0 md:right-0 md:h-full md:items-center md:pr-8">
+      <div class="relative w-1/2 md:w-auto" data-controller="reveal" data-reveal-away>
+        <button type="button" class="btn pr-3 w-full" data-action="reveal#toggle">
+          Actions
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div hidden data-reveal data-transition class="origin-top-left md:origin-top-right absolute md:right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+          <div class="rounded-md bg-white shadow-xs">
+            <div class="py-1">
+              <% if !@page.custom_page? %>
+                <%= link_to spina.edit_template_admin_page_path(@page, format: :modal), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller:  "remote-modal"} do %>
+                  Change view template
                 <% end %>
-                <% if @page.deletable? %>
-                  <%= link_to spina.admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 font-medium text-red-500 hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure you want to <strong>delete</strong> that page?"} do %>
-                    Delete page
-                  <% end %>
-                <% else %>
-                  <span class="block px-4 py-2 text-sm leading-5 text-gray-400">Page can't be deleted</span>
+              <% end %>
+              <% if @page.deletable? %>
+                <%= link_to spina.admin_page_path(@page), class: "block px-4 py-2 text-sm leading-5 font-medium text-red-500 hover:bg-red-100 hover:bg-opacity-50 hover:text-red-500 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure you want to <strong>delete</strong> that page?"} do %>
+                  Delete page
                 <% end %>
-              </div>
+              <% else %>
+                <span class="block px-4 py-2 text-sm leading-5 text-gray-400">Page can't be deleted</span>
+              <% end %>
             </div>
           </div>
         </div>
-
-        <button type="submit" class="btn pl-2 ml-3">
-          <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-          <% if @page.draft? %>
-            Save draft
-          <% else %>
-            Save changes
-          <% end %>
-        </button>
-
-        <% if @page.persisted? && @page.draft? %>
-          <button type="submit" name="page[draft]" value="false" class="btn bg-green-500 border-green-600 hover:bg-green-600 text-white ml-3 pl-3">
-            <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
-            </svg>
-            Publish page
-          </button>
-        <% end %>
       </div>
-    </div>
 
-    <nav class="-ml-4 -mb-6 mt-2">
-      <ul class="flex">
-        <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
-          Page content
+      <button type="submit" class="btn pl-2 ml-3 w-1/2 md:w-auto">
+        <svg class="w-5 h-5 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        <% if @page.draft? %>
+          Save draft
+        <% else %>
+          Save changes
+        <% end %>
+      </button>
+
+      <% if @page.persisted? && @page.draft? %>
+        <button type="submit" name="page[draft]" value="false" class="btn bg-green-500 border-green-600 hover:bg-green-600 text-white ml-3 pl-3">
+          <svg class="w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
+          </svg>
+          Publish page
         </button>
-        <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="seo">
-          SEO
-        </button>
-        <button type="button" class="px-4 border-b-4 border-transparent block leading-loose hover:text-gray-800 text-gray-400 font-bold text-xs uppercase" data-action="tabs#show" data-target="tabs.button" data-pane-id="advanced">
-          Advanced
-        </button>
-      </ul>
-    </nav>
+      <% end %>
+    </div>
   </div>
 
-  <div class="p-8">
+  <div class="p-4 md:p-8">
     <% Mobility.with_locale(@locale) do %>
       <div data-target="notifications.list"></div>
       <div data-target="tabs.pane" id="page_content">

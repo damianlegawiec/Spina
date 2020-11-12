@@ -10,9 +10,6 @@
 
     %title Spina CMS
 
-    -#= stylesheet_link_tag 'spina/admin/application', data: {turbolinks_track: true}
-    -#= javascript_include_tag 'spina/admin/application', data: {turbolinks_track: true}
-
     = javascript_pack_tag 'spina', data: {turbolinks_track: true}
     = stylesheet_pack_tag 'spina', data: {turbolinks_track: true}
 
@@ -23,72 +20,8 @@
           = render "spina/admin/hooks/#{ plugin.namespace }/head"
 
   %body{data: {controller: "confetti"}}
-    .flex.h-screen
-      - if false
-        %nav.w-full.max-w-xs.bg-gradient-to-b.from-spina-dark.to-spina-light.p-3.pt-6.flex.flex-col
-        .text-sm.uppercase.pl-4.mb-2.text-white.opacity-25.font-bold.tracking-wider Website
-        = link_to spina.admin_pages_path, class: "bg-gray-900 bg-opacity-50 block px-4 rounded-lg text-white font-medium h-11 flex items-center" do
-          <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
-          Pages
+    %div{class: "flex flex-col md:flex-row md:h-screen min-h-screen w-full overflow-hidden"}
+      = render Spina::NavigationComponent.new
 
-        = link_to spina.admin_images_path, class: "bg-opacity-50 block px-4 rounded-lg text-white opacity-50 font-medium text h-11 flex items-center leading-none" do
-          <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" /></svg>
-          Media library
-
-        = link_to spina.admin_pages_path, class: "bg-opacity-50 block px-4 rounded-lg text-white opacity-50 font-medium h-10 flex items-center leading-none mt-6" do
-          <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" /></svg>
-          Portfolio
-
-        - if false
-          .text-xs.uppercase.pl-4.text-white.opacity-25.font-bold.tracking-wider.mt-6 Blog
-
-          = link_to spina.admin_images_path, class: "bg-opacity-50 block px-4 rounded-lg text-white opacity-50 font-medium h-10 flex items-center leading-none" do
-            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" /></svg>
-            Blogposts
-
-        .flex-1
-
-        = link_to '#', class: "bg-opacity-50 block px-4 rounded-lg text-white opacity-50 font-medium h-11 flex items-center leading-none" do 
-          <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
-          Settings
-
-        = link_to '#', class: "bg-opacity-50 block px-4 rounded-lg text-white opacity-50 font-medium h-11 flex items-center leading-none" do 
-          <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>
-          Logout
-
-      %nav.w-full.max-w-xs.bg-gradient-to-b.from-spina-dark.to-spina-light.relative
-        .flex.flex-col.justify-between.h-full.w-full.bg-black.bg-opacity-50.p-3
-          %ul
-            %li
-              = button_tag type: :button, class: "flex w-full items-center p-3" do
-                <svg class="text-white h-8 w-8 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
-                .text-white.font-semibold.text-sm.text-opacity-0 Website
-
-              %ul.h-screen.bg-gradient-to-b.from-spina-dark.to-spina-light.absolute.right-0.top-0.px-3.py-5{class: "w-9/12"}
-                %li
-                  = link_to spina.admin_pages_path, class: 'block p-3 leading-none text-white font-semibold text' do
-                    Pages
-                %li= link_to "Media Library", spina.admin_images_path, class: 'block p-3 text-white text-opacity-50 font-semibold leading-none hover:text-opacity-100'
-
-            %li
-              = button_tag type: :button, class: "flex w-full items-center p-3" do
-                <svg class="text-opacity-50 text-white h-8 w-8 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
-                .text-white.font-semibold.text-sm.text-opacity-0 Preferences
-
-          %ul
-            %li
-              = link_to spina.admin_logout_path, class: 'flex w-full items-center p-3' do
-                <svg class="text-opacity-50 text-white h-8 w-8 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>
-                .text-white.font-semibold.text-sm.text-opacity-0 Logout
-
-      %section.w-full.h-screen.overflow-scroll= yield
-
-    - if false
-      = render 'spina/admin/shared/primary_navigation'
-
-      %section#main
-        = yield(:permanent_notice)
-
-        = render 'spina/admin/shared/notifications'
-
-        = content_for?(:application) ? yield(:application) : yield
+      %section{class: "w-full md:overflow-scroll"}
+        = yield
