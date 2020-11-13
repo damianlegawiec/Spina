@@ -3,13 +3,21 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "firstLevel", "secondLevel" ]
 
-  openSecondLevel(event) {
+  connect() {
+    
+  }
+
+  toggle(event) {
     let button = event.currentTarget
     let secondLevel = button.nextElementSibling
+    let closed = secondLevel.classList.contains('translate-x-full')
     this.closeSecondLevels()
     this.closeFirstLevel()
-    secondLevel.classList.remove("translate-x-full")
-    secondLevel.classList.add("md:translate-x-20")
+
+    if (closed) {
+      secondLevel.classList.remove("translate-x-full")
+      secondLevel.classList.add("md:translate-x-20")
+    }
   }
 
   backToFirstLevel() {

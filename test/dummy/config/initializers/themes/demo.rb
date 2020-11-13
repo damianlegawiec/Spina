@@ -51,6 +51,11 @@
     name: 'attachment',
     title: "Attachment",
     part_type: "Spina::Parts::Attachment"
+  }, {
+    name: 'testrepeater',
+    title: 'Testrepeater',
+    part_type: "Spina::Parts::Repeater",
+    parts: %w(line)
   }]
 
   theme.view_templates = [{
@@ -64,7 +69,7 @@
     description: "Default layout",
     usage: 'Use for your content',
     page_parts: [],
-    parts: ['body']
+    parts: ['body', 'testrepeater']
   }, {
     name: 'demo',
     title: 'Demo',

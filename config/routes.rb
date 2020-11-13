@@ -28,8 +28,12 @@ Spina::Engine.routes.draw do
     get 'media_library' => 'images#index', as: "media_library"
 
     resources :pages do
-      get :edit_template, on: :member
-      get :children, on: :member
+      member do
+        get :edit_content
+        get :edit_template
+        get :children
+      end
+
       post :sort, on: :collection
     end
 
