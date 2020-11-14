@@ -1,56 +1,63 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "firstLevel", "firstLevelButton", "secondLevel" ]
+  static targets = [ "primary", "button", "navigation" ]
 
   connect() {
-    // Bigger than small display
-    if (window.innerWidth > 768) {
-      this.clickButton(this.firstLevelButtonTargets[0])
+    // Activate button for active item
+    let button = this.activeNavigation.querySelector(`button[data-target*="navigation.button"]`)
+    this.switchClass(button, "opacity-50", "opacity-100")
+
+    // Activate navigation for active item (only for bigger displays)
+    if (window.innerWidth > 768) this.toggleNavigation(this.activeNavigation)
+  }
+
+  toggleNavigation(navigation) {
+    let ul = navigation.querySelector("ul")
+    if (ul.classList.contains("translate-x-full")) { 
+      this.primaryTarget.classList.add("md:bg-opacity-50")
+      this.switchClass(navigation.querySelector("ul"), "translate-x-full", "md:translate-x-20")
+    } else {
+      this.primaryTarget.classList.remove("md:bg-opacity-50")
+      this.switchClass(navigation.querySelector("ul"), "md:translate-x-20", "translate-x-full")
     }
   }
 
   toggle(event) {
     let button = event.currentTarget
-    this.clickButton(button)
-  }
+    let closed = button.nextElementSibling.classList.contains("translate-x-full")
+    this.closeAllNavigations()
 
-  clickButton(button) {
-    this.firstLevelButtonTargets.forEach(function(button) {
-      button.classList.remove('opacity-100')
-      button.classList.add('opacity-50')
-    })
-    button.classList.add('opacity-100')
-    button.classList.remove('opacity-50')
-    let secondLevel = button.nextElementSibling
-    let closed = secondLevel.classList.contains('translate-x-full')
-    this.closeSecondLevels()
-    this.closeFirstLevel()
-
+    // If button was closed, open the nav
     if (closed) {
-      secondLevel.classList.remove("translate-x-full")
-      secondLevel.classList.add("md:translate-x-20")
+      this.switchClass(button, "opacity-50", "opacity-100")
+      this.toggleNavigation(button.parentElement)
     }
   }
 
-  backToFirstLevel() {
-    this.closeSecondLevels()
-    this.openFirstLevel()
+  closeAllNavigations() {
+    this.buttonTargets.forEach(function(button) {
+      this.switchClass(button, "opacity-100", "opacity-50")
+    }.bind(this))
+
+    this.navigationTargets.forEach(function(navigation) {
+      this.switchClass(navigation.querySelector("ul"), "md:translate-x-20", "translate-x-full")
+    }.bind(this))
+
+    this.primaryTarget.classList.remove("md:bg-opacity-50")
   }
 
-  openFirstLevel() {
-    this.firstLevelTarget.classList.remove("md:bg-opacity-50")
+  switchClass(element, from_class, to_class) {
+    element.classList.remove(from_class)
+    element.classList.add(to_class)
   }
 
-  closeFirstLevel() {
-    this.firstLevelTarget.classList.add("md:bg-opacity-50")
+  get activeItem() {
+    return this.element.querySelector("[data-navigation-active]")
   }
 
-  closeSecondLevels() {
-    this.secondLevelTargets.forEach(function(level) {
-      level.classList.remove("md:translate-x-20")
-      level.classList.add("translate-x-full")
-    })
+  get activeNavigation() {
+    return this.activeItem.closest(`[data-target*="navigation.navigation"]`)
   }
 
 }
