@@ -3,7 +3,7 @@
 
     <ul class="flex md:flex-col">
       <li>
-        <button type="button" class="flex w-full items-center p-3 opacity-50 hover:opacity-100 transition-opacity duration-150" data-action="navigation#toggle">
+        <button type="button" class="flex w-full items-center p-3 opacity-50 hover:opacity-100 transition-opacity duration-150" data-target="navigation.firstLevelButton" data-action="navigation#toggle">
           <svg class="text-white h-8 w-8 hidden md:block md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
           <svg class="text-white h-8 w-8 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
@@ -29,7 +29,7 @@
       </li>
 
       <li>
-        <button type="button" class="flex w-full items-center p-3 opacity-50 hover:opacity-100 transition-opacity duration-150 h-full md:h-auto" data-action="navigation#toggle">
+        <button type="button" class="flex w-full items-center p-3 opacity-50 hover:opacity-100 transition-opacity duration-150 h-full md:h-auto" data-target="navigation.firstLevelButton" data-action="navigation#toggle">
           <svg class="text-white h-7 w-7 md:h-8 md:w-8 md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
           <div class="text-white font-semibold hidden md:block">
             Preferences
@@ -43,8 +43,8 @@
 
     <ul>
       <li>
-        <%= link_to helpers.spina.admin_logout_path, class: "flex w-full items-center p-3 h-14 md:h-auto opacity-50 hover:opacity-100 transition-opacity duration-150" do %>
-          <svg class="text-white h-6 w-6 md:h-8 md:w-8 md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>
+        <%= link_to helpers.spina.admin_logout_path, class: "flex w-full items-center p-3 h-14 md:h-auto opacity-25 hover:opacity-100 transition-opacity duration-150" do %>
+          <svg class="text-white h-6 w-6 md:h-8 md:w-8 md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="M388.5 46.3C457.9 90.3 504 167.8 504 256c0 136.8-110.8 247.7-247.5 248C120 504.3 8.2 393 8 256.4 7.9 168 54 90.3 123.5 46.3c5.8-3.7 13.5-1.8 16.9 4.2l11.8 20.9c3.1 5.5 1.4 12.5-3.9 15.9C92.8 122.9 56 185.1 56 256c0 110.5 89.5 200 200 200s200-89.5 200-200c0-70.9-36.8-133.1-92.3-168.6-5.3-3.4-7-10.4-3.9-15.9l11.8-20.9c3.3-6.1 11.1-7.9 16.9-4.3zM280 276V12c0-6.6-5.4-12-12-12h-24c-6.6 0-12 5.4-12 12v264c0 6.6 5.4 12 12 12h24c6.6 0 12-5.4 12-12z"/></svg>
           <div class="text-white font-semibold text-sm text-opacity-0 hidden md:block">
             <%=t 'spina.logout' %>
           </div>
