@@ -1,0 +1,28 @@
+<%= form_with model: @account, url: spina.admin_layout_path do |f| %>
+  <%= hidden_field_tag :locale, @locale %>
+
+  <div class="relative">
+    <div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
+      <div class="flex justify-between items-center">
+        <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row w-full">
+          <div class="flex items-center">
+            Layout
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="p-4 md:p-8">
+    <div class="max-w-5xl">
+      <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, current_theme.layout_parts) do |ff| %>
+        <%= ff.hidden_field :type, value: ff.object.class %>
+        <%= ff.hidden_field :name %>
+        <%= ff.hidden_field :title %>
+
+        <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

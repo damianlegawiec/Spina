@@ -36,6 +36,7 @@ Spina::Engine.routes.draw do
 
       post :sort, on: :collection
     end
+    resource :layout, controller: :layout, only: [:edit, :update]
 
     resources :resources, only: [:show, :edit, :update]
 
