@@ -7,9 +7,19 @@ module Spina::Admin
     end
 
     def update
+      if @account.update(layout_params)
+        redirect_to spina.edit_admin_layout_path
+      else
+        render partial: 'error', status: :unprocessable_entity
+      end
     end
 
     private
+    
+      # Permit all attributes when editing your layout
+      def layout_params
+        params.require(:account).permit!
+      end
 
       def set_account
         @account = current_account

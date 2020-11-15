@@ -20,7 +20,7 @@
           = render "spina/admin/hooks/#{ plugin.namespace }/head"
 
   %body{data: {controller: "confetti"}}
-    %div{class: "flex flex-col md:flex-row md:h-screen min-h-screen w-full overflow-hidden"}
+    %div{class: "flex flex-col md:flex-row md:h-screen min-h-screen w-full"}
       = render Spina::Nav::NavComponent.new
 
       %section{class: "w-full md:overflow-scroll"}

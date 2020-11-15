@@ -11,6 +11,13 @@ export default class extends Controller {
     // Activate navigation for active item (only for bigger displays)
     if (window.innerWidth > 768) this.toggleNavigation(this.activeNavigation)
   }
+  
+  enableTransitions() {
+    this.primaryTarget.classList.add("duration-200")
+    this.navigationTargets.forEach(function(navigation) {
+      navigation.querySelector("ul").classList.add("duration-300")
+    })
+  }
 
   toggleNavigation(navigation) {
     let ul = navigation.querySelector("ul")
