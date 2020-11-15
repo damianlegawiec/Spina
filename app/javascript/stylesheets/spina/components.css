@@ -7,11 +7,11 @@
   @apply transition-colors duration-200;
 }
 
-.btn:hover {
+.btn:hover:not(.loading) {
   @apply bg-gray-100;
 }
 
-.btn:active {
+.btn:active:not(.loading) {
   @apply shadow-inner bg-gray-100;
 }
 
@@ -19,12 +19,12 @@
   @apply bg-spina border-spina-dark text-white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(.loading) {
   @apply bg-spina-dark;
 }
 
 .btn-success {
-  @apply bg-green-500
+  @apply bg-green-500;
 }
 
 /* Forms */
