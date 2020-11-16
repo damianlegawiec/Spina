@@ -1,5 +1,0 @@
-<li <%= "data-navigation-active" if @active %>>
-  <%= link_to @path, class: "block p-3 leading-none text-white hover:opacity-100 transition-opacity font-medium #{css_classes}", data: {action: "navigation#enableTransitions"} do %>
-    <%= @label %>
-  <% end %>
-</li>
