@@ -1,0 +1,24 @@
+<li data-id="<%= @page.id %>">
+  <div class="flex items-center border-gray-200 border-b pl-<%= depth * 5 %> bg-gray-<%= depth * 100 %> bg-opacity-50">
+    <!-- <div data-sortable-handle class="p-4 text-gray-300 hover:text-gray-600 cursor-move">
+      <svg class="w-4 h-4 -mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"><path d="M496 288H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-128H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16z"/></svg>
+    </div> -->
+    <%= link_to helpers.spina.edit_admin_page_path(@page), class: "block text-spina font-medium text-sm p-4 hover:text-spina-dark" do %>
+      <%= @page.menu_title %>
+      
+      <small class="font-normal"><%= label %></small>
+    <% end %>
+    
+    <div class='flex-1'></div>
+    <div class="mr-3 flex">
+      <% if Spina.config.locales.many? %>
+        <%= render Spina::Pages::TranslationsComponent.new(@page) %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <% if children.any? %>
+    <%= render Spina::Pages::ListComponent.new(pages: children, depth: depth + 1) %>
+  <% end %>
+</li>

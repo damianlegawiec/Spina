@@ -21,7 +21,7 @@
 
   %body{data: {controller: "confetti"}}
     %div{class: "flex flex-col md:flex-row md:h-screen min-h-screen w-full"}
-      = render Spina::Nav::NavComponent.new
+      = render Spina::Menu::MainComponent.new
 
       %section{class: "w-full md:overflow-scroll"}
         = yield

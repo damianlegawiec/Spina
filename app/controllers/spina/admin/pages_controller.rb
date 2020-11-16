@@ -38,7 +38,7 @@ module Spina
       end
 
       def edit_content
-        render Spina::PageContentComponent.new(@page, locale: @locale)
+        render Spina::Pages::ContentComponent.new(@page, locale: @locale)
       end
 
       def edit_template
