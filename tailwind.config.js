@@ -1,10 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme')
-
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
-  },
   purge: {
     content: [
       './app/**/*.html.erb',
@@ -21,7 +15,7 @@ module.exports = {
       colors: {
         spina: {
           light: '#797ab8',
-          default: '#6865b4',
+          DEFAULT: '#6865b4',
           dark: '#3a3a70'
         }
       }
@@ -31,6 +25,7 @@ module.exports = {
     boxShadow: ['active']
   },
   plugins: [
-    require('@tailwindcss/ui')
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
   ]
 }

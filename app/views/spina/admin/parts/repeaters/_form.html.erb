@@ -1,7 +1,7 @@
 <div class="mt-6" data-controller="repeater">
   <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
 
-  <div class="-mt-4 flex flex-col md:flex-row" data-controller="tabs" data-tabs-active="bg-gray-200 text-gray-700" data-tabs-inactive="text-gray-600">
+  <div class="-mt-4 flex flex-col md:flex-row" data-controller="tabs" data-tabs-active="bg-white text-gray-800 shadow-sm" data-tabs-inactive="text-gray-600">
     <div class="md:w-64 md:pr-6">
       <% 
         # Fields
@@ -11,8 +11,8 @@
         end.gsub("\n", "")
       %>
 
-      <div class="pt-6 md:-ml-3">
-        <div class="" data-target="repeater.list tabs.list" data-action="exists->tabs#added">
+      <div class="pt-6">
+        <div class="bg-gray-200 bg-opacity-50 border-opacity-0 border-4 border-gray-200 rounded-lg" data-target="repeater.list tabs.list" data-action="exists->tabs#added">
           <% (f.object.content || []).each.with_index do |repeater_content, index| %>
             <button type="button" class="text-gray-600 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="<%= "pane_#{repeater_content.object_id}" %>">
               <svg class="w-4 h-4 mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 288H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16zm0-112H16c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16h416c8.8 0 16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/></svg>
@@ -21,7 +21,7 @@
           <% end %>
         </div>
 
-        <button type="button" class="text-gray-400 rounded-md px-3 truncate text-sm font-medium flex items-center w-full h-10" data-action="repeater#addFields" data-fields="<%= fields %>" data-child-index="<%= repeater_content.object_id %>">
+        <button type="button" class="text-gray-400 justify-center rounded-md truncate text-sm font-medium flex items-center w-full h-10" data-action="repeater#addFields" data-fields="<%= fields %>" data-child-index="<%= repeater_content.object_id %>">
           New entry
         </button>
       </div>

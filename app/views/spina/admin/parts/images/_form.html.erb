@@ -26,7 +26,7 @@
     </div>
   </button>
 
-  <%= f.text_field :alt, placeholder: "Alt text", class: "h-10 px-3 italic bg-transparent w-full max-w-xs text-sm block", data: {target: "media-picker.alt"} %>
+  <%= f.text_field :alt, placeholder: "Alt text", class: "h-10 px-3 italic bg-transparent w-full max-w-xs text-sm block border-0 focus:ring-0", data: {target: "media-picker.alt"} %>
 
   <%= render Spina::MediaPicker::ModalComponent.new %>
 </div>

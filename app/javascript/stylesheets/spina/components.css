@@ -3,7 +3,7 @@
 .btn {
   @apply flex items-center justify-center rounded-md border;
   @apply h-9 px-4;
-  @apply text-sm font-medium leading-none whitespace-no-wrap;
+  @apply text-sm font-medium leading-none whitespace-nowrap;
   @apply transition-colors duration-200;
 }
 
@@ -59,15 +59,35 @@
 
 /* Forms */
 
-.form-select {
-  @apply text-sm;
-}
-
 .form-input, .form-select {
   @apply py-3 px-4;
   @apply text-gray-700;
   @apply shadow-sm;
   @apply transition duration-150 ease-in-out;
+  @apply border-gray-300;
+  @apply rounded-md;
+}
+
+.form-select {
+  @apply text-sm font-medium;
+  @apply pr-12;
+}
+
+.form-select:focus {
+  @apply ring-spina-light;
+}
+
+.form-textarea {
+  @apply bg-white;
+  @apply text-gray-700;
+  @apply shadow-sm;
+  @apply transition duration-150 ease-in-out;
+  @apply border border-gray-300;
+  @apply rounded-md;
+}
+
+.form-input:focus {
+  @apply ring-spina-light;
 }
 
 /* Modals */

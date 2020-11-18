@@ -10,7 +10,7 @@
   </div>
 
   <div class="col-span-2">
-    <%= f.select :parent_id, page_ancestry_options(f.object), {include_blank: Spina::Page.human_attribute_name(:no_parent)}, class: "text-gray-700 block form-select py-2 pr-10 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+    <%= f.select :parent_id, page_ancestry_options(f.object), {include_blank: Spina::Page.human_attribute_name(:no_parent)}, class: "form-select" %>
   </div>
 
   <% unless @page.draft? %>
@@ -26,7 +26,7 @@
 
     <div class="col-span-2 mt-1">
       <button type="button" data-controller="switch" data-action="click->switch#toggle">
-        <%= f.check_box :draft, hidden: true, data: {target: "switch.checkbox"} %>
+        <%= f.check_box :draft, hidden: true, class: "hidden", data: {target: "switch.checkbox"} %>
 
         <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
           <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
@@ -47,7 +47,7 @@
 
   <div class="col-span-2 mt-1">
     <button type="button" data-controller="switch" data-action="click->switch#toggle">
-      <%= f.check_box :show_in_menu, hidden: true, data: {target: "switch.checkbox"} %>
+      <%= f.check_box :show_in_menu, hidden: true, class: "hidden", data: {target: "switch.checkbox"} %>
 
       <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
         <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
@@ -76,7 +76,7 @@
 
   <div class="col-span-2">
     <button type="button" data-controller="switch" data-action="click->switch#toggle">
-      <%= f.check_box :skip_to_first_child, hidden: true, data: {target: "switch.checkbox"} %>
+      <%= f.check_box :skip_to_first_child, hidden: true, class: "hidden", data: {target: "switch.checkbox"} %>
 
       <div data-target="switch.container" class="w-14 h-8 bg-gray-200 rounded-full flex items-center p-1 cursor-pointer transition transition-colors duration-200">
         <div data-target="switch.knob" class="h-6 w-6 rounded-full bg-white shadow-sm transform transition transition-transform duration-200"></div>
