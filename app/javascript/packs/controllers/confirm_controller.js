@@ -14,12 +14,20 @@ export default class extends Controller {
 
   get modalHTML() {
     return `<div class="modal" data-controller="modal">
-      <div class="modal-window">
-        <div>${this.message}</div>
-        <button class="btn" data-action="modal#close">Cancel</button>
-        <a class="btn btn-primary" href="${this.href}" data-method="${this.method}">
-          Yes, I'm sure
-        </a>
+      <div class="modal-window animate__animated animate__zoomIn animate__fadeIn animate__faster p-5 max-w-xs">
+        <div class="text-center">
+          ${this.message}
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-2">
+          This action is irreversible
+        </div>
+        
+        <div class="flex flex-row-reverse mt-3">
+          <a class="btn btn-red mt-6 md:mt-0 md:w-1/2 md:ml-3" href="${this.href}" data-method="${this.method}">
+            Delete
+          </a>
+          <button class="btn btn-gray mt-2 md:mt-0 md:w-1/2" data-action="modal#close">Cancel</button>
+        </div>
       </div>
     </div>`
   }

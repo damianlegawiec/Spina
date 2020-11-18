@@ -1,9 +1,18 @@
+const { colors } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true
   },
-  purge: [],
+  purge: {
+    content: [
+      './app/**/*.html.erb',
+      './app/components/**/*.rb',
+      './app/helpers/**/*.rb',
+      './app/javascript/**/*.js'
+    ]
+  },
   theme: {
     fontFamily: {
       body: ['Metropolis']

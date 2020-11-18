@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "dev.bramjetten.nl"
   config.hosts << "dummy.192.168.1.15.xip.io"
+  config.hosts << "spina.puma"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

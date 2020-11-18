@@ -22,3 +22,5 @@ test/dummy/storage/*
 yarn-debug.log*
 .yarn-integrity
 /yarn-error.log
+
+.nova

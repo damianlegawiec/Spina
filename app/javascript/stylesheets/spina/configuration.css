@@ -1,9 +1,14 @@
+:root {
+  --animate-duration: 600ms;
+}
+
 html {
   @apply font-body;
 }
 
 body {
-  background: #F5F5FA /* Ever so slightly indigo bg */
+  background: #F5F5FA; /* Ever so slightly indigo bg */
+  @apply antialiased;
 }
 
 /* Disable tap highlight on iOS */
