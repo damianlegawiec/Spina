@@ -15,7 +15,8 @@ export default class extends Controller {
         document.body.insertAdjacentHTML("beforeend", modal)
         
         this.modal = document.querySelector(`[data-controller*="media-picker-modal"]`)
-        this.modal.addEventListener("imageSelected", this.handleImageSelected.bind(this))
+        this.modal.addEventListener("media-picker:selected", this.handleImageSelected.bind(this))
+        this.modal.addEventListener("media-picker:done", this.handleDone.bind(this))
       }.bind(this))
   }
 
@@ -27,14 +28,20 @@ export default class extends Controller {
     this.hideThumbnail()
   }
   
-  handleImageSelected(event) {
-    if (this.element.dataset.mediaPickerInsertType === "trix") {
+  handleDone(event) {
+    if (this.hasTrixTarget) {
       let attachment = new Trix.Attachment({content: `<span class="trix-attachment-spina-image">
         <img src='${event.detail.embeddedUrl}' />
       </span>`})
       this.trixTarget.editor.insertAttachment(attachment)
       
-      // this.modal.closest('.modal').modal.close()
+      this.modal.closest('.modal').modal.close()
+    }
+  }
+  
+  handleImageSelected(event) {
+    if (this.element.dataset.mediaPickerInsertType === "trix") {
+      // Do nothing
     } else {
       // Set fields
       this.filenameTarget.value = event.detail.filename
