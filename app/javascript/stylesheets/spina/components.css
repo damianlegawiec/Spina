@@ -41,6 +41,7 @@
 }
 
 .btn-gray {
+  @apply border-gray-300;
   @apply text-gray-800;
   @apply bg-gray-300;
 }
@@ -60,7 +61,7 @@
 /* Forms */
 
 .form-input, .form-select {
-  @apply py-3 px-4;
+  /* @apply py-3 px-4; */
   @apply text-gray-700;
   @apply shadow-sm;
   @apply transition duration-150 ease-in-out;

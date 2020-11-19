@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors")
+
 module.exports = {
   purge: {
     content: [
@@ -19,7 +21,7 @@ module.exports = {
           dark: '#3a3a70'
         }
       }
-    },
+    }
   },
   variants: {
     boxShadow: ['active']

@@ -6,6 +6,10 @@ module Spina
         @page = page
         @label = label
       end
+      
+      def render?
+        Spina.config.locales.many?
+      end
   
       def missing_locales
         spina_locales - existing_locales

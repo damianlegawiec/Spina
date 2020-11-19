@@ -29,7 +29,7 @@ trix-editor {
   }
 
   figure[data-trix-mutable].attachment img {
-    @apply shadow-lg border-blue-500
+    @apply shadow-lg border-spina-light
   }
 
   figure .attachment__caption {
