@@ -1,40 +1,42 @@
-<div class="relative">
-  <div class="bg-white border-b border-gray-200 p-4 md:p-6 md:pl-8 sticky top-0 z-20">
-    <div class="flex flex-col md:flex-row justify-between md:items-center">
-      <div class="text-2xl font-normal text-gray-800">
-        Pages
+<div data-controller="reveal">
+  <div class="relative">
+    <div class="bg-white border-b border-gray-200 p-4 md:p-6 md:pl-8 sticky top-0 z-20">
+      <div class="flex flex-col md:flex-row justify-between md:items-center">
+        <div class="text-2xl font-normal text-gray-800">
+          Pages
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="flex p-4 z-20 absolute top-0 right-0 h-full items-center md:pr-8">
-    <button type="button" class="btn btn-default px-3 md:px-4 md:pl-3 w-auto">
-      <%= icon("reorder", css: "w-5 h-5 md:mr-1") %>
-      <span class="hidden md:inline-block">Change order</span>
-    </button>
-
-    <div class="relative ml-3 w-auto" data-controller="reveal" data-reveal-away>
-      <button type="button" class="btn btn-primary w-full" data-action="reveal#toggle">
-        <%= icon("plus", css: "w-7 h-7 -ml-2") %>
-        <%=t 'spina.pages.new' %>
+  
+    <div class="flex p-4 z-20 absolute top-0 right-0 h-full items-center md:pr-8">
+      <button type="button" class="btn btn-default px-3 md:px-4 md:pl-3 w-auto">
+        <%= icon("reorder", css: "w-5 h-5 md:mr-1") %>
+        <span class="hidden md:inline-block">Change order</span>
       </button>
-
-      <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
-        <div class="rounded-md bg-white shadow-xs">
-          <div class="py-1">
-            <% current_theme.new_page_templates.each do |template| %>
-              <%= link_to spina.new_admin_page_path(view_template: template[0], format: :modal), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller: "remote-modal"} do %>
-                <div class="font-medium text-gray-700"><%= template[1] %></div>
-                <div class="text-gray-400"><%= template[2] %></div>
+  
+      <div class="relative ml-3 w-auto" data-controller="reveal" data-reveal-away>
+        <button type="button" class="btn btn-primary w-full" data-action="reveal#toggle">
+          <%= icon("plus", css: "w-7 h-7 -ml-2") %>
+          <%=t 'spina.pages.new' %>
+        </button>
+  
+        <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
+          <div class="rounded-md bg-white shadow-xs">
+            <div class="py-1">
+              <% current_theme.new_page_templates.each do |template| %>
+                <%= link_to spina.new_admin_page_path(view_template: template[0], format: :modal), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {controller: "remote-modal"} do %>
+                  <div class="font-medium text-gray-700"><%= template[1] %></div>
+                  <div class="text-gray-400"><%= template[2] %></div>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="my-6 md:m-8 bg-white md:rounded-md border-l-0 border-r-0 border md:border-r md:border-l border-gray-200 border-b-0 shadow-sm">
-  <%= render Spina::Pages::ListComponent.new(pages: @pages) %>
+  
+  <div class="my-6 md:m-8 bg-white md:rounded-md border-l-0 border-r-0 border md:border-r md:border-l border-gray-200 border-b-0 shadow-sm">
+    <%= render Spina::Pages::ListComponent.new(pages: @pages) %>
+  </div>
 </div>

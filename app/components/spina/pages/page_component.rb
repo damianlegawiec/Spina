@@ -19,6 +19,15 @@ module Spina
         return 0 unless view_context.is_a? Spina::Pages::ListComponent
         view_context.depth
       end
+      
+      def css_class
+        case depth
+        when 1
+          "pl-5 bg-gray-100"
+        when 2
+          "pl-10 bg-gray-200"
+        end
+      end
   
       def children
         @children ||= @page.children.active.sorted.regular_pages

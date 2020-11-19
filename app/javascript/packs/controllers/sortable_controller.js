@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import Sortable from "sortablejs"
+import Rails from "@rails/ujs"
 
 export default class extends Controller {
 
@@ -11,7 +12,15 @@ export default class extends Controller {
   }
 
   sort(event) {
-    console.log(this.orderedIds)
+    fetch(this.element.dataset.sortPath, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        'X-CSRF-Token': Rails.csrfToken(),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ids: this.orderedIds})
+    })
   }
 
   get orderedIds() {

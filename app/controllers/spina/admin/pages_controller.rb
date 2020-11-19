@@ -1,7 +1,6 @@
 module Spina
   module Admin
     class PagesController < AdminController
-      before_action :set_tabs, only: [:new, :create, :edit, :update]
       before_action :set_locale
       before_action :set_page, only: [:edit, :edit_content, :edit_template, :update, :destroy, :children]
 
@@ -56,9 +55,8 @@ module Spina
       end
 
       def sort
-        params[:list].each_pair do |parent_pos, parent_node|
-          update_child_pages_position(parent_node)
-          update_page_position(parent_node, parent_pos, nil)
+        params[:ids].each.with_index do |id, index|
+          Page.where(id: id).update_all(position: index + 1)
         end
         head :ok
       end
@@ -84,23 +82,6 @@ module Spina
           add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource)
         else
           add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path
-        end
-      end
-
-      def set_tabs
-        @tabs = %w{page_content page_seo advanced}
-      end
-
-      def update_page_position(page, position, parent_id = nil)
-        Page.update(page[:id], position: position.to_i + 1, parent_id: parent_id )
-      end
-
-      def update_child_pages_position(node)
-        if node[:children].present?
-          node[:children].each_pair do |child_pos, child_node|
-            update_child_pages_position(child_node) if child_node[:children].present?
-            update_page_position(child_node, child_pos, node[:id])
-          end
         end
       end
 
