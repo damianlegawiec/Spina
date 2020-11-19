@@ -14,7 +14,12 @@ export default class extends Controller {
 				thumbnail: image.dataset.thumbnail
 			}
 		})
+		
 		this.element.dispatchEvent(imageSelectedEvent)
+	}
+	
+	insertImage(event) {
+		
 	}
 	
 }

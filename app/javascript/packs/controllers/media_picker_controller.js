@@ -34,7 +34,7 @@ export default class extends Controller {
       </span>`})
       this.trixTarget.editor.insertAttachment(attachment)
       
-      this.modal.closest('.modal').modal.close()
+      // this.modal.closest('.modal').modal.close()
     } else {
       // Set fields
       this.filenameTarget.value = event.detail.filename
