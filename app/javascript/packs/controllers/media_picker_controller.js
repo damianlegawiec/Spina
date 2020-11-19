@@ -7,6 +7,17 @@ export default class extends Controller {
     // Hide thumbnail if there's no image
     if (this.hasThumbnailTarget && this.thumbnailTarget.children.length == 0) this.hideThumbnail()
   }
+  
+  openModal() {    
+    fetch(this.element.dataset.mediaPickerPath)
+      .then(response => response.text())
+      .then(function(modal) {
+        document.body.insertAdjacentHTML("beforeend", modal)
+        
+        this.modal = document.querySelector(`[data-controller*="media-picker-modal"]`)
+        this.modal.addEventListener("imageSelected", this.handleImageSelected.bind(this))
+      }.bind(this))
+  }
 
   removeImage() {
     this.filenameTarget.value = ""
@@ -15,23 +26,26 @@ export default class extends Controller {
     this.altTarget.value = ""
     this.hideThumbnail()
   }
-
-  selectImage(event) {
-    let image = event.currentTarget
-
+  
+  handleImageSelected(event) {
     if (this.element.dataset.mediaPickerInsertType === "trix") {
       let attachment = new Trix.Attachment({content: `<span class="trix-attachment-spina-image">
-        <img src='${image.dataset.embeddedUrl}' />
+        <img src='${event.detail.embeddedUrl}' />
       </span>`})
       this.trixTarget.editor.insertAttachment(attachment)
+      
+      this.modal.closest('.modal').modal.close()
     } else {
       // Set fields
-      this.filenameTarget.value = image.dataset.filename
-      this.signedBlobIdTarget.value = image.dataset.signedBlobId
-      this.imageIdTarget.value = image.dataset.imageId
+      this.filenameTarget.value = event.detail.filename
+      this.signedBlobIdTarget.value = event.detail.signedBlobId
+      this.imageIdTarget.value = event.detail.imageId
 
       // Set placeholder
-      this.setThumbnail(image.dataset.thumbnail)
+      this.setThumbnail(event.detail.thumbnail)
+      
+      // Close modal
+      this.modal.closest('.modal').modal.close()
     }
   }
 

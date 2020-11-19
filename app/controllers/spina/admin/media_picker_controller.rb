@@ -5,17 +5,18 @@ module Spina
       before_action :set_selected_images
 
       def show
-        @images = Image.where(media_folder: @media_folder).order(created_at: :desc).page(params[:page]).per(25)
-        @mode = params[:mode]
-
-        if selected_ids.any?
-          @images = @images.reorder(Arel.sql("CASE WHEN id IN(#{selected_ids.join(', ')}) THEN 0 ELSE 1 END, created_at DESC"))
-        end
-
-        respond_to do |format|
-          format.html { render layout: false }
-          format.js { render :infinite_scroll if params[:page].present? }
-        end
+#         @images = Image.where(media_folder: @media_folder).order(created_at: :desc).page(params[:page]).per(25)
+#         @mode = params[:mode]
+# 
+#         if selected_ids.any?
+#           @images = @images.reorder(Arel.sql("CASE WHEN id IN(#{selected_ids.join(', ')}) THEN 0 ELSE 1 END, created_at DESC"))
+#         end
+# 
+#         respond_to do |format|
+#           format.html { render layout: false }
+#           format.js { render :infinite_scroll if params[:page].present? }
+#         end
+        render Spina::MediaPicker::ModalComponent.new
       end
 
       private

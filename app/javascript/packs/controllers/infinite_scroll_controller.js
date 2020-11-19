@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     this.element['infiniteScroll'] = this
     this.scrollElement.addEventListener("scroll", this.loadNextPage.bind(this))
+    this.initialLoad()
   }
 
   disconnect() {

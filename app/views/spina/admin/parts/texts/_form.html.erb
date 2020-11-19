@@ -1,4 +1,4 @@
-<div class="mt-6" data-controller="media-picker reveal" data-media-picker-insert-type="trix">
+<div class="mt-6" data-controller="media-picker" data-media-picker-path="<%= spina.admin_media_picker_path %>" data-media-picker-insert-type="trix">
   <label class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
   <div class="mt-1 relative">
     <%= f.hidden_field :content, id: "#{f.object.object_id}_input" %>
@@ -8,6 +8,4 @@
       <trix-editor class="prose prose-sm focus:outline-none min-w-full" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-controller="trix" data-target="media-picker.trix" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
     </div>
   </div>
-
-  <%= render Spina::MediaPicker::ModalComponent.new %>
 </div>

@@ -7,12 +7,12 @@ export default class extends Controller {
   connect() {
     this.sortable = Sortable.create(this.element, {
       handle: '[data-sortable-handle]',
-      onEnd: this.sort.bind(this)
+      onEnd: this.saveSort.bind(this)
     })
   }
 
-  sort(event) {
-    fetch(this.element.dataset.sortPath, {
+  saveSort(event) {
+    fetch(this.sortPath, {
       method: "POST",
       credentials: "same-origin",
       headers: {
@@ -25,6 +25,10 @@ export default class extends Controller {
 
   get orderedIds() {
     return this.sortable.toArray()
+  }
+  
+  get sortPath() {
+    return this.element.dataset.sortPath
   }
 
 }

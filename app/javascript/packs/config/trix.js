@@ -40,7 +40,7 @@ module.exports = function() {
         </div>
 
         <div class="flex items-center bg-gray-200 rounded overflow-hidden mr-3 mb-3">
-          <button type="button" data-trix-action="x-media-picker" data-action="reveal#show" title="${Trix.config.lang.image}" tabindex="-1">
+          <button type="button" data-trix-action="x-media-picker" data-action="media-picker#openModal" title="${Trix.config.lang.image}" tabindex="-1">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
             </svg>
