@@ -8,7 +8,7 @@ module Spina
       end
       
       def render?
-        Spina.config.locales.many?
+        spina_locales.many?
       end
   
       def missing_locales
