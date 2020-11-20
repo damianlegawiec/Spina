@@ -7,11 +7,11 @@
     data-filename="<%= @image.file.filename %>"
     data-thumbnail="<%= helpers.thumbnail_url(@image) %>"
     data-embedded-url="<%= helpers.embedded_image_url(@image) %>"
-    class="w-full h-40 overflow-hidden transform transition-transform duration-200 hover:scale-105">
+    class="w-full h-40 overflow-hidden transform transition-transform duration-200 hover:scale-105 px-1">
 
     <%= image_tag helpers.thumbnail_url(@image), class: 'object-contain h-40 w-full', data: {controller: "image-fade-in"} %>
   </button>
 
-  <div class="text-xs text-gray-600 text-center"><%= @image.file.filename %></div>
-  <div class="text-xs text-gray-400 text-center"><%= number_to_human_size @image.file.byte_size %></div>
+  <div class="text-xs text-center bg-blue-500 text-white rounded font-medium p-1"><%= @image.file.filename %></div>
+  <div class="text-xs text-center text-gray-400"><%= number_to_human_size @image.file.byte_size %></div>
 </div>

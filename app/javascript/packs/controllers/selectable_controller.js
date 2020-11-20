@@ -6,9 +6,9 @@ export default class extends Controller {
   select(event) {
     this.selected = event.currentTarget
     this.itemTargets.forEach(function(item) {
-      item.classList.remove("ring-2", "bg-blue-300", "bg-opacity-10", "ring-blue-400")
+      item.classList.remove("ring-2", "bg-blue-300", "bg-opacity-10", "ring-blue-600")
     })
-    this.selected.classList.add("ring-2", "ring-blue-400", "bg-blue-300", "bg-opacity-10")
+    this.selected.classList.add("bg-gray-100", "rounded")
   }
   
 }
