@@ -1,9 +1,27 @@
-<%= render(Spina::ModalComponent.new(size: "max-w-5xl h-full")) do |component| %>
+<%= render(Spina::ModalComponent.new(size: "max-w-6xl h-full")) do |component| %>
   <% component.with(:body) do %>
     <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>">
-      <div class="flex flex-col flex-col-reverse md:flex-row h-full w-full">
-        <div class="md:w-64 p-4 border-t rounded-b-lg md:rounded-none md:border-t-0 border-gray-200 flex flex-col justify-between bg-white md:bg-gray-100 md:bg-opacity-50 md:rounded-l-lg">
-          <div class="hidden md:block md:mb-6">
+      <div class="flex flex-col md:flex-row h-full w-full">
+
+        <div class="flex-1 bg-white flex flex-col max-h-full relative overflow-hidden">
+          <!-- <div class="p-4 bg-white bg-opacity-90 absolute w-full top-0 flex justify-between items-center border-b border-gray-200 z-10" style="box-shadow: 0 5px 20px rgba(0, 0, 0, .05); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
+            <button type="button" class="btn btn-default" data-action="media-picker-modal#confirm">
+              <%= helpers.icon("upload", css: "w-4 h-4 text-gray-700 mr-1 -ml-1") %>
+              Upload from device...
+            </button>
+            <select class="form-select bg-transparent border-none shadow-none text-gray-500 hover:text-gray-800">
+              <option>
+                Large preview images
+              </option>
+            </select>
+          </div> -->
+          <div data-target="infinite-scroll.container" data-controller="selectable" class="p-6 h-full w-full overflow-scroll grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-min">
+            <!-- Buttons here -->
+          </div>
+        </div>
+        
+        <div class="md:w-72 p-4 border-t rounded-b-lg md:rounded-none md:border-t-0 border-gray-200 flex flex-col justify-between bg-gray-100 md:bg-opacity-50 md:rounded-l-lg">
+          <div class="hidden md:block md:mb-6">            
             <button type="button" data-action="infinite-scroll#changePath" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>" class="font-medium w-full bg-gray-300 text-gray-900 text-sm px-3 py-2 rounded-lg flex items-center justify-between">
               All images
 
@@ -14,32 +32,34 @@
 
             <% media_folders.each do |media_folder| %>
               <button type="button" data-action="infinite-scroll#changePath" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_media_folder_path(media_folder) %>" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center">
-                <svg class="w-4 h-4 mr-2 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="w-5 h-5 mr-2 text-spina-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
                 </svg>
                 <%= media_folder.name %>
               </button>
             <% end %>
+            
+            <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center">
+              <%= helpers.icon("upload", css: "w-5 h-5 text-spina mr-2") %>
+              Upload from device...
+            </button>
           </div>
-
-          <div class="btn btn-default">
+          
+          <div>
+            <input type="text" class="form-input text-sm w-full" placeholder="Alt text" />
+            <input type="text" class="form-input text-sm w-full mt-3" placeholder="Optional link" />
+            <button type="button" class="btn btn-primary w-full mt-3" data-action="media-picker-modal#confirm">
+              <%= helpers.icon("plus", css: "text-white w-6 h-6") %>
+              Insert image
+            </button>
+          </div>
+           
+          <!--<div class="btn btn-default">
             <svg class="w-4 h-4 mr-2 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
             Upload image
-          </div>
-        </div>
-
-        <div class="flex-1 bg-white flex flex-col max-h-full relative">
-          <div data-target="infinite-scroll.container" data-controller="selectable" data-select-classes="" data-deselect-classes="" class="p-6 pb-20 h-full w-full overflow-scroll grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-min">
-            <!-- Buttons here -->
-          </div>
-          <div class="p-4 bg-white absolute w-full bottom-0 flex justify-between items-center">
-            <input type="text" class="form-input text-sm w-full mr-3" placeholder="Alt text" />
-            <button type="button" class="btn btn-primary" data-action="media-picker-modal#confirm">
-              Insert image
-            </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

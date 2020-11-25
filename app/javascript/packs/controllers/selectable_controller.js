@@ -4,11 +4,38 @@ export default class extends Controller {
   static targets = [ "item" ]
   
   select(event) {
-    this.selected = event.currentTarget
+    let item = event.currentTarget.closest(`[data-target*="selectable.item"]`)
     this.itemTargets.forEach(function(item) {
-      item.classList.remove("ring-2", "bg-blue-300", "bg-opacity-10", "ring-blue-600")
+      this.deactivate(item)
+    }.bind(this))
+
+    this.activate(item)
+  }
+  
+  activate(item) {
+    this.toggleClasses(item, true)
+  }
+  
+  deactivate(item) {
+    this.toggleClasses(item, false)
+  }
+  
+  toggleClasses(item, force) {
+    item.querySelectorAll(`[data-selected-class]`).forEach(function(element) {
+      let selectedClasses = element.dataset.selectedClass
+      if(selectedClasses) {
+        selectedClasses.split(" ").forEach(function(cssClass) {
+          element.classList.toggle(cssClass, force)
+        })
+      }
+      
+      let deselectedClasses = element.dataset.deselectedClass
+      if(deselectedClasses) {
+        deselectedClasses.split(" ").forEach(function(cssClass) {
+          element.classList.toggle(cssClass, !force)
+        }) 
+      }
     })
-    this.selected.classList.add("bg-gray-100", "rounded")
   }
   
 }

@@ -3,7 +3,7 @@
     <%= Spina::Page.human_attribute_name(:title) %>
   </label>
 
-  <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full" %>
+  <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full max-w-3xl" %>
 
   <div data-controller="remote-fetch" data-path="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
   </div>
