@@ -1,6 +1,6 @@
 <div data-target="selectable.item">
   <button type="button" 
-    data-action="media-picker-modal#selectImage selectable#select" 
+    data-action="media-picker-modal#selectImage selectable#select dblclick->media-picker-modal#instantInsert dblclick->modal#close" 
     data-image-id="<%= @image.id %>"
     data-signed-blob-id="<%= @image.file.blob.signed_id %>"
     data-filename="<%= @image.file.filename %>"

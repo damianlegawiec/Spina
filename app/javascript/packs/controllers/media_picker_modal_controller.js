@@ -5,9 +5,10 @@ export default class extends Controller {
 	selectImage(event) {
 		let image = event.currentTarget
 		this.image = image
-		
-		let imageSelectedEvent = new CustomEvent("media-picker:selected", {detail: this.imageData})
-		this.element.dispatchEvent(imageSelectedEvent)
+	}
+	
+	instantInsert(event) {
+		this.confirm(event)
 	}
 	
 	confirm(event) {
