@@ -28,10 +28,14 @@
                   <%= helpers.icon("collection", css: "w-5 h-5 mr-2 text-spina-light") %>
                   All images
                 </div>
+                
+                <div class="text-spina text-sm font-semibold" data-selected-class="text-spina" data-deselected-class="text-gray-400">
+                  <%= image_count %>
+                </div>
   
-                <svg class="w-5 h-5 ml-1 block" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <!-- <svg class="w-5 h-5 ml-1 block" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
+                </svg> -->
               </button>
             </div>
 
@@ -45,9 +49,13 @@
                     <%= media_folder.name %>
                   </div>
                   
-                  <svg class="w-5 h-5 ml-1 hidden" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <div class="text-gray-400 text-sm font-semibold" data-selected-class="text-spina" data-deselected-class="text-gray-400">
+                    <%= media_folder.images.count %>
+                  </div>
+                  
+                  <!-- <svg class="w-5 h-5 ml-1 hidden" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
+                  </svg> -->
                 </button>
               </div>
             <% end %>
