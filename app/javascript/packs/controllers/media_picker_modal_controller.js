@@ -8,7 +8,8 @@ export default class extends Controller {
 	}
 	
 	instantInsert(event) {
-		this.confirm(event)
+		this.confirm(event)	
+		this.element.closest('.modal').modal.close()
 	}
 	
 	confirm(event) {

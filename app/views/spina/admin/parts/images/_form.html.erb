@@ -1,5 +1,7 @@
 <div class="mt-6 relative" data-controller="media-picker" data-media-picker-path="<%= spina.admin_media_picker_path(format: :modal) %>">
-  <label for="price" class="block text-sm leading-5 font-medium text-gray-700"><%= f.object.title %></label>
+  <label class="block text-sm leading-5 font-medium text-gray-700">
+    <%= f.object.title %>
+  </label>
 
   <%= f.hidden_field :signed_blob_id, placeholder: "Signed blob ID", data: {target: "media-picker.signedBlobId"} %>
   <%= f.hidden_field :filename, placeholder: "Filename", data: {target: "media-picker.filename"} %>

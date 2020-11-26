@@ -5,6 +5,8 @@ export default class extends Controller {
   
   select(event) {
     let item = event.currentTarget.closest(`[data-target*="selectable.item"]`)
+    
+    // Deactivate other items
     this.itemTargets.forEach(function(item) {
       this.deactivate(item)
     }.bind(this))
@@ -37,5 +39,4 @@ export default class extends Controller {
       }
     })
   }
-  
 }

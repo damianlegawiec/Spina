@@ -4,17 +4,6 @@
       <div class="flex flex-col md:flex-row h-full w-full">
 
         <div class="flex-1 bg-white flex flex-col max-h-full relative overflow-hidden">
-          <!-- <div class="p-4 bg-white bg-opacity-90 absolute w-full top-0 flex justify-between items-center border-b border-gray-200 z-10" style="box-shadow: 0 5px 20px rgba(0, 0, 0, .05); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px)">
-            <button type="button" class="btn btn-default" data-action="media-picker-modal#confirm">
-              <%= helpers.icon("upload", css: "w-4 h-4 text-gray-700 mr-1 -ml-1") %>
-              Upload from device...
-            </button>
-            <select class="form-select bg-transparent border-none shadow-none text-gray-500 hover:text-gray-800">
-              <option>
-                Large preview images
-              </option>
-            </select>
-          </div> -->
           <div data-target="infinite-scroll.container" data-controller="selectable" class="p-6 h-full w-full overflow-scroll grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-min">
             <!-- Buttons here -->
           </div>
@@ -32,10 +21,6 @@
                 <div class="text-spina text-sm font-semibold" data-selected-class="text-spina" data-deselected-class="text-gray-400">
                   <%= image_count %>
                 </div>
-  
-                <!-- <svg class="w-5 h-5 ml-1 block" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg> -->
               </button>
             </div>
 
@@ -52,10 +37,6 @@
                   <div class="text-gray-400 text-sm font-semibold" data-selected-class="text-spina" data-deselected-class="text-gray-400">
                     <%= media_folder.images.count %>
                   </div>
-                  
-                  <!-- <svg class="w-5 h-5 ml-1 hidden" data-selected-class="block" data-deselected-class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg> -->
                 </button>
               </div>
             <% end %>
@@ -74,13 +55,6 @@
               Insert image
             </button>
           </div>
-           
-          <!--<div class="btn btn-default">
-            <svg class="w-4 h-4 mr-2 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-            Upload image
-          </div> -->
         </div>
       </div>
     </div>
