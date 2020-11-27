@@ -11,7 +11,7 @@
     <%= f.object.title %>
   </label>
 
-  <div class="flex items-start">
+  <div class="flex items-start mt-1">
     <div class="flex items-center" data-target="image-collection.collection">
       <%= f.fields_for :images do |ff| %>
         <%= render 'spina/admin/parts/image_collections/fields', f: ff %>

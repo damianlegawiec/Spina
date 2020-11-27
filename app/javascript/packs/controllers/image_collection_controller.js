@@ -1,7 +1,12 @@
 import { Controller } from "stimulus"
+import Sortable from "sortablejs"
 
 export default class extends Controller {
   static targets = [ "collection", "fields" ]
+  
+  connect() {
+    this.sortable = Sortable.create(this.collectionTarget)
+  }
   
   openModal() {    
     fetch(this.element.dataset.mediaPickerPath)

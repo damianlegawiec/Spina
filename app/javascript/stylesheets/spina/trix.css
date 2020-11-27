@@ -23,9 +23,9 @@ trix-editor {
   }
 
   figure.attachment img {
-    max-height: 200px;
+    height: 150px;
     max-width: 200px;
-    @apply m-0 border-2 border-transparent
+    @apply m-0 border-2 border-transparent rounded-md
   }
 
   figure[data-trix-mutable].attachment img {

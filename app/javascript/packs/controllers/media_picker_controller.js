@@ -29,9 +29,7 @@ export default class extends Controller {
   
   handleDone(event) {
     if (this.hasTrixTarget) {
-      let attachment = new Trix.Attachment({content: `<span class="trix-attachment-spina-image">
-        <img src='${event.detail.embeddedUrl}' />
-      </span>`})
+      let attachment = new Trix.Attachment({content: `<img src='${event.detail.embeddedUrl}' />`})
       this.trixTarget.editor.insertAttachment(attachment)
     } else {
       // Set fields
