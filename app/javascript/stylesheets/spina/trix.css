@@ -19,17 +19,22 @@ trix-editor {
   }
 
   figure.attachment {
-    @apply m-0 inline-block
+    @apply m-0 inline-block;
   }
 
   figure.attachment img {
     height: 150px;
     max-width: 200px;
-    @apply m-0 border-2 border-transparent rounded-md
+    @apply m-0 rounded-md
+  }
+  
+  figure.attachment span[data-alt]:after {
+    content: attr(data-alt);
+    @apply italic text-gray-700 bg-gray-100 rounded-full h-8 mt-2 flex items-center border border-transparent px-3 text-xs;
   }
 
   figure[data-trix-mutable].attachment img {
-    @apply shadow-lg border-spina-light
+    @apply shadow-lg ring ring-spina-light
   }
 
   figure .attachment__caption {

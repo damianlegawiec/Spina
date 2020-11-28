@@ -7,7 +7,8 @@ export default class extends Controller {
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableAttachment) {
         this.imageFieldsTarget.classList.remove("hidden")
-        this.imageFieldsTarget.style.top = `${this.mutableAttachment.offsetTop + this.mutableAttachment.offsetHeight}px`
+        let position = this.mutableAttachment.querySelector("img").offsetTop + this.mutableAttachment.querySelector("img").offsetHeight - 13
+        this.imageFieldsTarget.style.top = `${position}px`
         this.altFieldTarget.value = this.currentAltText
       } else {
         this.imageFieldsTarget.classList.add("hidden")
@@ -19,8 +20,12 @@ export default class extends Controller {
     let alt = event.currentTarget.value
     let content = this.trixAttachment.getContent()
     
+    // Set span data-alt
+    // this.mutableAttachment.querySelector('span').dataset.alt = alt
+    
     // Change content
     let fragment = this.fragmentFromHTML(content)
+    fragment.querySelector('span').dataset.alt = alt
     fragment.querySelector('img').alt = alt
     let div = document.createElement('div')
     div.appendChild(fragment)

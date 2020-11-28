@@ -88,7 +88,8 @@
 }
 
 .form-input:focus {
-  @apply ring-spina-light;
+  @apply border-spina-light;
+  @apply ring-spina-light
 }
 
 /* Modals */

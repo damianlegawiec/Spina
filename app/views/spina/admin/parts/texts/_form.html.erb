@@ -5,7 +5,7 @@
 
     <div class="relative form-textarea p-4 shadow-sm max-w-3xl" data-controller="trix">
       <trix-toolbar class="relative" id="<%= f.object.object_id %>_trix-toolbar"></trix-toolbar>
-      <trix-editor class="prose prose-sm focus:outline-none min-w-full pb-10" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-target="media-picker.trix trix.editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
+      <trix-editor class="prose prose-sm focus:outline-none min-w-full" toolbar="<%= f.object.object_id %>_trix-toolbar" input="<%= f.object.object_id %>_input" data-target="media-picker.trix trix.editor" data-action="trix-file-accept->trix#preventDefault"></trix-editor>
     </div>
   </div>
 </div>
