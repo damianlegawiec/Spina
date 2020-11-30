@@ -5,9 +5,9 @@ export default class extends Controller {
   
   connect() {
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
-      if (this.mutableAttachment) {
+      if (this.mutableImageAttachment) {
         this.imageFieldsTarget.classList.remove("hidden")
-        let position = this.mutableAttachment.querySelector("img").offsetTop + this.mutableAttachment.querySelector("img").offsetHeight - 13
+        let position = this.mutableImageAttachment.querySelector("img").offsetTop + this.mutableImageAttachment.querySelector("img").offsetHeight - 13
         this.imageFieldsTarget.style.top = `${position}px`
         this.altFieldTarget.value = this.currentAltText
       } else {
@@ -21,11 +21,11 @@ export default class extends Controller {
     let content = this.trixAttachment.getContent()
     
     // Set span data-alt
-    // this.mutableAttachment.querySelector('span').dataset.alt = alt
+    this.mutableImageAttachment.firstElementChild.dataset.label = alt
     
     // Change content
     let fragment = this.fragmentFromHTML(content)
-    fragment.querySelector('span').dataset.alt = alt
+    fragment.firstElementChild.dataset.label = alt
     fragment.querySelector('img').alt = alt
     let div = document.createElement('div')
     div.appendChild(fragment)
@@ -54,11 +54,11 @@ export default class extends Controller {
   }
   
   get trixAttachment() {
-    return this.getTrixAttachment(this.mutableAttachment.dataset.trixId)
+    return this.getTrixAttachment(this.mutableImageAttachment.dataset.trixId)
   }
   
-  get mutableAttachment() {
-    return this.element.querySelector("figure[data-trix-mutable]")
+  get mutableImageAttachment() {
+    return this.element.querySelector(`figure[data-trix-mutable][data-trix-content-type="Spina::Image"]`)
   }
   
   get attachmentManager() {

@@ -13,6 +13,6 @@
   <% end %>
 
   <div class="text-right">
-    <%= button_tag t('spina.delete'), type: :button, class: 'bg-white h-9 px-3 border rounded', data: {action: "repeater#removeFields", id: "pane_#{f.object.object_id}"} %>
+    <%= button_tag "Delete this entry", type: :button, class: 'btn btn-default h-8 px-3 inline-block', data: {action: "repeater#removeFields", id: "pane_#{f.object.object_id}"} %>
   </div>
 </div>

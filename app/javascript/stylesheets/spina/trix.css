@@ -28,8 +28,8 @@ trix-editor {
     @apply m-0 rounded-md
   }
   
-  figure.attachment span[data-alt]:after {
-    content: attr(data-alt);
+  figure.attachment [data-label]:after {
+    content: attr(data-label);
     @apply italic text-gray-700 bg-gray-100 rounded-full h-8 mt-2 flex items-center border border-transparent px-3 text-xs;
   }
 

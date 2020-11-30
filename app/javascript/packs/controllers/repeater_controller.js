@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Sortable from "sortablejs"
 
 export default class extends Controller {
-  static targets = [ "list", "content" ]
+  static targets = [ "list", "listItem", "content" ]
 
   connect() {
     this.sortable = Sortable.create(this.listTarget, {
@@ -39,9 +39,9 @@ export default class extends Controller {
 
   removeFields(event) {
     let id = event.currentTarget.dataset.id
-    let button = this.listTarget.querySelector(`button[data-pane-id="${id}"]`)
+    let listItem = this.listItemTargets.find(listItem => listItem.dataset.paneId == id)
     let pane = document.getElementById(id)
-    this.listTarget.removeChild(button)
+    this.listTarget.removeChild(listItem)
     this.contentTarget.removeChild(pane)
   }
 
