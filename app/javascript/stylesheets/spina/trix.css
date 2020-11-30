@@ -30,7 +30,7 @@ trix-editor {
   
   figure.attachment [data-label]:after {
     content: attr(data-label);
-    @apply italic text-gray-700 bg-gray-100 rounded-full h-8 mt-2 flex items-center border border-transparent px-3 text-xs;
+    @apply italic text-gray-400 h-8 flex items-center mt-2 px-2 text-sm;
   }
 
   figure[data-trix-mutable].attachment img {
