@@ -1,0 +1,58 @@
+<div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
+  <div class="flex justify-between items-center">
+    <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row w-full">
+      <div class="flex items-center">
+        <div class="text-2xl font-normal text-gray-800">
+          Images
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <nav class="-mb-3 mt-4">
+    <ul class="inline-flex w-auto rounded-md bg-white">
+      <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center cursor-default text-gray-900 bg-spina-dark bg-opacity-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+        <%= icon("collection", css: "w-5 h-5 mr-2 -ml-1") %>
+        Images
+      </button>
+      <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+        <%= icon("reorder", css: "w-5 h-5 mr-2 -ml-1") %>
+        Files
+      </button>
+    </ul>
+  </nav>
+</div>
+
+<div class="p-8">
+  <table class="table-auto w-full">
+    <thead>
+      <tr>
+        <th class="w-20 text-left"></th>
+        <th class="text-left">Name</th>
+        <th class="text-right">Size</th>
+        <th class="text-right">Updated at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @media_folders.each do |media_folder| %>
+      <tr>
+        <td>
+          <div class="flex align-center"><%= icon("collection", css: "w-6 h-6") %></div>
+        </td>
+        <td><%= media_folder.name %></td>
+        <td class="text-right"><%= media_folder.images.count %> images</td>
+        <td class="text-right"><%=l media_folder.updated_at, format: :long %></td>
+        <td class="text-right">Edit / Delete</td>
+      </tr>
+    <% end %>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image_tag thumbnail_url(image), class: 'object-contain w-full', data: {controller: "image-fade-in"} %></td>
+        <td><%= image.file.filename %></td>
+        <td class="text-right"><%= number_to_human_size image.file.byte_size %></td>
+        <td class="text-right"><%=l image.created_at, format: :long %></td>
+        <td class="text-right">Edit / Delete</td>
+      </tr>
+    <% end %>
+  </table>
+</div>
