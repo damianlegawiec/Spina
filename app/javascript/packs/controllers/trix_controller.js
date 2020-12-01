@@ -7,7 +7,7 @@ export default class extends Controller {
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
         this.imageFieldsTarget.classList.remove("hidden")
-        let position = this.mutableImageAttachment.querySelector("img").offsetTop + this.mutableImageAttachment.querySelector("img").offsetHeight - 13
+        let position = this.mutableImageAttachment.querySelector("img").offsetTop + this.mutableImageAttachment.querySelector("img").offsetHeight - 16
         this.imageFieldsTarget.style.top = `${position}px`
         this.altFieldTarget.value = this.currentAltText
       } else {
@@ -17,15 +17,18 @@ export default class extends Controller {
   }
   
   setAltText(event) {
+    if (event.key === 'Enter') event.preventDefault() // Prevent form submit from alt text fields
     let alt = event.currentTarget.value
+    let altLabel = alt
+    if (altLabel.trim().length == 0) altLabel = "Alt text" // Fallback
     let content = this.trixAttachment.getContent()
     
-    // Set span data-alt
-    this.mutableImageAttachment.firstElementChild.dataset.label = alt
+    // Set span data-alt inside Trix attachment
+    this.mutableImageAttachment.firstElementChild.dataset.label = altLabel
     
     // Change content
     let fragment = this.fragmentFromHTML(content)
-    fragment.firstElementChild.dataset.label = alt
+    fragment.firstElementChild.dataset.label = altLabel
     fragment.querySelector('img').alt = alt
     let div = document.createElement('div')
     div.appendChild(fragment)

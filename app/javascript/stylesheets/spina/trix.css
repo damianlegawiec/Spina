@@ -25,12 +25,12 @@ trix-editor {
   figure.attachment img {
     height: 150px;
     max-width: 200px;
-    @apply m-0 rounded-md
+    @apply m-0 rounded-md;
   }
   
   figure.attachment [data-label]:after {
     content: attr(data-label);
-    @apply italic text-gray-400 h-8 flex items-center mt-2 px-2 text-sm;
+    @apply italic text-gray-500 h-8 flex items-center px-2 mt-1 text-sm;
   }
 
   figure[data-trix-mutable].attachment img {
