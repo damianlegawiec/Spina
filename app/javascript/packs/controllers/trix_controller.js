@@ -16,8 +16,11 @@ export default class extends Controller {
     }.bind(this))
   }
   
-  setAltText(event) {
+  preventSubmission(event) {
     if (event.key === 'Enter') event.preventDefault() // Prevent form submit from alt text fields
+  }
+  
+  setAltText(event) {
     let alt = event.currentTarget.value
     let altLabel = alt
     if (altLabel.trim().length == 0) altLabel = "Alt text" // Fallback
