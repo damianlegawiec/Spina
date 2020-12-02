@@ -24,7 +24,10 @@ module.exports = {
     }
   },
   variants: {
-    boxShadow: ['active']
+    boxShadow: ['active'],
+    extend: {
+      backgroundColor: ['even']
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),

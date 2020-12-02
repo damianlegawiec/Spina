@@ -31,6 +31,18 @@ module Spina::Admin
 				content_tag(:svg, heroicons_small.merge(class: css)) do
 					'<path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />'.html_safe
 				end
+			when 'folder'
+				content_tag(:svg, heroicons_small.merge(class: css)) do
+					'<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />'.html_safe
+				end
+			when 'trash'
+				content_tag(:svg, heroicons_medium.merge(class: css)) do
+					'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />'.html_safe
+				end
+			when 'pencil'
+				content_tag(:svg, heroicons_small.merge(class: css)) do
+					'<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />'.html_safe
+				end
 			end
 		end
 		
