@@ -26,6 +26,7 @@ module Spina
 
           image
         end.compact
+        render FileManager::ImageComponent.with_collection(@images)
       end
 
       def destroy

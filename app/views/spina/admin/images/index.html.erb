@@ -1,98 +1,73 @@
-<div class="relative">
-  <div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
-    <div class="flex justify-between items-center">
-      <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row w-full">
-        <div class="flex items-center">
-          <div class="text-2xl font-normal text-gray-800">
-            Images
+<div data-controller="file-manager">
+  <div class="relative">
+    <div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
+      <div class="flex justify-between items-center">
+        <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row w-full">
+          <div class="flex items-center">
+            <div class="text-2xl font-normal text-gray-800">
+              Images
+            </div>
           </div>
         </div>
       </div>
+      
+      <nav class="-mb-3 mt-4">
+        <ul class="inline-flex w-auto rounded-md bg-white">
+          <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center cursor-default text-gray-900 bg-spina-dark bg-opacity-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+            <%= icon("collection", css: "w-5 h-5 mr-2 -ml-1") %>
+            Images
+          </button>
+          <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+            <%= icon("reorder", css: "w-5 h-5 mr-2 -ml-1") %>
+            Files
+          </button>
+        </ul>
+      </nav>
     </div>
     
-    <nav class="-mb-3 mt-4">
-      <ul class="inline-flex w-auto rounded-md bg-white">
-        <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center cursor-default text-gray-900 bg-spina-dark bg-opacity-10" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
-          <%= icon("collection", css: "w-5 h-5 mr-2 -ml-1") %>
-          Images
-        </button>
-        <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
-          <%= icon("reorder", css: "w-5 h-5 mr-2 -ml-1") %>
-          Files
-        </button>
-      </ul>
-    </nav>
-  </div>
-  
-  <div class="flex p-4 z-20 absolute top-0 right-0 h-24 items-center md:pr-8">
-    <button type="button" class="btn btn-default w-full mr-3" data-action="reveal#toggle">
-      <%= icon("folder", css: "w-4 h-4 mr-1 -ml-1") %>
-      Add folder
-    </button>
-    <%= form_with model: [:admin, Spina::Image.new] do |f| %>
-      <div class="relative overflow-hidden">
-        <button type="button" class="btn btn-default">
-          <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
-          <%=t 'spina.images.upload' %>
-        </button>
-        <%= f.file_field :files, multiple: true, accept: "image/*", class: 'absolute top-0 left-0 block cursor-pointer bottom-0 appearance-none h-full -ml-5', style: "font-size: 0; width: 150%" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="my-8 border-t border-gray-200">
-  
-  <% @media_folders.each do |media_folder| %>
-    <div class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
-      <%= link_to admin_media_folder_path(media_folder), class: 'flex h-full items-center flex-1' do %>
-        <div class="w-8 mr-4 flex justify-center"><%= icon("folder", css: "w-7 h-7 text-spina") %></div>
-        <div class="font-medium text-spina flex-1 text-sm">
-          <%= media_folder.name %>
+    <div class="flex p-4 z-20 absolute top-0 right-0 h-24 items-center md:pr-8">
+      <button type="button" class="btn btn-default w-full mr-3" data-action="reveal#toggle">
+        <%= icon("folder", css: "w-4 h-4 mr-1 -ml-1") %>
+        Add folder
+      </button>
+      <%= form_with model: [:admin, Spina::Image.new], data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+        <div class="relative overflow-hidden">
+          <button type="button" class="btn btn-default" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
+            <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+            <%=t 'spina.images.upload' %>
+          </button>
+          <%= f.file_field :files, multiple: true, accept: "image/*", class: 'absolute top-0 left-0 block cursor-pointer bottom-0 appearance-none h-full -ml-5', style: "font-size: 0; width: 150%", data: {action: "file-manager#startUpload"} %>
         </div>
       <% end %>
-      <div class="text-gray-500 text-sm"><%= media_folder.images.size %> images</div>
-      <div class="text-gray-500 text-xs w-32 text-right"><%=l media_folder.created_at, format: :short %></div>
-      <div class="">
-        <a href="#" class="block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900">
-          <%= icon('trash', css: 'w-5 h-5') %>
-        </a>
-      </div>
     </div>
-  <% end %>
+  </div>
   
-  <% @images.each do |image| %>
-    <div class="flex items-center h-12 border-b border-gray-200 px-8 hover:bg-white group">
-      <div class="w-8 mr-4 h-12 flex justify-center">
-        <%= image_tag thumbnail_url(image), class: "object-contain" %>
-      </div>
-      <div class="font-medium text-gray-800 flex-1 w-56 text-sm flex items-center relative">
-        <span class="truncate"><%= image.file.filename %></span>
-        <div class="absolute opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3">
-          <a href="#" class="btn btn-default h-7 px-2 ml-4 text-xs">
-            <%= icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
-            Rename
-          </a>
-          <a href="#" class="btn btn-default h-7 px-2 ml-2 text-xs">
-            <%= icon('folder', css: 'w-4 h-4 mr-1 text-gray-600') %>
-            Move to folder
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
+  <div class="my-8 border-t border-gray-200">
+    
+    <% @media_folders.each do |media_folder| %>
+      <div data-file-manager-target="media-folder" class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
+        <%= link_to admin_media_folder_path(media_folder), class: 'flex h-full items-center flex-1' do %>
+          <div class="w-8 mr-4 flex justify-center"><%= icon("folder", css: "w-7 h-7 text-spina") %></div>
+          <div class="font-medium text-spina flex-1 text-sm">
+            <%= media_folder.name %>
+          </div>
+        <% end %>
+        <div class="text-gray-500 text-sm">
+          <span><%= media_folder.images.size %></span>
+          images
+        </div>
+        <div class="text-gray-500 text-xs w-32 text-right"><%=l media_folder.created_at, format: :short %></div>
+        <div class="">
+          <a href="#" class="block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900">
+            <%= icon('trash', css: 'w-5 h-5') %>
           </a>
         </div>
       </div>
-      <div class="text-gray-500 text-sm whitespace-nowrap">
-        <%= number_to_human_size image.file.byte_size %>
-        <div class="uppercase inline-block ml-2 py-1 rounded-md bg-gray-400 text-white font-semibold px-2 text-xs"><%= image.file.content_type.split("/").last %></div>
-      </div>
-      <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l image.created_at, format: :short %></div>
-      <div class="">
-        <%= link_to admin_image_path(image), class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure? This image <span class='font-semibold'>might</span> be in use on a page."} do %>
-          <%= icon('trash', css: 'w-5 h-5') %>
-        <% end %>
-      </div>
+    <% end %>
+    
+    <div data-file-manager-target="images">
+      <%= render Spina::FileManager::ImageComponent.with_collection(@images) %>
     </div>
-  <% end %>
-
+  
+  </div>
 </div>

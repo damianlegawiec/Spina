@@ -6,6 +6,11 @@ export default class extends Controller {
 		this.element[this.identifier] = this
 	}
 	
+	doneLoading() {
+		this.element.style.width = 'auto'
+		this.element.innerHTML = 'Done!'
+	}
+	
 	loading() {
 		this.element.style.width = `${this.element.offsetWidth}px`
 		
