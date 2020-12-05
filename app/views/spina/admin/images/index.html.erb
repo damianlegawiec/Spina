@@ -26,10 +26,10 @@
     </div>
     
     <div class="flex p-4 z-20 absolute top-0 right-0 h-24 items-center md:pr-8">
-      <button type="button" class="btn btn-default w-full mr-3" data-action="reveal#toggle">
-        <%= icon("folder", css: "w-4 h-4 mr-1 -ml-1") %>
+      <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default mr-3", data: {controller: "remote-modal"} do %>
+        <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
         Add folder
-      </button>
+      <% end %>
       <%= form_with model: [:admin, Spina::Image.new], data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
         <div class="relative overflow-hidden">
           <button type="button" class="btn btn-default" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
@@ -57,11 +57,10 @@
           images
         </div>
         <div class="text-gray-500 text-xs w-32 text-right"><%=l media_folder.created_at, format: :short %></div>
-        <div class="">
-          <a href="#" class="block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900">
-            <%= icon('trash', css: 'w-5 h-5') %>
-          </a>
-        </div>
+        
+        <%= link_to spina.admin_media_folder_path(media_folder), class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure? Images will <strong>not</strong> be deleted."} do %>
+          <%= icon('trash', css: 'w-5 h-5') %>
+        <% end %>
       </div>
     <% end %>
     
