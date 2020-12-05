@@ -33,11 +33,11 @@
       .gallery-select-sidebar
         = form_with url: admin_media_picker_path, html: {'data-remote': true} do
           .gallery-select-form-fields
-            = hidden_field_tag :image_id, params[:selected_ids]&.first, data: {target: 'gallery-select.singleImage'}
-            = hidden_field_tag :image_ids, params[:selected_ids]&.join("-"), data: {target: 'gallery-select.multipleImages'}
+            = hidden_field_tag :image_id, params[:selected_ids]&.first, data: {gallery_select_target: 'singleImage'}
+            = hidden_field_tag :image_ids, params[:selected_ids]&.join("-"), data: {gallery_select_target: 'multipleImages'}
             = hidden_field_tag :hidden_field_id, params[:hidden_field_id]
             = hidden_field_tag :trix_toolbar_id, params[:trix_toolbar_id]
-            = check_box_tag :multiple, true, defined?(multiple) && multiple, style: 'display: none', data: {target: 'gallery-select.multiple'}
+            = check_box_tag :multiple, true, defined?(multiple) && multiple, style: 'display: none', data: {gallery_select_target: 'multiple'}
 
             - if params[:trix_toolbar_id].present?
               .form-group
@@ -55,7 +55,7 @@
               - if defined?(multiple) && multiple
                 = icon('plus')
                 = t('spina.images.choose_images')
-                %span.gallery-select-counter{data: {target: "gallery-select.counter"}}
+                %span.gallery-select-counter{data: {gallery_select_target: "counter"}}
                   - if params[:selected_ids].try(:any?)
                     (#{ params[:selected_ids].count })
               - else

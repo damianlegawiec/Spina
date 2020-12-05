@@ -2,12 +2,12 @@
 .page-form-control{data: {controller: "image-form"}}
   .page-form-media-picker
     %div{style: "width: 100%"}
-      = link_to admin_media_picker_path(selected_ids: [f.object.image_id], input: "media_picker_#{f.object.object_id}", mode: "single"), remote: true, class: 'image', data: {target: 'image-form.image'} do
+      = link_to admin_media_picker_path(selected_ids: [f.object.image_id], input: "media_picker_#{f.object.object_id}", mode: "single"), remote: true, class: 'image', data: {image_form_target: 'image'} do
         .page-form-media-picker-placeholder=t "spina.images.choose_image"
         %div{id: "media_picker_#{f.object.object_id}"}
-          = f.hidden_field :image_id, data: {target: 'image-form.imageId'}
-          = f.hidden_field :signed_blob_id, data: {target: 'image-form.signedBlobId'}
-          = f.hidden_field :filename, data: {target: 'image-form.filename'}
+          = f.hidden_field :image_id, data: {image_form_target: 'imageId'}
+          = f.hidden_field :signed_blob_id, data: {image_form_target: 'signedBlobId'}
+          = f.hidden_field :filename, data: {image_form_target: 'filename'}
         %div{style: "width: 200px; height: 150px; overflow: hidden"}
           - if f.object.signed_blob_id.present? && f.object.spina_image.present?
             = image_tag main_app.url_for(f.object.spina_image.variant(resize: "400x300^", crop: "400x300+0+0")), width: 200, height: 150

@@ -1,7 +1,7 @@
 <div id="<%= f.object.object_id %>" class="cursor-move">
-  <%= f.hidden_field :signed_blob_id, placeholder: "Signed blob ID", data: {target: "media-picker.signedBlobId"} %>
-  <%= f.hidden_field :filename, placeholder: "Filename", data: {target: "media-picker.filename"} %>
-  <%= f.hidden_field :image_id, placeholder: "Image ID", data: {target: "media-picker.imageId"} %>
+  <%= f.hidden_field :signed_blob_id, placeholder: "Signed blob ID", data: {media_picker_target: "signedBlobId"} %>
+  <%= f.hidden_field :filename, placeholder: "Filename", data: {media_picker_target: "filename"} %>
+  <%= f.hidden_field :image_id, placeholder: "Image ID", data: {media_picker_target: "imageId"} %>
   
   <div class="h-28 w-28 rounded-lg shadow-md overflow-hidden relative mr-3">
     

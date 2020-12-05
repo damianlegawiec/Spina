@@ -28,6 +28,17 @@ module Spina
         end.compact
         render FileManager::ImageComponent.with_collection(@images)
       end
+      
+      def update
+        @image = Image.find(params[:id])
+        @image.update(image_params) if params[:image].present?
+        if params[:filename].present?
+          extension = @image.file.filename.extension
+          filename = "#{params[:filename]}.#{extension}"
+          @image.file.blob.update(filename: filename)
+        end
+        render FileManager::ImageComponent.new(image: @image)
+      end
 
       def destroy
         @image = Image.find(params[:id])
@@ -45,6 +56,10 @@ module Spina
 
         def set_breadcrumbs
           add_breadcrumb I18n.t('spina.website.media_library'), admin_media_library_path
+        end
+        
+        def image_params
+          params.require(:image).permit(:media_folder_id)
         end
 
     end

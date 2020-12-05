@@ -28,19 +28,19 @@
 
       <nav class="-mb-3 mt-4">
         <ul class="inline-flex w-auto rounded-md bg-white">
-          <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="page_content">
+          <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-tabs-target="button" data-pane-id="page_content">
             <svg class="w-4 h-4 mr-1 -ml-1 opacity-75" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             Page content
           </button>
-          <button type="button" class="block px-3 leading-relaxed py-1 rounded-md hover:text-gray-800 text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="seo">
+          <button type="button" class="block px-3 leading-relaxed py-1 rounded-md hover:text-gray-800 text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-tabs-target="button" data-pane-id="seo">
             <svg class="w-4 h-4 mr-1 -ml-1 opacity-75" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
             </svg>
             Search engines
           </button>
-          <button type="button" class="block px-3 leading-relaxed py-1 rounded-md hover:text-gray-800 text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-target="tabs.button" data-pane-id="advanced">
+          <button type="button" class="block px-3 leading-relaxed py-1 rounded-md hover:text-gray-800 text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-tabs-target="button" data-pane-id="advanced">
             <svg class="w-4 h-4 mr-1 -ml-1 opacity-75" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
             </svg>
@@ -106,16 +106,16 @@
 
   <div class="p-4 md:p-8">
     <% Mobility.with_locale(@locale) do %>
-      <div data-target="notifications.list"></div>
-      <div data-target="tabs.pane" id="page_content">
+      <div data-notifications-target="list"></div>
+      <div data-tabs-target="pane" id="page_content">
         <%= render partial: 'form_page_content', locals: {f: f} %>
       </div>
 
-      <div data-target="tabs.pane" id="seo">
+      <div data-tabs-target="pane" id="seo">
         <%= render partial: 'form_seo', locals: {f: f} %>
       </div>
 
-      <div data-target="tabs.pane" id="advanced">
+      <div data-tabs-target="pane" id="advanced">
         <%= render partial: 'form_advanced', locals: {f: f} %>
       </div>
     <% end %>

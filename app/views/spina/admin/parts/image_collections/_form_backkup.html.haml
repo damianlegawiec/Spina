@@ -2,7 +2,7 @@
   .page-form-label= f.object.title
   .page-form-control{data: {controller: "image-form"}}
     .page-form-media-picker
-      = link_to admin_media_picker_path(selected_ids: f.object.image_ids, input: "media_picker_#{f.object.object_id}", mode: "multiple"), remote: true, class: 'images', data: {target: 'image-form.image'} do
+      = link_to admin_media_picker_path(selected_ids: f.object.image_ids, input: "media_picker_#{f.object.object_id}", mode: "multiple"), remote: true, class: 'images', data: {image_form_target: 'image'} do
         .page-form-media-picker-placeholder=t "spina.images.choose"
 
         %div{id: "media_picker_#{f.object.object_id}", data: data_attrs_for_image_collection(f)}

@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "item" ]
   
   select(event) {
-    let item = event.currentTarget.closest(`[data-target*="selectable.item"]`)
+    let item = event.currentTarget.closest(`[data-selectable-target*="item"]`)
     
     // Deactivate other items
     this.itemTargets.forEach(function(item) {

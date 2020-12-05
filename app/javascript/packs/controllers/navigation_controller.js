@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     // Activate button for active item
-    let button = this.activeNavigation.querySelector(`button[data-target*="navigation.button"]`)
+    let button = this.activeNavigation.querySelector(`button[data-navigation-target*="button"]`)
     this.switchClass(button, "opacity-50", "opacity-100")
 
     // Activate navigation for active item (only for bigger displays)
@@ -64,7 +64,7 @@ export default class extends Controller {
   }
 
   get activeNavigation() {
-    return this.activeItem.closest(`[data-target*="navigation.navigation"]`)
+    return this.activeItem.closest(`[data-navigation-target*="navigation"]`)
   }
 
 }

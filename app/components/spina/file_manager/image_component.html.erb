@@ -1,27 +1,60 @@
-<div class="flex items-center h-12 border-b border-gray-200 px-8 hover:bg-white group">
+<div data-controller="file" class="flex items-center h-12 border-b border-gray-200 px-8 hover:bg-white group">
   <div class="w-8 mr-4 h-12 flex justify-center">
     <%= image_tag helpers.thumbnail_url(@image), class: "object-contain" %>
   </div>
   <div class="font-medium text-gray-800 flex-1 w-56 text-sm flex items-center relative">
-    <span class="truncate"><%= @image.file.filename %></span>
-    <div class="absolute opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3">
-      <a href="#" class="btn btn-default h-7 px-2 ml-4 text-xs">
+    <span class="truncate" data-file-target="filename"><%= @image.file.filename %></span>
+    
+    <%= form_with model: @image, url: helpers.spina.admin_image_path(@image), html: {class: 'w-full max-w-sm pr-3 hidden', data: {file_target: "form", action: "ajax:success->file#replaceHTML"}} do |f| %>
+      <div class="flex items-center w-full">
+        <div class="relative w-full mr-2">
+          <%= text_field_tag :filename, @image.file.filename.base, class: 'form-input w-full h-9 pr-10 text-sm', placeholder: "Filename", data: {file_target: "input"} %>
+          <div class="absolute top-0 right-2 h-full flex items-center text-gray-400">
+            <%= ".#{@image.file.filename.extension}" %>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-default px-2">
+          <%= helpers.icon("check", css: "w-5 h-5") %>
+        </button>
+      </div>
+    <% end %>
+    
+    <div data-file-target="actions" class="absolute opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3">
+      <button type="button" data-action="file#rename" class="btn btn-default h-7 px-2 mr-2 text-xs">
         <%= helpers.icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
         Rename
-      </a>
-      
-      <button type="button" class="btn btn-default h-7 px-2 text-xs" data-action="file-manager#moveToFolder">
-        <%= helpers.icon('folder', css: 'w-4 h-4 mr-1 text-gray-600') %>
-        Move to folder
-        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
       </button>
+      
+      <div class="relative" data-controller="reveal" data-reveal-away>
+        <button type="button" class="btn btn-default h-7 px-2 text-xs" data-action="reveal#toggle">
+          <%= helpers.icon('folder', css: 'w-4 h-4 mr-1 text-gray-600') %>
+          Move to folder
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        
+        <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20 rounded-md bg-white shadow-xs">
+          <div class="py-1">
+            <% @media_folders.each do |media_folder| %>
+              <%= form_with model: @image, url: helpers.spina.admin_image_path(@image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
+                <%= f.hidden_field :media_folder_id, value: media_folder.id %>
+                <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
+                  <div class="text-gray-700"><%= media_folder.name %></div>
+                </button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="text-gray-500 text-sm whitespace-nowrap">
+  <div class="text-gray-500 text-sm whitespace-nowrap flex items-center">
     <%= helpers.number_to_human_size @image.file.byte_size %>
-    <div class="uppercase inline-block ml-2 py-1 rounded-md bg-gray-400 text-white font-semibold px-2 text-xs"><%= @image.file.content_type.split("/").last %></div>
+    <div class="uppercase ml-2 h-5 flex items-center rounded-md <%= content_type_color %> text-white font-semibold px-1 text-xs">
+      <%= content_type %>
+    </div>
   </div>
   <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l @image.created_at, format: :short %></div>
   <div class="">

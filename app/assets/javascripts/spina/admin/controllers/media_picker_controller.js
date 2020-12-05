@@ -121,7 +121,7 @@
     }
 
     addImage(id, signed_blob_id, filename, url) {
-      this.selectedImagesTarget.insertAdjacentHTML("beforeend", `<img src="${url}" data-image-id="${id}" data-signed-blob-id="${signed_blob_id}" data-filename="${filename}" data-target="media-picker.selectedImage" />`)
+      this.selectedImagesTarget.insertAdjacentHTML("beforeend", `<img src="${url}" data-image-id="${id}" data-signed-blob-id="${signed_blob_id}" data-filename="${filename}" data-media-picker-target="selectedImage" />`)
     }
 
     removeImage(id) {
@@ -148,15 +148,15 @@
     }
     
     get imageIdInput() {
-      return this.hiddenInputs.querySelector("input[data-target='image-form.imageId']")
+      return this.hiddenInputs.querySelector("input[data-image-form-target='imageId']")
     }
 
     get signedBlobIdInput() {
-      return this.hiddenInputs.querySelector("input[data-target='image-form.signedBlobId']")
+      return this.hiddenInputs.querySelector("input[data-image-form-target='signedBlobId']")
     }
 
     get filenameInput() {
-      return this.hiddenInputs.querySelector("input[data-target='image-form.filename']")
+      return this.hiddenInputs.querySelector("input[data-image-form-target='filename']")
     }
 
     get placeholder() {

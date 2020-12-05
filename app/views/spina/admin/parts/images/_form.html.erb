@@ -3,11 +3,11 @@
     <%= f.object.title %>
   </label>
 
-  <%= f.hidden_field :signed_blob_id, placeholder: "Signed blob ID", data: {target: "media-picker.signedBlobId"} %>
-  <%= f.hidden_field :filename, placeholder: "Filename", data: {target: "media-picker.filename"} %>
-  <%= f.hidden_field :image_id, placeholder: "Image ID", data: {target: "media-picker.imageId"} %>
+  <%= f.hidden_field :signed_blob_id, placeholder: "Signed blob ID", data: {media_picker_target: "signedBlobId"} %>
+  <%= f.hidden_field :filename, placeholder: "Filename", data: {media_picker_target: "filename"} %>
+  <%= f.hidden_field :image_id, placeholder: "Image ID", data: {media_picker_target: "imageId"} %>
 
-  <button class="absolute mt-3 ml-2 z-10 cursor-pointer flex items-center h-9 px-2 rounded-md bg-gray-700 bg-opacity-50 border-gray-300 active:shadow-inner text-gray-200 hover:text-white text-sm font-medium leading-none leading-none shadow-sm" data-action="media-picker#removeImage" data-target="media-picker.clearButton" type="button">
+  <button class="absolute mt-3 ml-2 z-10 cursor-pointer flex items-center h-9 px-2 rounded-md bg-gray-700 bg-opacity-50 border-gray-300 active:shadow-inner text-gray-200 hover:text-white text-sm font-medium leading-none leading-none shadow-sm" data-action="media-picker#removeImage" data-media-picker-target="clearButton" type="button">
     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
     </svg>
@@ -21,12 +21,12 @@
       <div class="text-gray-400 font-medium text-sm">Choose image</div>
     </div>
 
-    <div class="border absolute inset-0 <%= f.object.ratio_class %> h-36 bg-white rounded-lg shadow-md overflow-hidden" data-target="media-picker.thumbnail">
+    <div class="border absolute inset-0 <%= f.object.ratio_class %> h-36 bg-white rounded-lg shadow-md overflow-hidden" data-media-picker-target="thumbnail">
       <% if f.object.signed_blob_id.present? && f.object.spina_image.present? %>
         <%= image_tag thumbnail_url(f.object.spina_image), class: 'object-cover h-36 w-full' %>
       <% end %>
     </div>
   </button>
 
-  <%= f.text_field :alt, placeholder: "Alt text", class: "h-10 px-3 italic bg-transparent w-full max-w-xs text-sm block border-0 focus:ring-0", data: {target: "media-picker.alt"} %>
+  <%= f.text_field :alt, placeholder: "Alt text", class: "h-10 px-3 italic bg-transparent w-full max-w-xs text-sm block border-0 focus:ring-0", data: {media_picker_target: "alt"} %>
 </div>

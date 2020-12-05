@@ -67,8 +67,8 @@ module.exports = function() {
           </button>
         </div>
         
-        <div class="absolute hidden w-full" data-target="trix.imageFields">
-          <input type="text" class="h-8 px-2 mt-1 border-0 ring-0 focus:ring-0 w-full text-sm italic" placeholder="Alt text" data-target="trix.altField" data-action="keyup->trix#setAltText keydown->trix#preventSubmission" />
+        <div class="absolute hidden w-full" data-trix-target="imageFields">
+          <input type="text" class="h-8 px-2 mt-1 border-0 ring-0 focus:ring-0 w-full text-sm italic" placeholder="Alt text" data-trix-target="altField" data-action="keyup->trix#setAltText keydown->trix#preventSubmission" />
         </div>
 
         <div data-trix-dialogs>

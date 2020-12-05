@@ -52,6 +52,7 @@ Spina::Engine.routes.draw do
         post 'insert_collection/:page_part_id' => 'attachments#insert_collection', as: :insert_collection
       end
     end
+    resources :rename_files
 
     resources :media_folders
 

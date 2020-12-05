@@ -38,9 +38,9 @@ export default class extends Controller {
     range.selectNodeContents(document.body)
     let fragment = range.createContextualFragment(html)
     
-    fragment.querySelector(`[data-target="media-picker.signedBlobId"]`).value = event.detail.signedBlobId
-    fragment.querySelector(`[data-target="media-picker.filename"]`).value = event.detail.filename
-    fragment.querySelector(`[data-target="media-picker.imageId"]`).value = event.detail.imageId
+    fragment.querySelector(`[data-media-picker-target="signedBlobId"]`).value = event.detail.signedBlobId
+    fragment.querySelector(`[data-media-picker-target="filename"]`).value = event.detail.filename
+    fragment.querySelector(`[data-media-picker-target="imageId"]`).value = event.detail.imageId
     fragment.querySelector('img').src = event.detail.thumbnail
 
     // Insert fields
