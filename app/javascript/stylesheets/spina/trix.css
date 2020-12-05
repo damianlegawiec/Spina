@@ -19,13 +19,13 @@ trix-editor {
   }
 
   figure.attachment {
+    max-height: 150px;
+    max-width: 200px;
     @apply m-0 inline-block;
   }
 
   figure.attachment img {
-    height: 150px;
-    max-width: 200px;
-    @apply m-0 rounded-md;
+    @apply m-0 rounded-md object-contain;
   }
   
   figure.attachment [data-label]:after {
