@@ -31,13 +31,12 @@
         Add folder
       <% end %>
       <%= form_with model: [:admin, Spina::Image.new], data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
-        <div class="relative overflow-hidden">
-          <button type="button" class="btn btn-default" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
-            <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
-            <%=t 'spina.images.upload' %>
-          </button>
-          <%= f.file_field :files, multiple: true, accept: "image/*", class: 'absolute top-0 left-0 block cursor-pointer bottom-0 appearance-none h-full -ml-5', style: "font-size: 0; width: 150%", data: {action: "file-manager#startUpload"} %>
-        </div>
+        <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
+        
+        <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
+          <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+          <%=t 'spina.images.upload' %>
+        </button>
       <% end %>
     </div>
   </div>
