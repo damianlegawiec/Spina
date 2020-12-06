@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   get modalHTML() {
-    return `<div class="modal" data-controller="modal">
+    return `<div class="modal" data-controller="modal shortcuts" data-action="keyup@document->shortcuts#confirmClick keyup@document->modal#escClose">
       <div class="modal-window animate__animated animate__zoomIn animate__fadeIn animate__faster p-5 max-w-xs">
         <div class="text-center">
           ${this.message}
@@ -23,7 +23,7 @@ export default class extends Controller {
         </div>
         
         <div class="flex flex-row-reverse mt-3">
-          <a class="btn btn-red mt-6 md:mt-0 md:w-1/2 md:ml-3" href="${this.href}" data-method="${this.method}">
+          <a class="btn btn-red mt-6 md:mt-0 md:w-1/2 md:ml-3" href="${this.href}" data-shortcuts-target="confirm" data-method="${this.method}">
             Delete
           </a>
           <button class="btn btn-gray mt-2 md:mt-0 md:w-1/2" data-action="modal#close">Cancel</button>

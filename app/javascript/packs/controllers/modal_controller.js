@@ -10,6 +10,10 @@ export default class extends Controller {
   close() {
     this.element.parentElement.removeChild(this.element)
   }
+  
+  escClose(event) {
+    if (event.key === 'Escape') this.close()
+  }
 
   renderBackground() {
     let bgHTML = `<button type="button" class="w-full h-full fixed inset-0 bg-gray-700 bg-opacity-25 animate__animated animate__fadeIn animate__faster" tabindex="-1" data-action="modal#close"></button>`
