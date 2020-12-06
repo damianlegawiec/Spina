@@ -47,6 +47,14 @@ module Spina::Admin
 				content_tag(:svg, heroicons_small.merge(class: css)) do
 					'<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />'.html_safe
 				end
+			when 'photograph'
+				content_tag(:svg, heroicons_small.merge(class: css)) do
+					'<path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />'.html_safe
+				end
+			when 'document'
+				content_tag(:svg, heroicons_small.merge(class: css)) do
+					'<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />'.html_safe
+				end
 			end
 		end
 		
