@@ -1,10 +1,10 @@
 <%= render(Spina::ModalComponent.new(size: "max-w-6xl h-full")) do |component| %>
   <% component.with(:body) do %>
-    <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>">
+    <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal file-manager" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>">
       <div class="flex flex-col md:flex-row h-full w-full">
 
         <div class="flex-1 bg-white flex flex-col max-h-full relative overflow-hidden">
-          <div data-infinite-scroll-target="container" data-controller="selectable" class="p-6 h-full w-full overflow-scroll grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-min">
+          <div data-infinite-scroll-target="container" data-file-manager-target="images" data-controller="selectable" class="p-6 h-full w-full overflow-scroll grid grid-cols-2 md:grid-cols-4 gap-6 auto-rows-min">
             <!-- Buttons here -->
           </div>
         </div>
@@ -39,10 +39,14 @@
               </div>
             <% end %>
             
-            <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center">
-              <%= helpers.icon("upload", css: "w-5 h-5 text-spina mr-2") %>
-              Upload from device...
-            </button>
+            <%= form_with model: Spina::Image.new, url: helpers.spina.admin_media_picker_images_path, data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+              <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
+              
+              <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
+                <%= helpers.icon("upload", css: "w-5 h-5 text-spina mr-2") %>
+                Upload from device...
+              </button>
+            <% end %>
           </div>
           
           <button type="button" class="btn btn-primary w-full mt-3" data-action="media-picker-modal#confirm modal#close">
