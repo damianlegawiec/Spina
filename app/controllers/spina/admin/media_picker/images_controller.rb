@@ -13,7 +13,6 @@ module Spina
         # 1. We add accept="image/*" to the image form
         # 2. We destroy the entire record if the uploaded file is not an image
         def create
-          sleep 1
           @images = params[:image][:files].map do |file|
             # Create the image and attach the file
             image = Image.create(media_folder_id: params[:media_library])
