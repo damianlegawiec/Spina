@@ -37,6 +37,7 @@
         Add folder
       <% end %>
       <%= form_with model: [:admin, Spina::Image.new], data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+        <%= f.hidden_field :media_folder_id, value: @media_folder&.id %>
         <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
         
         <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
@@ -53,12 +54,10 @@
       <div class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
         <%= link_to spina.admin_images_path, class: 'flex h-full items-center flex-1' do %>
           <div class="w-8 mr-4 flex justify-center">
-            <svg class="w-7 h-7 text-spina" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg>
+            <%= icon("collection", css: "w-7 h-7 text-spina") %>
           </div>
           <div class="font-medium text-spina flex-1 text-sm">
-            Back to root
+            Back to all
           </div>
         <% end %>
       </div>
