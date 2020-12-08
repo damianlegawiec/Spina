@@ -1,6 +1,7 @@
 module Spina
   module Admin
     class ImagesController < AdminController
+      before_action :set_media_folder
       before_action :set_breadcrumbs
 
       layout "spina/admin/media_library"
@@ -8,7 +9,6 @@ module Spina
       def index
         add_breadcrumb I18n.t('spina.website.images'), admin_images_path
         @media_folders = MediaFolder.order(:name)
-        @images = Image.sorted.where(media_folder_id: nil).with_attached_file.page(params[:page]).per(25)
       end
 
       # There's no file validation yet in ActiveStorage
@@ -26,7 +26,7 @@ module Spina
 
           image
         end.compact
-        render FileManager::ImageComponent.with_collection(@images)
+        render Spina::FileManager::ImageComponent.with_collection(@images)
       end
       
       def update
@@ -37,7 +37,7 @@ module Spina
           filename = "#{params[:filename]}.#{extension}"
           @image.file.blob.update(filename: filename)
         end
-        render FileManager::ImageComponent.new(image: @image)
+        render Spina::FileManager::ImageComponent.new(image: @image)
       end
 
       def destroy
@@ -46,16 +46,19 @@ module Spina
         redirect_back fallback_location: spina.admin_images_url
       end
 
-      def add_to_media_folder
-        @media_folder = MediaFolder.find(params[:id])
-        @media_folder.images << Image.find(params[:image_id])
-        render json: @media_folder
-      end
-
       private
 
         def set_breadcrumbs
           add_breadcrumb I18n.t('spina.website.media_library'), admin_media_library_path
+          if @media_folder.present?
+            add_breadcrumb @media_folder.name
+          end
+        end
+        
+        def set_media_folder
+          if params[:media_folder_id].present?
+            @media_folder = MediaFolder.find(params[:media_folder_id])
+          end
         end
         
         def image_params

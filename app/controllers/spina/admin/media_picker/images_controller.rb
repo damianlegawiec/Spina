@@ -4,7 +4,7 @@ module Spina
       class ImagesController < AdminController
   
         def index
-          @images = Spina::Image.order(created_at: :desc).page(params[:page]).per(25)
+          @images = Spina::Image.sorted.with_attached_file.page(params[:page]).per(25)
           render layout: false
         end
         

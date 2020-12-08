@@ -54,14 +54,15 @@ Spina::Engine.routes.draw do
     end
     resources :rename_files
 
-    resources :media_folders
-
-    resources :images do
-      collection do
-        get 'folder/:id' => 'images#media_folder', as: :media_folder
-        put 'folder/:id' => 'images#add_to_media_folder', as: :add_to_media_folder
-      end
+    resources :media_folders do
+      resources :images
     end
+    
+    namespace :file_manager do
+      resources :images
+    end
+
+    resources :images
 
     namespace :media_picker do
       resources :images
