@@ -36,7 +36,7 @@
         <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
         Add folder
       <% end %>
-      <%= form_with model: [:admin, Spina::Image.new], data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+      <%= form_with model: [:admin, Spina::Image.new], url: spina.admin_images_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
         <%= f.hidden_field :media_folder_id, value: @media_folder&.id %>
         <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
         

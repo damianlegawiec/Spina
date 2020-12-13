@@ -26,7 +26,7 @@ module Spina
 
           image
         end.compact
-        render Spina::FileManager::ImageComponent.with_collection(@images)
+        render inline: view_context.render(Spina::FileManager::ImageComponent.with_collection(@images))
       end
       
       def update

@@ -14,8 +14,10 @@ export default class extends Controller {
   }
 
   initialLoad() {
-    this.containerTarget.innerHTML = ''
-    this.load(this.element.dataset.infiniteScrollPath)
+    if (this.element.dataset.infiniteScrollPath !== undefined) {
+      this.containerTarget.innerHTML = ''
+      this.load(this.element.dataset.infiniteScrollPath) 
+    }
   }
 
   changePath(event) {
@@ -25,9 +27,8 @@ export default class extends Controller {
 
   loadNextPage() {
     if (this.hasButtonTarget) {
-      let path = this.buttonTarget.dataset.path
       this.containerTarget.removeChild(this.buttonTarget)
-      this.load(path)
+      if (this.path !== undefined) this.load(this.path)
     } else {
       this.disconnect()
     }

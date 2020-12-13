@@ -28,27 +28,27 @@ namespace :spina do
   end
   
   namespace :webpacker do
-  desc "Install deps with yarn"
-  task :yarn_install do
-    Dir.chdir(File.join(__dir__, "../..")) do
-      system "yarn install --no-progress --production"
+    desc "Install deps with yarn"
+    task :yarn_install do
+      Dir.chdir(File.join(__dir__, "../..")) do
+        system "yarn install --no-progress --production"
+      end
     end
-  end
-
-  desc "Compile JavaScript packs using webpack for production with digests"
-  task compile: [:yarn_install, :environment] do
-    Webpacker.with_node_env("production") do
-      ensure_log_goes_to_stdout do
-        if Spina.webpacker.commands.compile
-          # Successful compilation!
-        else
-          # Failed compilation
-          exit!
+  
+    desc "Compile JavaScript packs using webpack for production with digests"
+    task compile: [:yarn_install, :environment] do
+      Webpacker.with_node_env("production") do
+        ensure_log_goes_to_stdout do
+          if Spina.webpacker.commands.compile
+            # Successful compilation!
+          else
+            # Failed compilation
+            exit!
+          end
         end
       end
     end
   end
-end
 
 end
 

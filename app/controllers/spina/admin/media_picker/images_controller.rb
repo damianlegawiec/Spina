@@ -23,7 +23,8 @@ module Spina
   
             image
           end.compact
-          render Spina::MediaPicker::ImageComponent.with_collection(@images)
+          
+          render inline: view_context.render(Spina::MediaPicker::ImageComponent.with_collection(@images))
         end
   
       end

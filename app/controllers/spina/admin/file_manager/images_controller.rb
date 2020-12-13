@@ -4,10 +4,9 @@ module Spina
       class ImagesController < AdminController
         before_action :set_media_folder
         
-        layout false
-        
         def index
           @images = Image.sorted.where(media_folder: @media_folder).with_attached_file.page(params[:page]).per(25)
+          render layout: false
         end
         
         private

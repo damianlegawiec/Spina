@@ -8,7 +8,7 @@ export default class extends Controller {
     if (this.hasThumbnailTarget && this.thumbnailTarget.children.length == 0) this.hideThumbnail()
   }
   
-  openModal() {    
+  openModal() {
     fetch(this.element.dataset.mediaPickerPath)
       .then(response => response.text())
       .then(function(modal) {
