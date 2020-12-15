@@ -79,9 +79,9 @@ module Spina
 
       def add_index_breadcrumb
         if @page.resource.present?
-          add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource)
+          add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource), class: 'text-gray-400'
         else
-          add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path
+          add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path, class: 'text-gray-400'
         end
       end
 

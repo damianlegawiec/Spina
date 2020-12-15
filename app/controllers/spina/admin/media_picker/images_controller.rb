@@ -2,10 +2,10 @@ module Spina
   module Admin
     module MediaPicker
       class ImagesController < AdminController
+        layout false
   
         def index
           @images = Spina::Image.sorted.with_attached_file.page(params[:page]).per(25)
-          render layout: false
         end
         
         # There's no file validation yet in ActiveStorage
@@ -24,7 +24,7 @@ module Spina
             image
           end.compact
           
-          render inline: view_context.render(Spina::MediaPicker::ImageComponent.with_collection(@images))
+          render Spina::MediaPicker::ImageComponent.with_collection(@images)
         end
   
       end
