@@ -1,1 +1,53 @@
-<%= render Spina::HeaderComponent.new %>
+<%= form_with model: current_account, url: spina.admin_account_path do |f| %>
+
+  <%= render Spina::HeaderComponent.new do |header| %>
+    <%= header.with(:actions) do %>
+      <%= button_tag "Save account", type: :submit, class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+  
+  <div class="p-4 md:p-8">
+    <div class="max-w-5xl">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+        <div class="col-span-1">
+          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+            <%= Spina::Account.human_attribute_name(:name) %>
+          </label>
+          <div class="text-gray-400 text-sm">Your website name</div>
+        </div>
+    
+        <div class="col-span-2">
+          <%= f.text_field :name, placeholder: Spina::Account.human_attribute_name(:name), class: "form-input block w-full sm:text-sm sm:leading-5" %>
+        </div>
+        
+        <div class="col-span-1 mt-6 md:mt-0">
+          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+            <%= Spina::Account.human_attribute_name(:address) %>
+          </label>
+          <div class="text-gray-400 text-sm">Optional</div>
+        </div>
+    
+        <div class="col-span-2">
+          <%= f.text_field :address, placeholder: Spina::Account.human_attribute_name(:address), class: "form-input block w-full sm:text-sm sm:leading-5" %>
+          <%= f.text_field :postal_code, placeholder: Spina::Account.human_attribute_name(:postal_code), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
+          <%= f.text_field :city, placeholder: Spina::Account.human_attribute_name(:city), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
+        </div>
+        
+        <div class="col-span-1 mt-6 md:mt-0">
+          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+            Contact details
+          </label>
+          <div class="text-gray-400 text-sm">Email and phone</div>
+        </div>
+    
+        <div class="col-span-2">
+          <%= f.text_field :email, placeholder: Spina::Account.human_attribute_name(:email), class: "form-input block w-full sm:text-sm sm:leading-5" %>
+          <%= f.text_field :phone, placeholder: Spina::Account.human_attribute_name(:phone), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<% end %>

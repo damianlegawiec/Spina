@@ -23,7 +23,8 @@
         <% end %>
 
         <% nav.with(:links) do %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.preferences.general'), helpers.spina.edit_admin_account_path, active: controller_name == "accounts") %>
+          <%= render Spina::Menu::LinkComponent.new("Website settings", helpers.spina.edit_admin_account_path, active: controller_name == "accounts") %>
+          <%= render Spina::Menu::LinkComponent.new("Users", helpers.spina.admin_users_path, active: controller_name == "users") %>
         <% end %>
       <% end %>
     </ul>
