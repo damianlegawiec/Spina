@@ -12,9 +12,7 @@ export default class extends Controller {
     if (window.innerWidth > 768) this.toggleNavigation(this.activeNavigation)
     
     // Enable transitions after 100ms
-    setTimeout(function() {
-      this.enableTransitions()
-    }.bind(this), 100)
+    setTimeout(this.enableTransitions.bind(this), 100)
   }
   
   enableTransitions() {
