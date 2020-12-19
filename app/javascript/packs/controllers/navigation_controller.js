@@ -10,13 +10,21 @@ export default class extends Controller {
 
     // Activate navigation for active item (only for bigger displays)
     if (window.innerWidth > 768) this.toggleNavigation(this.activeNavigation)
+    
+    // Enable transitions after 100ms
+    setTimeout(function() {
+      this.enableTransitions()
+    }.bind(this), 100)
   }
   
   enableTransitions() {
-    this.primaryTarget.classList.add("duration-200")
+    this.switchClass(this.primaryTarget, "transition-none", "transition-colors")
     this.navigationTargets.forEach(function(navigation) {
-      navigation.querySelector("ul").classList.add("duration-300")
-    })
+      this.switchClass(navigation.querySelector("ul"), "transition-none", "transition-transform")
+    }.bind(this))
+    this.buttonTargets.forEach(function(button) {
+      this.switchClass(button, "transition-none", "transition-opacity")
+    }.bind(this))
   }
 
   toggleNavigation(navigation) {
