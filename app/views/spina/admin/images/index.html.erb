@@ -2,9 +2,11 @@
   
   <%= render Spina::HeaderComponent.new do |header| %>
     <% header.with(:actions) do %>
-      <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default", data: {controller: "remote-modal"} do %>
-        <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
-        Add folder
+      <% if @media_folder.blank? %>
+        <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default", data: {controller: "remote-modal"} do %>
+          <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
+          Add folder
+        <% end %>
       <% end %>
       
       <%= form_with model: [:admin, Spina::Image.new], url: spina.admin_images_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
@@ -63,7 +65,7 @@
       <% end %>
     <% end %>
     
-    <div data-file-manager-target="images" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_images_path(page: 1, media_folder_id: @media_folder&.id) %>" data-infinite-scroll-target="container">
+    <div data-file-manager-target="container" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_images_path(page: 1, media_folder_id: @media_folder&.id) %>" data-infinite-scroll-target="container">
       <!-- Images -->
     </div>
   

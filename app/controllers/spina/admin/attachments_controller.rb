@@ -15,6 +15,7 @@ module Spina
           attachment.file.attach(file)
           attachment
         end
+        render Spina::FileManager::AttachmentComponent.with_collection(@attachments), layout: false
       end
       
       def update

@@ -1,29 +1,31 @@
-<%= render Spina::HeaderComponent.new do |header| %>
-  <% header.with(:actions) do %>
-    <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
-      <%= f.file_field :files, multiple: true, class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
-      
-      <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
-        <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
-        <%=t 'spina.attachments.upload' %>
-      </button>
+<div data-controller="file-manager">
+  <%= render Spina::HeaderComponent.new do |header| %>
+    <% header.with(:actions) do %>
+      <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+        <%= f.file_field :files, multiple: true, class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
+        
+        <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
+          <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+          <%=t 'spina.attachments.upload' %>
+        </button>
+      <% end %>
+    <% end %>
+    
+    <% header.with(:navigation) do %>
+      <nav class="-mb-3 mt-4">
+        <ul class="inline-flex w-auto rounded-md bg-white">
+          <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h\-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path) %>
+          <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path, active: true) %>
+        </ul>
+      </nav>
     <% end %>
   <% end %>
   
-  <% header.with(:navigation) do %>
-    <nav class="-mb-3 mt-4">
-      <ul class="inline-flex w-auto rounded-md bg-white">
-        <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h\-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path) %>
-        <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path, active: true) %>
-      </ul>
-    </nav>
-  <% end %>
-<% end %>
-
-<div class="my-8 border-t border-gray-200">
-  
-  <div data-file-manager-target="attachments" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
-    <!-- Attachments -->
+  <div class="my-8 border-t border-gray-200">
+    
+    <div data-file-manager-target="container" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
+      <!-- Attachments -->
+    </div>
+    
   </div>
-  
 </div>

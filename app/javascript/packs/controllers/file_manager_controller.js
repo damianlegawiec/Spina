@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "mediaFolder", "images", "uploadForm", "fileField", "uploadButton" ]
+  static targets = [ "mediaFolder", "container", "uploadForm", "fileField", "uploadButton" ]
   
   startUpload() {
     this.uploadButtonTarget.button.loading() // Start loading
@@ -11,7 +11,7 @@ export default class extends Controller {
   
   uploaded(event) {
     const [data, status, xhr] = event.detail
-    this.imagesTarget.insertAdjacentHTML("afterbegin", xhr.response)
+    this.containerTarget.insertAdjacentHTML("afterbegin", xhr.response)
     this.uploadButtonTarget.button.doneLoading() // Done loading
   }
   
