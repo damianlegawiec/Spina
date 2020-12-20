@@ -11,6 +11,10 @@ module Spina
         @page.persisted? && @page.draft?
       end
       
+      def just_published?
+        @page.saved_change_to_draft?
+      end
+      
     end
   end
 end

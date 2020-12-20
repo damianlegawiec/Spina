@@ -47,7 +47,6 @@ module Spina
       def update
         Mobility.locale = @locale
         if @page.update(page_params)
-          @page.touch
           redirect_to spina.edit_admin_page_url(@page, params: {locale: @locale}), flash: {success: t('spina.pages.saved')}
         else
           render partial: 'error', status: :unprocessable_entity
