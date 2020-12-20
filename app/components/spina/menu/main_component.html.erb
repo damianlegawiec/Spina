@@ -14,8 +14,12 @@
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name == "pages") %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.layout'), helpers.spina.edit_admin_layout_path, active: controller_name == "layout") %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.media_library'), helpers.spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments))) %>
+          
+          <%= render Spina::Hooks::HookComponent.new(partial: "website_secondary_navigation") %>
         <% end %>
       <% end %>
+      
+      <%= render Spina::Hooks::HookComponent.new(partial: "primary_navigation") %>
 
       <%= render Spina::Menu::ListComponent.new do |nav| %>
         <% nav.with(:icon) do %>
@@ -25,6 +29,8 @@
         <% nav.with(:links) do %>
           <%= render Spina::Menu::LinkComponent.new("Website settings", helpers.spina.edit_admin_account_path, active: controller_name == "accounts") %>
           <%= render Spina::Menu::LinkComponent.new("Users", helpers.spina.admin_users_path, active: controller_name == "users") %>
+          
+          <%= render Spina::Hooks::HookComponent.new(partial: "settings_secondary_navigation") %>
         <% end %>
       <% end %>
     </ul>
