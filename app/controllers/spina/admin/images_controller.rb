@@ -7,7 +7,6 @@ module Spina
       layout "spina/admin/media_library"
 
       def index
-        add_breadcrumb I18n.t('spina.website.images'), admin_images_path
         @media_folders = MediaFolder.order(:name)
       end
 
@@ -49,9 +48,11 @@ module Spina
       private
 
         def set_breadcrumbs
-          add_breadcrumb I18n.t('spina.website.media_library'), admin_media_library_path
           if @media_folder.present?
+            add_breadcrumb I18n.t('spina.website.media_library'), admin_images_path, class: 'text-gray-400'
             add_breadcrumb @media_folder.name
+          else
+            add_breadcrumb I18n.t('spina.website.media_library')
           end
         end
         

@@ -6,7 +6,6 @@ module Spina
       layout "spina/admin/media_library"
 
       def index
-        add_breadcrumb I18n.t('spina.website.documents'), spina.admin_attachments_path
         @attachments = Attachment.sorted
       end
 
@@ -16,6 +15,16 @@ module Spina
           attachment.file.attach(file)
           attachment
         end
+      end
+      
+      def update
+        @attachment = Attachment.find(params[:id])
+        if params[:filename].present?
+          extension = @attachment.file.filename.extension
+          filename = "#{params[:filename]}.#{extension}"
+          @attachment.file.blob.update(filename: filename)
+        end
+        render Spina::FileManager::AttachmentComponent.new(attachment: @attachment)
       end
 
       def destroy
@@ -27,7 +36,7 @@ module Spina
       private
 
       def set_breadcrumbs
-        add_breadcrumb I18n.t('spina.website.media_library'), spina.admin_media_library_path
+        add_breadcrumb I18n.t('spina.website.media_library')
       end
 
       def attachment_params

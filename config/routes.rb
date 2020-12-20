@@ -60,6 +60,7 @@ Spina::Engine.routes.draw do
     
     namespace :file_manager do
       resources :images
+      resources :attachments
     end
 
     resources :images
