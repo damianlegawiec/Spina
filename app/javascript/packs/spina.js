@@ -1,13 +1,10 @@
-// Rails and turbolinks
-require("@rails/ujs").start()
-require("turbolinks").start()
-
 // Trix
 window.Trix = require("trix")
 require("./config/trix")
 
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
+import { Turbo, cable } from "@hotwired/turbo-rails"
 
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)

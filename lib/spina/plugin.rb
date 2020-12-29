@@ -8,7 +8,7 @@ module Spina
       plugin_name = namespace
 
       klass = Class.new(::Spina::Setting) do
-        jsonb_accessor :preferences, class_settings
+        # jsonb_accessor :preferences, class_settings
 
         default_scope { where(plugin: "#{plugin_name}") }
       end

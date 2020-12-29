@@ -4,7 +4,7 @@
   </label>
 
   <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full max-w-3xl" %>
-
-  <div data-controller="remote-fetch" data-remote-fetch-url-value="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
-  </div>
+  
+  <turbo-frame id="page_content" src="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
+  </turbo-frame>
 </div>

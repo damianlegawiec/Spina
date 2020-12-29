@@ -1,12 +1,12 @@
 import { Controller } from "stimulus"
-import Rails from "@rails/ujs"
+// import Rails from "@rails/ujs"
 
 export default class extends Controller {
   static targets = [ "mediaFolder", "container", "uploadForm", "fileField", "uploadButton" ]
   
   startUpload() {
     this.uploadButtonTarget.button.loading() // Start loading
-    Rails.fire(this.uploadFormTarget, 'submit')
+    // Rails.fire(this.uploadFormTarget, 'submit')
   }
   
   uploaded(event) {

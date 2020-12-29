@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib,vendor}/**/*'] + ['Rakefile', 'README.md']
   # s.test_files = Dir['test/**/*']
 
-  s.add_dependency 'rails', '>= 5.2'
+  s.add_dependency 'rails', '>= 6.1'
   s.add_dependency 'pg'
   s.add_dependency 'bcrypt'
   s.add_dependency 'haml-rails'
@@ -27,12 +27,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'image_processing'  
   s.add_dependency 'ancestry'
   s.add_dependency 'breadcrumbs_on_rails'
-  s.add_dependency 'turbolinks', '~> 5'
   s.add_dependency 'kaminari'
   s.add_dependency 'mobility', '>= 1.0.0'
   s.add_dependency 'rack-rewrite', '>= 1.5.0'
-  s.add_dependency 'jsonb_accessor', '>= 1.0.0'
   s.add_dependency 'attr_json'
   s.add_dependency 'webpacker'
   s.add_dependency 'view_component'
+  s.add_dependency 'turbo-rails'
 end
