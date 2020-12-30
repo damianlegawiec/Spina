@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "button", "container" ]
+  static get targets() {
+    return [ "button", "container" ]
+  }
 
   connect() {
     this.element['infiniteScroll'] = this

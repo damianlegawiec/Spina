@@ -37,7 +37,9 @@ module Spina
       end
 
       def edit_content
-        render Spina::Pages::ContentComponent.new(@page, locale: @locale), layout: false
+        @parts = current_theme.view_templates.find do |view_template|
+          view_template[:name].to_s == @page.view_template.to_s
+        end&.dig(:parts) || []
       end
 
       def edit_template

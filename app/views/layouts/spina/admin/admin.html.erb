@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="turbolinks-cache-control" content="no-preview" />
     <%= csrf_meta_tags %>
     
     <link rel="icon" href="<%= image_url('spina/favicon.png') %>" />
     
     <title>Spina CMS</title>
     
+    <%= yield(:head) %>
+    <%= turbo_include_tags %>
+    <%= spina_include_tags %>
+    
+    <!-- Trix & Tailwind -->
     <%= javascript_pack_tag 'spina', data: {turbolinks_track: true} %>
-    <%= stylesheet_pack_tag 'spina', data: {turbolinks_track: true} %>
     
     <%= render Spina::Hooks::HookComponent.new(partial: "head") %>
   </head>

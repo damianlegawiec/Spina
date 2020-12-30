@@ -2,7 +2,9 @@ import { Controller } from "stimulus"
 import Sortable from "sortablejs"
 
 export default class extends Controller {
-  static targets = [ "collection", "fields" ]
+  static get targets() {
+    return [ "collection", "fields" ]
+  }
   
   connect() {
     this.sortable = Sortable.create(this.collectionTarget)

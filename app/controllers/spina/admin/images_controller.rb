@@ -25,7 +25,11 @@ module Spina
 
           image
         end.compact
-        render Spina::FileManager::ImageComponent.with_collection(@images), layout: false
+        
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.prepend(:file_list, partial: "image", collection: @images)}
+          format.html { redirect_to spina.admin_images_url }
+        end
       end
       
       def update

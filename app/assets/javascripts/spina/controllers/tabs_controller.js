@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "pane", "button" ]
+  static get targets() {
+    return ["pane", "button"]
+  }
 
   connect() {
     this.element[this.identifier] = this

@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "knob", "container", "checkbox" ]
+  static get targets() {
+    return [ "knob", "container", "checkbox" ]
+  }
 
   connect() {
     this.renderKnob()

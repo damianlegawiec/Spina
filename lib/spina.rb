@@ -1,3 +1,4 @@
+require 'spina/importmap_helper'
 require 'spina/engine'
 require 'spina/railtie'
 require 'spina/plugin'

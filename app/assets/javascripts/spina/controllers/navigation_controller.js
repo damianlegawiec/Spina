@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "primary", "button", "navigation" ]
+  static get targets() {
+    return ["primary", "button", "navigation"]
+  }
 
   connect() {
     // Activate button for active item

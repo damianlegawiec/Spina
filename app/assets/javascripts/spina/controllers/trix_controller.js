@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "editor", "imageFields", "altField" ]
+  static get targets() {
+    return [ "editor", "imageFields", "altField" ]
+  }
   
   connect() {
     this.editorTarget.addEventListener("trix-selection-change", function(event) {

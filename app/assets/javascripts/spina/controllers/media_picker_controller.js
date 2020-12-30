@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "filename", "signedBlobId", "imageId", "alt", "thumbnail", "clearButton", "trix" ]
+  static get targets() {
+    return [ "filename", "signedBlobId", "imageId", "alt", "thumbnail", "clearButton", "trix" ]
+  }
 
   connect() {
     // Hide thumbnail if there's no image

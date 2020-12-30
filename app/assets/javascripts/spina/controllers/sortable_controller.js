@@ -11,15 +11,15 @@ export default class extends Controller {
   }
 
   saveSort(event) {
-    fetch(this.sortPath, {
-      method: "POST",
-      credentials: "same-origin",
-      headers: {
-        'X-CSRF-Token': Rails.csrfToken(),
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ids: this.orderedIds})
-    })
+    // fetch(this.sortPath, {
+    //   method: "POST",
+    //   credentials: "same-origin",
+    //   headers: {
+    //     'X-CSRF-Token': Rails.csrfToken(),
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ids: this.orderedIds})
+    // })
   }
 
   get orderedIds() {

@@ -1,7 +1,9 @@
 import { Controller } from  "stimulus"
 
 export default class extends Controller {
-  static targets = ["filename", "form", "input", "actions"]
+  static get targets() {
+    return ["filename", "form", "input", "actions"]
+  }
   
   rename() {
     this.filenameTarget.classList.add("hidden")

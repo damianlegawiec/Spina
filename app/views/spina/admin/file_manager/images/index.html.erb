@@ -1,4 +1,4 @@
-<%= render Spina::FileManager::ImageComponent.with_collection(@images) %>
+<%= render partial: "spina/admin/images/image", collection: @images %>
 
 <% unless @images.last_page? %>
   <button type="button" data-infinite-scroll-target="button" data-action="infinite-scroll#loadNextPage" data-path="<%= path_to_next_page(@images) %>">Load next page</button>

@@ -20,6 +20,26 @@ module Spina
         "https://placehold.it/100x100.png"
       end
     end
+    
+    def content_type_color(image)
+      case content_type(image)
+      when "png"
+        "bg-green-300"
+      when "heic"
+        "bg-blue-200"
+      when "jpg", "jpeg"
+        "bg-blue-400"
+      when "gif"
+      when "svg"
+        "bg-yellow-400"
+      else
+        "bg-gray-400"
+      end
+    end
+    
+    def content_type(image)
+      image.file.content_type.split("/").last
+    end
 
     def thumbnail_url(image)
       return "" if image.nil?

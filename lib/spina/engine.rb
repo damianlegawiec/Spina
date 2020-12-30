@@ -2,6 +2,7 @@ require 'haml-rails'
 require 'sass-rails'
 require 'coffee-rails'
 require 'jquery-rails'
+require 'hotwire-rails'
 require 'mini_magick'
 require 'ancestry'
 require 'breadcrumbs_on_rails'
@@ -13,7 +14,6 @@ require 'view_component/engine'
 
 module Spina
   class Engine < ::Rails::Engine
-
     isolate_namespace Spina
 
     config.autoload_paths += %W( #{config.root}/lib )
@@ -38,6 +38,12 @@ module Spina
         Spina::Parts::Option,
         Spina::Parts::Attachment
       )
+    end
+
+    initializer "spina.helpers" do
+      Rails.application.config.assets.configure do |env|
+        env.context_class.class_eval { include Spina::ImportmapHelper }
+      end
     end
 
     initializer "webpacker.proxy" do |app|

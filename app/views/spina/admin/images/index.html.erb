@@ -1,73 +1,73 @@
-<div data-controller="file-manager">
-  
-  <%= render Spina::HeaderComponent.new do |header| %>
-    <% header.with(:actions) do %>
-      <% if @media_folder.blank? %>
-        <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default", data: {controller: "remote-modal"} do %>
-          <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
-          Add folder
-        <% end %>
-      <% end %>
-      
-      <%= form_with model: [:admin, Spina::Image.new], url: spina.admin_images_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
-        <%= f.hidden_field :media_folder_id, value: @media_folder&.id %>
-        <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
-        
-        <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
-          <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
-          <%=t 'spina.images.upload' %>
-        </button>
+<%= render Spina::HeaderComponent.new do |header| %>
+  <% header.with(:actions) do %>
+    <% if @media_folder.blank? %>
+      <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default", data: {controller: "remote-modal"} do %>
+        <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
+        Add folder
       <% end %>
     <% end %>
     
-    <% header.with(:navigation) do %>
-      <nav class="-mb-3 mt-4">
-        <ul class="inline-flex w-auto rounded-md bg-white">
-          <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path, active: true) %>
-          <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path) %>
-        </ul>
-      </nav>
+    <%= form_with model: [:admin, Spina::Image.new], url: spina.admin_images_path, data: {controller: "form loading-button", loading_message: "Uploading...", file_manager_target: "uploadForm", action: "turbo:submit-end->loading-button#doneLoading"} do |f| %>
+      <%= f.hidden_field :media_folder_id, value: @media_folder&.id %>
+      
+      <%= f.file_field :files, multiple: true, accept: "image/*", id: "new_image_file_field", class: 'hidden', data: {action: "loading-button#loading form#requestSubmit", file_manager_target: "fileField"} %>
+      
+      <button type="button" class="btn btn-default" data-controller="delegate-click" data-action="delegate-click#click" data-loading-button-target="button" data-delegate-click-target="#new_image_file_field">
+        <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+        <%=t 'spina.images.upload' %>
+      </button>
     <% end %>
   <% end %>
   
-  <div class="my-8 border-t border-gray-200">
-    
-    <% if @media_folder.present? %>
-      <div class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
-        <%= link_to spina.admin_images_path, class: 'flex h-full items-center flex-1' do %>
-          <div class="w-8 mr-4 flex justify-center">
-            <%= icon("collection", css: "w-7 h-7 text-spina") %>
-          </div>
-          <div class="font-medium text-spina flex-1 text-sm">
-            Back to all
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-      <% @media_folders.each do |media_folder| %>
-        <div data-file-manager-target="media-folder" class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
-          <%= link_to spina.admin_media_folder_images_path(media_folder), class: 'flex h-full items-center flex-1' do %>
-            <div class="w-8 mr-4 flex justify-center"><%= icon("folder", css: "w-7 h-7 text-spina") %></div>
-            <div class="font-medium text-spina flex-1 text-sm">
-              <%= media_folder.name %>
-            </div>
-          <% end %>
-          <div class="text-gray-500 text-sm">
-            <span><%= media_folder.images.size %></span>
-            images
-          </div>
-          <div class="text-gray-500 text-xs w-32 text-right"><%=l media_folder.created_at, format: :short %></div>
-          
-          <%= link_to spina.admin_media_folder_path(media_folder), class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure? Images will <strong>not</strong> be deleted."} do %>
-            <%= icon('trash', css: 'w-5 h-5') %>
-          <% end %>
+  <% header.with(:navigation) do %>
+    <nav class="-mb-3 mt-4">
+      <ul class="inline-flex w-auto rounded-md bg-white">
+        <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path, active: true) %>
+        <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path) %>
+      </ul>
+    </nav>
+  <% end %>
+<% end %>
+
+<div class="my-8 border-t border-gray-200">
+  
+  <% if @media_folder.present? %>
+    <div class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
+      <%= link_to spina.admin_images_path, class: 'flex h-full items-center flex-1' do %>
+        <div class="w-8 mr-4 flex justify-center">
+          <%= icon("collection", css: "w-7 h-7 text-spina") %>
+        </div>
+        <div class="font-medium text-spina flex-1 text-sm">
+          Back to all
         </div>
       <% end %>
+    </div>
+  <% else %>
+    <% @media_folders.each do |media_folder| %>
+      <div data-file-manager-target="media-folder" class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
+        <%= link_to spina.admin_media_folder_images_path(media_folder), class: 'flex h-full items-center flex-1' do %>
+          <div class="w-8 mr-4 flex justify-center"><%= icon("folder", css: "w-7 h-7 text-spina") %></div>
+          <div class="font-medium text-spina flex-1 text-sm">
+            <%= media_folder.name %>
+          </div>
+        <% end %>
+        <div class="text-gray-500 text-sm">
+          <span><%= media_folder.images.size %></span>
+          images
+        </div>
+        <div class="text-gray-500 text-xs w-32 text-right"><%=l media_folder.created_at, format: :short %></div>
+        
+        <%= link_to spina.admin_media_folder_path(media_folder), class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure? Images will <strong>not</strong> be deleted."} do %>
+          <%= icon('trash', css: 'w-5 h-5') %>
+        <% end %>
+      </div>
     <% end %>
-    
-    <div data-file-manager-target="container" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_images_path(page: 1, media_folder_id: @media_folder&.id) %>" data-infinite-scroll-target="container">
+  <% end %>
+  
+  <turbo-frame id="file_list">
+    <div data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_images_path(page: 1, media_folder_id: @media_folder&.id) %>" data-infinite-scroll-target="container">
       <!-- Images -->
     </div>
-  
-  </div>
+  </turbo-frame>
+
 </div>

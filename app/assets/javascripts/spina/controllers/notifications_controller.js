@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "list" ]
+  static get targets() {
+    return ["list"]
+  }
 
   setError(event) {
     const [data, status, xhr] = event.detail
