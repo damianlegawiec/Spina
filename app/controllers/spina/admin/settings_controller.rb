@@ -19,6 +19,10 @@ module Spina
       end
 
       private
+      
+      def active_admin_section
+        :settings
+      end
 
       def setting_class
         "spina/#{plugin.namespace}/setting".classify.constantize

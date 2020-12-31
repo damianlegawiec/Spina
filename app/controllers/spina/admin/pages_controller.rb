@@ -71,6 +71,10 @@ module Spina
         @page.destroy
         redirect_to spina.admin_pages_url
       end
+      
+      def active_admin_section
+        :website
+      end
 
       private
 

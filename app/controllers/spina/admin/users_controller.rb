@@ -45,6 +45,10 @@ module Spina
       end
 
       private
+      
+        def active_admin_section
+          :settings
+        end
 
         def set_breadcrumbs
           add_breadcrumb I18n.t('spina.preferences.users'), spina.admin_users_path

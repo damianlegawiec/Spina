@@ -26,6 +26,10 @@ module Spina
       end
 
       private
+      
+        def active_admin_section
+          :settings
+        end
 
         def account_params
           params.require(:account).permit!

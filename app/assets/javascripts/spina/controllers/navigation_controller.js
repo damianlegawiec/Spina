@@ -6,15 +6,8 @@ export default class extends Controller {
   }
 
   connect() {
-    // Activate button for active item
-    let button = this.activeNavigation.querySelector(`button[data-navigation-target*="button"]`)
-    this.switchClass(button, "opacity-50", "opacity-100")
-
-    // Activate navigation for active item (only for bigger displays)
-    if (window.innerWidth > 768) this.toggleNavigation(this.activeNavigation)
-    
     // Enable transitions after 100ms
-    setTimeout(this.enableTransitions.bind(this), 100)
+    this.enableTransitions()
   }
   
   enableTransitions() {

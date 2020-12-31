@@ -8,6 +8,11 @@ module Spina
         request.fullpath[%r{/#{ Spina.config.backend_path }(.*)}, 1]
       end
       helper_method :current_admin_path
+      
+      def active_admin_section
+        :website
+      end
+      helper_method :active_admin_section
 
       private
 
