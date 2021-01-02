@@ -4,6 +4,8 @@ module Spina
       before_action :set_breadcrumbs
       before_action :authorize_admin, except: [:index]
       before_action :set_user, only: [:edit, :update, :destroy]
+      
+      admin_section :settings
 
       def index
         @users = User.all
@@ -45,10 +47,6 @@ module Spina
       end
 
       private
-      
-        def active_admin_section
-          :settings
-        end
 
         def set_breadcrumbs
           add_breadcrumb I18n.t('spina.preferences.users'), spina.admin_users_path

@@ -1,5 +1,6 @@
 require 'spina/importmap_helper'
 require 'spina/engine'
+require 'spina/admin_sectionable'
 require 'spina/railtie'
 require 'spina/plugin'
 require 'spina/theme'

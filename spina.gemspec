@@ -33,5 +33,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'attr_json'
   s.add_dependency 'webpacker'
   s.add_dependency 'view_component'
-  s.add_dependency 'hotwire-rails'
+  s.add_dependency 'turbo-rails'
+  s.add_dependency 'stimulus-rails'
 end

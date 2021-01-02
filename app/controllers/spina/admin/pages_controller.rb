@@ -6,7 +6,6 @@ module Spina
 
       def index
         add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path
-        redirect_to admin_pages_path unless current_admin_path.starts_with?('/pages')
         @pages = Page.active.sorted.roots.regular_pages.includes(:translations)
       end
 
@@ -71,32 +70,29 @@ module Spina
         @page.destroy
         redirect_to spina.admin_pages_url
       end
-      
-      def active_admin_section
-        :website
-      end
 
       private
 
-      def set_locale
-        @locale = params[:locale] || I18n.default_locale
-      end
-
-      def add_index_breadcrumb
-        if @page.resource.present?
-          add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource), class: 'text-gray-400'
-        else
-          add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path, class: 'text-gray-400'
+        def set_locale
+          @locale = params[:locale] || I18n.default_locale
         end
-      end
+  
+        def add_index_breadcrumb
+          if @page.resource.present?
+            add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource), class: 'text-gray-400'
+          else
+            add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path, class: 'text-gray-400'
+          end
+        end
+  
+        def page_params
+          params.require(:page).permit!
+        end
+  
+        def set_page
+          @page = Page.find(params[:id])
+        end
 
-      def page_params
-        params.require(:page).permit!
-      end
-
-      def set_page
-        @page = Page.find(params[:id])
-      end
     end
   end
 end

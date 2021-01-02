@@ -3,12 +3,12 @@ module Spina
     class ListComponent < ApplicationComponent
       with_content_areas :icon, :links
       
-      def initialize(id: :website)
-        @id = id
+      def initialize(name = :website)
+        @name = name
       end
       
       def active?
-        helpers.active_admin_section == @id
+        helpers.admin_section == @name
       end
       
       def button_classes

@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gemspec
 gem 'rails', '~> 6.1.0'
-gem 'stimulus-rails', github: "jmalcic/stimulus-rails", branch: "autoloader-improvements"
 
 group :test do
   gem 'factory_bot'
