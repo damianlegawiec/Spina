@@ -1,7 +1,7 @@
 <%= render Spina::HeaderComponent.new do |header| %>
   <% header.with(:actions) do %>
     <% if @media_folder.blank? %>
-      <%= link_to spina.new_admin_media_folder_path(format: :modal), class: "btn btn-default", data: {controller: "remote-modal"} do %>
+      <%= link_to spina.new_admin_media_folder_path, class: "btn btn-default", data: {turbo_frame: "modal"} do %>
         <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
         Add folder
       <% end %>

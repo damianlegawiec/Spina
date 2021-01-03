@@ -1,6 +1,6 @@
 <%= render(Spina::ModalComponent.new) do |component| %>
   <% component.with(:body) do %>
-    <%= form_with model: @page, url: spina.admin_page_path(@page) do |f| %>
+    <%= form_with model: @page, url: spina.admin_page_path(@page), data: {turbo_frame: "_top"} do |f| %>
       <div class="px-4 pt-5 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">
           <div class="mt-3 text-center sm:mt-0 sm:text-left">

@@ -62,10 +62,6 @@ module Spina
       )
     end
 
-    initializer "spina.modal" do |app|
-      Mime::Type.register "application/modal", :modal
-    end
-
     config.app_middleware.use(
       Rack::Static,
       urls: ["/spina-packs"], root: Spina::Engine.root.join("public")

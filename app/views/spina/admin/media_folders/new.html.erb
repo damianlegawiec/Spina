@@ -1,6 +1,6 @@
 <%= render(Spina::ModalComponent.new) do |component| %>
   <% component.with(:body) do %>
-    <%= form_with model: @media_folder, url: spina.admin_media_folders_path do |f| %>
+    <%= form_with model: @media_folder, url: spina.admin_media_folders_path, data: {turbo_frame: "_top"} do |f| %>
       <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">
           <div class="w-full">
