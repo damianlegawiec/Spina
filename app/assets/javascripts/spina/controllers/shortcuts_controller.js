@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "confirm" ]
+  static get targets() {
+    return [ "confirm" ]
+  }
   
   connect() {
   }

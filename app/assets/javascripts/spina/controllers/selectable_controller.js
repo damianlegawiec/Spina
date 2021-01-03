@@ -1,7 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "item" ]
+  static get targets() {
+    return [ "item" ]
+  }
   
   select(event) {
     let item = event.currentTarget.closest(`[data-selectable-target*="item"]`)

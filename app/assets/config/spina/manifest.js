@@ -3,3 +3,4 @@
 
 //= link_tree ../../stylesheets/spina
 //= link_directory ../../javascripts/spina/admin
+//= link_directory ../../javascripts/spina/loaders

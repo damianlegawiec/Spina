@@ -1,0 +1,20 @@
+// Experimental: Not currently exposed.
+import { Application } from "stimulus"
+
+const application = Application.start()
+
+async function preloadControllers() {
+  const imports = await fetch("<%= asset_path "spina/importmap.json" %>").then(r => r.json()).then(json => json.imports)
+
+  for (const name in imports) {
+    if (name.endsWith("_controller")) {
+      let controllerName = name.replace("_controller", "").replace("/_/g", "-")
+
+      import(imports[name]).then((module) => {
+        application.register(controllerName, module.default)
+      }).catch(error => console.log(error))
+    }
+  }
+}
+
+preloadControllers()
