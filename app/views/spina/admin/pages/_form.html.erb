@@ -1,6 +1,4 @@
-<%= form_with model: @page, url: spina.admin_page_path(@page), data: {controller: "notifications tabs", action: "ajax:error->notifications#setError", tabs_active: "cursor-default text-gray-900 bg-spina-dark bg-opacity-10", tabs_inactive: "cursor-pointer bg-transparent text-gray-400 border-transparent"} do |f| %>
-  <%= hidden_field_tag :locale, @locale %>
-  
+<div data-controller="tabs" data-tabs-active="cursor-default text-gray-900 bg-spina-dark bg-opacity-10" data-tabs-inactive="cursor-pointer bg-transparent text-gray-400 border-transparent">
   <%= render Spina::HeaderComponent.new do |header| %>
     <% header.with(:after_breadcrumbs) do %>
       <% if @page.draft? %>
@@ -35,30 +33,32 @@
       </nav>
     <% end %>
   <% end %>
-
+  
   <div class="p-4 md:p-8">
-    <% Mobility.with_locale(@locale) do %>
-      <div data-notifications-target="list"></div>
-      <div data-tabs-target="pane" id="page_content">
-        <div class="max-w-5xl">
-          <label class="font-medium text-gray-700">
-            <%= Spina::Page.human_attribute_name(:title) %>
-          </label>
-        
-          <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full max-w-3xl" %>
+    <%= form_with model: @page, url: spina.admin_page_path(@page), id: dom_id(@page) do |f| %>
+      <%= hidden_field_tag :locale, @locale %>
+      <% Mobility.with_locale(@locale) do %>
+        <div data-tabs-target="pane" id="page_content">
+          <div class="max-w-5xl">
+            <label class="font-medium text-gray-700">
+              <%= Spina::Page.human_attribute_name(:title) %>
+            </label>
           
-          <turbo-frame id="page_content" src="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
-          </turbo-frame>
+            <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full max-w-3xl" %>
+            
+            <turbo-frame id="page_content" src="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
+            </turbo-frame>
+          </div>
         </div>
-      </div>
-
-      <div data-tabs-target="pane" id="seo">
-        <%= render partial: 'form_seo', locals: {f: f} %>
-      </div>
-
-      <div data-tabs-target="pane" id="advanced">
-        <%= render partial: 'form_advanced', locals: {f: f} %>
-      </div>
+    
+        <div data-tabs-target="pane" id="seo">
+          <%= render partial: 'form_seo', locals: {f: f} %>
+        </div>
+    
+        <div data-tabs-target="pane" id="advanced">
+          <%= render partial: 'form_advanced', locals: {f: f} %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<% end %>
+</div>

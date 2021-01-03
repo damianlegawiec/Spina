@@ -1,6 +1,6 @@
 <%= render(Spina::ModalComponent.new) do |component| %>
   <% component.with(:body) do %>
-    <%= form_with model: @page, url: spina.admin_pages_path do |f| %>
+    <%= form_with model: @page, url: spina.admin_pages_path, data: {turbo_frame: "_top"} do |f| %>
       <%= f.hidden_field :view_template %>
 
       <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
@@ -29,6 +29,7 @@
         <button type="submit" class="btn btn-primary w-full sm:w-auto sm:ml-2">
           Create page
         </button>
+
         <button type="button" class="btn w-full sm:w-auto mt-2 sm:mt-0" data-action="modal#close">
           Cancel
         </button>

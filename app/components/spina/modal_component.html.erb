@@ -1,7 +1,9 @@
-<div class="modal max-h-screen py-6" data-controller="modal" data-action="keyup@document->modal#escClose">
-  <div class="modal-window <%= @size %> animate__animated animate__fadeInDown animate__faster">
-
-    <%= body %>
-
+<turbo-frame id="modal">
+  <div class="modal max-h-screen py-6" data-controller="modal" data-action="keyup@document->modal#escClose">
+    <div class="modal-window <%= @size %> animate__animated animate__fadeInDown animate__faster">
+  
+      <%= body %>
+  
+    </div>
   </div>
-</div>
+</turbo-frame>

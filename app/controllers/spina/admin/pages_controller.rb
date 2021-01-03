@@ -12,16 +12,10 @@ module Spina
       def new
         @resource = Resource.find_by(id: params[:resource_id])
         @page = Page.new(view_template: params[:view_template], resource: @resource)
-        add_index_breadcrumb
-        if current_theme.new_page_templates.any? { |template| template[0] == params[:view_template] }
-          @page.view_template = params[:view_template]
-        end
-        add_breadcrumb I18n.t('spina.pages.new')
       end
 
       def create
         @page = Page.new(page_params.merge(draft: true))
-        add_breadcrumb I18n.t('spina.pages.new')
         if @page.save
           @page.navigations << Spina::Navigation.where(auto_add_pages: true)
           redirect_to spina.edit_admin_page_url(@page), flash: {success: t('spina.pages.saved')}

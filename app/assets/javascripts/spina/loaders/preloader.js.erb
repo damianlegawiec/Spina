@@ -8,7 +8,7 @@ async function preloadControllers() {
 
   for (const name in imports) {
     if (name.endsWith("_controller")) {
-      let controllerName = name.replace("_controller", "").replace("/_/g", "-")
+      let controllerName = name.replace("_controller", "").replace(/_/g, "-")
 
       import(imports[name]).then((module) => {
         application.register(controllerName, module.default)
