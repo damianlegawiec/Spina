@@ -9,7 +9,7 @@ export default class extends Controller {
   confirm(event) {
     event.stopPropagation()
     event.preventDefault()
-    document.body.insertAdjacentHTML('beforeend', this.modalHTML)
+    this.turboFrame.innerHTML = this.modalHTML
   }
 
   get modalHTML() {
@@ -23,9 +23,9 @@ export default class extends Controller {
         </div>
         
         <div class="flex flex-row-reverse mt-3">
-          <a class="btn btn-red mt-6 md:mt-0 md:w-1/2 md:ml-3" href="${this.href}" data-shortcuts-target="confirm" data-method="${this.method}">
-            Delete
-          </a>
+        
+          ${this.formHTML}
+          
           <button class="btn btn-gray mt-2 md:mt-0 md:w-1/2" data-action="modal#close">Cancel</button>
         </div>
       </div>
@@ -35,13 +35,27 @@ export default class extends Controller {
   get message() {
     return this.element.dataset.confirmMessage
   }
+  
+  get formHTML() {
+    let element = document.createRange().createContextualFragment(this.element.outerHTML)
+    let form = element.querySelector('form')
+    let button = element.querySelector('input[type="submit"]')
+    
+    form.removeAttribute('data-controller')
+    form.dataset.turboFrame = "_top"
+    form.className = "mt-6 md:mt-0 md:w-1/2 md:ml-3"
+    button.className = "btn btn-red w-full"
+    button.dataset.shortcutsTarget = "confirm"
+    
+    // Store in temp div
+    let div = document.createElement('div')
+    div.appendChild(form)
 
-  get href() {
-    return this.element.href
+    return div.innerHTML
   }
-
-  get method() {
-    return this.element.dataset.method
+  
+  get turboFrame() {
+    return document.querySelector('turbo-frame[id="modal"]')
   }
 
 }
