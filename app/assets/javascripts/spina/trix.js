@@ -1,3 +1,5 @@
+//= require ./libraries/trix.js
+
 // Extra headings
 Trix.config.blockAttributes.heading2 = {
   tagName: "h2", terminal: true, breakOnReturn: true, group: false }

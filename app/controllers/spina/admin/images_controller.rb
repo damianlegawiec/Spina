@@ -9,6 +9,10 @@ module Spina
       def index
         @media_folders = MediaFolder.order(:name)
       end
+      
+      def edit
+        @image = Image.find(params[:id])
+      end
 
       # There's no file validation yet in ActiveStorage
       # We do two things to reduce errors right now:
@@ -40,7 +44,7 @@ module Spina
           filename = "#{params[:filename]}.#{extension}"
           @image.file.blob.update(filename: filename)
         end
-        render Spina::FileManager::ImageComponent.new(image: @image)
+        render partial: 'image', object: @image
       end
 
       def destroy

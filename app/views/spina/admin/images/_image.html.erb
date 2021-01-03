@@ -2,68 +2,54 @@
   <div class="w-8 mr-4 h-12 flex justify-center">
     <%= image_tag thumbnail_url(image), class: "object-contain" %>
   </div>
-  <div class="font-medium text-gray-800 flex-1 w-56 text-sm flex items-center relative">
-    <span class="truncate" data-file-target="filename"><%= image.file.filename %></span>
+    <turbo-frame id="<%= dom_id(image) %>" class="font-medium text-gray-800 flex-1 w-56 text-sm flex items-center relative">
+      <span class="truncate"><%= image.file.filename %></span>
     
-    <%= form_with model: image, url: spina.admin_image_path(image), html: {class: 'w-full max-w-sm pr-3 hidden', data: {file_target: "form", action: "ajax:success->file#replaceHTML"}} do |f| %>
-      <div class="flex items-center w-full">
-        <div class="relative w-full mr-2">
-          <%= text_field_tag :filename, image.file.filename.base, class: 'form-input w-full h-9 pr-10 text-sm', placeholder: "Filename", data: {file_target: "input"} %>
-          <div class="absolute top-0 right-2 h-full flex items-center text-gray-400">
-            <%= ".#{image.file.filename.extension}" %>
-          </div>
-        </div>
+      <div class="absolute opacity-50 bg-red-500 group-hover:opacity-100 flex items-center right-0 pr-3 top-0">
+        <%= link_to spina.edit_admin_image_path(image), class: "btn btn-default h-7 px-2 mr-2 text-xs" do %>
+          <%= icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
+          Rename
+        <% end %>
         
-        <button type="submit" class="btn btn-default px-2">
-          <%= icon("check", css: "w-5 h-5") %>
-        </button>
-      </div>
-    <% end %>
-    
-    <div data-file-target="actions" class="absolute opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3">
-      <button type="button" data-action="file#rename" class="btn btn-default h-7 px-2 mr-2 text-xs">
-        <%= icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
-        Rename
-      </button>
-      
-      <div class="relative" data-controller="reveal" data-reveal-away>
-        <button type="button" class="btn btn-default h-7 px-2 text-xs" data-action="reveal#toggle">
-          <%= icon('folder', css: 'w-4 h-4 mr-1 text-gray-600') %>
-          Move to
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        
-        <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20 rounded-md bg-white shadow-xs">
-          <div class="py-1">
-            <% if image.media_folder_id.present? %>
-              <%= form_with model: image, url: spina.admin_image_path(image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
-                <%= f.hidden_field :media_folder_id, value: nil %>
-                <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
-                  <div class="text-gray-700">No folder</div>
-                </button>
-              <% end %>
-            <% end %>
-            <% Spina::MediaFolder.order(:name).each do |media_folder| %>
-              <% if media_folder.id == image.media_folder_id %>
-                <div class="block w-full px-3 py-2 text-sm leading-4 text-gray-400 font-medium cursor-default">
-                  <%= media_folder.name %>
-                </div>
-              <% else %>
+        <div class="relative" data-controller="reveal" data-reveal-away>
+          <button type="button" class="btn btn-default h-7 px-2 text-xs" data-action="reveal#toggle">
+            <%= icon('folder', css: 'w-4 h-4 mr-1 text-gray-600') %>
+            Move to
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          
+          <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20 rounded-md bg-white shadow-xs">
+            <div class="py-1">
+              <% if image.media_folder_id.present? %>
                 <%= form_with model: image, url: spina.admin_image_path(image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
-                  <%= f.hidden_field :media_folder_id, value: media_folder.id %>
+                  <%= f.hidden_field :media_folder_id, value: nil %>
                   <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
-                    <div class="text-gray-700"><%= media_folder.name %></div>
+                    <div class="text-gray-700">No folder</div>
                   </button>
                 <% end %>
               <% end %>
-            <% end %>
+              <% Spina::MediaFolder.order(:name).each do |media_folder| %>
+                <% if media_folder.id == image.media_folder_id %>
+                  <div class="block w-full px-3 py-2 text-sm leading-4 text-gray-400 font-medium cursor-default">
+                    <%= media_folder.name %>
+                  </div>
+                <% else %>
+                  <%= form_with model: image, url: spina.admin_image_path(image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
+                    <%= f.hidden_field :media_folder_id, value: media_folder.id %>
+                    <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
+                      <div class="text-gray-700"><%= media_folder.name %></div>
+                    </button>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </turbo-frame>
+  
   <div class="text-gray-500 text-sm whitespace-nowrap flex items-center">
     <%= number_to_human_size image.file.byte_size %>
     <div class="uppercase ml-2 h-5 flex items-center rounded-md <%= content_type_color(image) %> text-white font-semibold px-1 text-xs">
