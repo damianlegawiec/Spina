@@ -5,6 +5,7 @@
   @apply h-9 px-4;
   @apply text-sm font-medium leading-none whitespace-nowrap;
   @apply transition-colors duration-200;
+  @apply cursor-pointer;
 }
 
 .btn-default {
