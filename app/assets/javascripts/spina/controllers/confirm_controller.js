@@ -43,6 +43,7 @@ export default class extends Controller {
     
     form.removeAttribute('data-controller')
     form.dataset.turboFrame = "_top"
+    form.dataset.action = "turbo:submit-end->modal#close"
     form.className = "mt-6 md:mt-0 md:w-1/2 md:ml-3"
     button.className = "btn btn-red w-full"
     button.dataset.shortcutsTarget = "confirm"

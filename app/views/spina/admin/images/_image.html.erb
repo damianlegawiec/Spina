@@ -24,7 +24,7 @@
             <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200 z-20 rounded-md bg-white shadow-xs">
               <div class="py-1">
                 <% if image.media_folder_id.present? %>
-                  <%= form_with model: image, url: spina.admin_image_path(image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
+                  <%= form_with model: image, url: spina.admin_image_path(image) do |f| %>
                     <%= f.hidden_field :media_folder_id, value: nil %>
                     <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
                       <div class="text-gray-700">No folder</div>
@@ -37,7 +37,7 @@
                       <%= media_folder.name %>
                     </div>
                   <% else %>
-                    <%= form_with model: image, url: spina.admin_image_path(image), data: {action: "ajax:success->file#moveToFolder"} do |f| %>
+                    <%= form_with model: image, url: spina.admin_image_path(image) do |f| %>
                       <%= f.hidden_field :media_folder_id, value: media_folder.id %>
                       <button type="submit" class="block w-full text-left px-3 py-2 text-sm leading-4 text-gray-700 hover:bg-gray-100 hover:text-gray-900 font-medium">
                         <div class="text-gray-700"><%= media_folder.name %></div>

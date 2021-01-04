@@ -44,7 +44,11 @@ module Spina
           filename = "#{params[:filename]}.#{extension}"
           @image.file.blob.update(filename: filename)
         end
-        render partial: 'image', object: @image
+        if @image.saved_change_to_media_folder_id?
+          render turbo_stream: turbo_stream.remove(@image)
+        else
+          render partial: 'image', object: @image
+        end
       end
 
       def destroy
