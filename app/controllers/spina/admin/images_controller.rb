@@ -50,7 +50,8 @@ module Spina
       def destroy
         @image = Image.find(params[:id])
         @image.destroy
-        redirect_back fallback_location: spina.admin_images_url
+        render turbo_stream: turbo_stream.remove(@image)
+        # redirect_back fallback_location: spina.admin_images_url
       end
 
       private

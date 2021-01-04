@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(@image) do %>
+<%= turbo_frame_tag dom_id(@image) + "_filename" do %>
   <%= form_with model: @image, url: spina.admin_image_path(@image), html: {class: 'w-full max-w-sm pr-3'} do |f| %>
     <div class="flex items-center w-full">
       <div class="relative w-full mr-2">

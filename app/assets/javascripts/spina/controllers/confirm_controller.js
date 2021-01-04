@@ -39,7 +39,7 @@ export default class extends Controller {
   get formHTML() {
     let element = document.createRange().createContextualFragment(this.element.outerHTML)
     let form = element.querySelector('form')
-    let button = element.querySelector('input[type="submit"]')
+    let button = element.querySelector('input[type="submit"], button[type="submit"]')
     
     form.removeAttribute('data-controller')
     form.dataset.turboFrame = "_top"
