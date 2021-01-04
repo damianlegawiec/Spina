@@ -1,11 +1,11 @@
-<div data-controller="file" class="flex items-center h-12 border-b border-gray-200 px-8 hover:bg-white group">
+<div class="flex items-center h-12 border-b border-gray-200 px-8 hover:bg-white group">
   <div class="w-8 mr-4 h-12 flex justify-center">
     <%= image_tag thumbnail_url(image), class: "object-contain" %>
   </div>
-    <turbo-frame id="<%= dom_id(image) %>" class="font-medium text-gray-800 flex-1 w-56 text-sm flex items-center relative">
+    <turbo-frame id="<%= dom_id(image) %>" class="font-medium text-gray-800 h-full flex-1 w-56 text-sm flex items-center relative">
       <span class="truncate"><%= image.file.filename %></span>
     
-      <div class="absolute opacity-50 bg-red-500 group-hover:opacity-100 flex items-center right-0 pr-3 top-0">
+      <div class="absolute h-full opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3 top-0">
         <%= link_to spina.edit_admin_image_path(image), class: "btn btn-default h-7 px-2 mr-2 text-xs" do %>
           <%= icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
           Rename

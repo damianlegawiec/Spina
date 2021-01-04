@@ -6,7 +6,7 @@ module Spina::SpinaHelper
       tag.script(type: "importmap-shim", src: asset_path("spina/importmap.json")),
       javascript_include_tag("stimulus/libraries/stimulus", type: "module-shim"),
       javascript_include_tag("spina/loaders/preloader", type: "module-shim"),
-      javascript_include_tag("spina/libraries/trix")
+      javascript_include_tag("spina/trix")
     ].join("\n").html_safe
   end
 

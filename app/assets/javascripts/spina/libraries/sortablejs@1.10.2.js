@@ -2983,6 +2983,8 @@ _extends(Remove, {
   pluginName: 'removeOnSpill'
 });
 
+var OnSpill = [Remove, Revert];
+
 var lastSwapEl;
 
 function SwapPlugin() {
@@ -3692,8 +3694,5 @@ function removeMultiDragElements() {
   });
 }
 
-Sortable.mount(new AutoScrollPlugin());
-Sortable.mount(Remove, Revert);
-
 export default Sortable;
-export { MultiDragPlugin as MultiDrag, Sortable, SwapPlugin as Swap };
+export { AutoScrollPlugin as AutoScroll, MultiDragPlugin as MultiDrag, OnSpill, Sortable, SwapPlugin as Swap };

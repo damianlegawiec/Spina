@@ -13,7 +13,7 @@
     <%= turbo_include_tags %>
     <%= spina_include_tags %>
     
-    <!-- Trix & Tailwind -->
+    <!-- Tailwind -->
     <%= javascript_pack_tag 'spina', data: {turbolinks_track: true} %>
     
     <%= render Spina::Hooks::HookComponent.new(partial: "head") %>
@@ -28,6 +28,7 @@
       </section>
     </div>
     
+    <!-- Make sure all modals are rendered in this frame -->
     <%= turbo_frame_tag "modal" %>
   </body>
 </html>

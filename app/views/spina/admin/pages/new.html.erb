@@ -12,7 +12,7 @@
             </h3>
 
             <div class="mt-3">
-              <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "form-input w-full" %>
+              <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "form-input w-full", data: {controller: "autofocus"} %>
             </div>
 
             <div class="mt-6">
