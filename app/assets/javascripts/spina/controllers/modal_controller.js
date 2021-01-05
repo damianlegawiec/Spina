@@ -16,7 +16,7 @@ export default class extends Controller {
   }
 
   renderBackground() {
-    let bgHTML = `<button type="button" class="w-full h-full fixed inset-0 bg-gray-700 bg-opacity-25 animate__animated animate__fadeIn animate__faster" tabindex="-1" data-action="modal#close"></button>`
+    let bgHTML = `<button type="button" class="cursor-default w-full h-full fixed inset-0 bg-gray-700 bg-opacity-25 animate__animated animate__fadeIn animate__faster" tabindex="-1" data-action="modal#close"></button>`
     this.element.insertAdjacentHTML('afterbegin', bgHTML)
   }
 

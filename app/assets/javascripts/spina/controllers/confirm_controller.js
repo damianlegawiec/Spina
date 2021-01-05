@@ -48,6 +48,7 @@ export default class extends Controller {
     button.className = "btn btn-red w-full"
     button.dataset.shortcutsTarget = "confirm"
     button.innerText = "Delete"
+    button.value = "Delete"
     
     // Store in temp div
     let div = document.createElement('div')

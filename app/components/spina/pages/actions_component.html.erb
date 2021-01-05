@@ -11,7 +11,7 @@
       <div class="py-1">        
         <% if !@page.custom_page? %>
           <%= link_to helpers.spina.edit_template_admin_page_path(@page), class: "block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal"} do %>
-            Change view template
+            Change view template...
           <% end %>
         <% end %>
         <% if @page.deletable? %>
