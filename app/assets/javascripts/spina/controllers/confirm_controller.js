@@ -3,7 +3,7 @@ import { Controller } from "stimulus"
 export default class extends Controller {
 
   connect() {
-    this.element.addEventListener('click', this.confirm.bind(this))
+    this.element.addEventListener('submit', this.confirm.bind(this))
   }
 
   confirm(event) {
@@ -47,6 +47,7 @@ export default class extends Controller {
     form.className = "mt-6 md:mt-0 md:w-1/2 md:ml-3"
     button.className = "btn btn-red w-full"
     button.dataset.shortcutsTarget = "confirm"
+    button.innerText = "Delete"
     
     // Store in temp div
     let div = document.createElement('div')
