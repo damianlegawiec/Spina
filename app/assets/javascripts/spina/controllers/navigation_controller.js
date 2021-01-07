@@ -2,12 +2,24 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
   static get targets() {
-    return ["primary", "button", "navigation"]
+    return ["primary", "button", "navigation", "label"]
   }
 
   connect() {
     // Enable transitions after 100ms
     this.enableTransitions()
+  }
+  
+  openOnHover(event) {
+    if (event.currentTarget.classList.contains("opacity-50")) {
+      this.openingOnHover = setTimeout(function() {
+        this.closeAllNavigations()
+      }.bind(this), 500) 
+    }
+  }
+  
+  cancelOpenOnHover(event) {
+    clearTimeout(this.openingOnHover)
   }
   
   enableTransitions() {
@@ -24,9 +36,17 @@ export default class extends Controller {
     let ul = navigation.querySelector("ul")
     if (ul.classList.contains("translate-x-full")) { 
       this.primaryTarget.classList.add("md:bg-opacity-50")
+      this.labelTargets.forEach(function(label) {
+        label.classList.add("-translate-x-2")
+        this.switchClass(label, 'opacity-100', 'opacity-0')
+      }.bind(this))
       this.switchClass(navigation.querySelector("ul"), "translate-x-full", "md:translate-x-20")
     } else {
       this.primaryTarget.classList.remove("md:bg-opacity-50")
+      this.labelTargets.forEach(function(label) {
+        label.classList.remove("-translate-x-2")
+        this.switchClass(label, 'opacity-0', 'opacity-100')
+      }.bind(this))
       this.switchClass(navigation.querySelector("ul"), "md:translate-x-20", "translate-x-full")
     }
   }
@@ -53,6 +73,11 @@ export default class extends Controller {
     }.bind(this))
 
     this.primaryTarget.classList.remove("md:bg-opacity-50")
+    
+    this.labelTargets.forEach(function(label) {
+      label.classList.remove("-translate-x-2")
+      this.switchClass(label, 'opacity-0', 'opacity-100')
+    }.bind(this))
   }
 
   switchClass(element, from_class, to_class) {
