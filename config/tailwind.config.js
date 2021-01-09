@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors")
+// const colors = require("tailwindcss/colors")
 
 module.exports = {
   purge: {
@@ -29,8 +29,5 @@ module.exports = {
       backgroundColor: ['even']
     }
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography')
-  ]
+  plugins: []
 }

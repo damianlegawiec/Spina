@@ -9,13 +9,15 @@
     
     <title>Spina CMS</title>
     
-    <%= yield(:head) %>
+    <!-- Tailwind -->    
+    <%= stylesheet_link_tag 'spina/application', data: {turbolinks_track: true} %>
+    
+    <!-- Turbo and Stimulus -->
     <%= turbo_include_tags %>
     <%= spina_include_tags %>
     
-    <!-- Tailwind -->
-    <%= javascript_pack_tag 'spina', data: {turbolinks_track: true} %>
-    
+    <!-- Plugins & Hooks -->
+    <%= yield(:head) %>
     <%= render Spina::Hooks::HookComponent.new(partial: "head") %>
   </head>
 

@@ -27,6 +27,22 @@ namespace :spina do
     end
   end
   
+  namespace :tailwind do
+    desc "Compile Tailwind.css for Spina"
+    task :compile do
+      Dir.chdir(File.join(__dir__, "../..")) do
+        system "NODE_ENV=production npx tailwindcss-cli@latest build ./app/assets/stylesheets/spina/src/tailwind.css -o ./app/assets/stylesheets/spina/application.scss -c ./config/tailwind.config.js"
+      end
+    end
+    
+    desc "Compile Tailwind.css in development mode for Spina"
+    task :compile_dev do
+      Dir.chdir(File.join(__dir__, "../..")) do
+        system "npx tailwindcss-cli@latest build ./app/assets/stylesheets/spina/src/tailwind.css -o ./app/assets/stylesheets/spina/application.scss -c ./config/tailwind.config.js"
+      end
+    end
+  end
+  
   namespace :webpacker do
     desc "Install deps with yarn"
     task :yarn_install do
