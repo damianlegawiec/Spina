@@ -29,5 +29,8 @@ module.exports = {
       backgroundColor: ['even']
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms')
+  ]
 }
