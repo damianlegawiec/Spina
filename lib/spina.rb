@@ -7,21 +7,16 @@ require 'spina/theme'
 require 'spina/attr_json_spina_parts_model'
 
 module Spina
-
   include ActiveSupport::Configurable
 
-  ROOT_PATH = Pathname.new(File.join(__dir__, ".."))
   PARTS = []
   PLUGINS = []
   THEMES = []
-
-  config_accessor :backend_path, :disable_frontend_routes, :storage, :max_page_depth, :locales, :embedded_image_size
+  config_accessor :backend_path, :disable_frontend_routes, :max_page_depth, :locales, :embedded_image_size
 
   self.backend_path = 'admin'
 
   self.disable_frontend_routes = false
-
-  self.storage = :file
 
   self.max_page_depth = 5
 
