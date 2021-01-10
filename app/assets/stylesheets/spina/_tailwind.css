@@ -2696,8 +2696,20 @@ trix-editor [data-trix-mutable]::selection,
   width: 8rem;
 }
 
+.w-36 {
+  width: 9rem;
+}
+
+.w-48 {
+  width: 12rem;
+}
+
 .w-56 {
   width: 14rem;
+}
+
+.w-80 {
+  width: 20rem;
 }
 
 .w-auto {

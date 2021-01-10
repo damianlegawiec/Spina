@@ -12,19 +12,6 @@ module Spina
         alt.presence || filename.presence || Spina::Image.model_name.human
       end
 
-      def ratio_class
-        case options.try(:[], :ratio)
-        when "portrait"
-          "w-28"
-        when "landscape"
-          "w-48"
-        when "wide"
-          "w-80"
-        else
-          "w-36" # Square (default)
-        end
-      end
-
       def content
         self
       end

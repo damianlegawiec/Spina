@@ -5,7 +5,7 @@ export default class extends Controller {
     return [ "editor", "imageFields", "altField" ]
   }
   
-  connect() {
+  connect() {    
     this.editorTarget.addEventListener("trix-selection-change", function(event) {
       if (this.mutableImageAttachment) {
         this.imageFieldsTarget.classList.remove("hidden")
