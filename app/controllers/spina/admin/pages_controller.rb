@@ -18,7 +18,7 @@ module Spina
         @page = Page.new(page_params.merge(draft: true))
         if @page.save
           @page.navigations << Spina::Navigation.where(auto_add_pages: true)
-          redirect_to spina.edit_admin_page_url(@page), flash: {success: t('spina.pages.saved')}
+          redirect_to spina.edit_admin_page_url(@page)
         else
           render partial: 'error', status: :unprocessable_entity
         end
@@ -60,7 +60,8 @@ module Spina
         render layout: false
       end
 
-      def destroy        
+      def destroy
+        flash[:info] = t('spina.pages.deleted')    
         @page.destroy
         redirect_to spina.admin_pages_url
       end

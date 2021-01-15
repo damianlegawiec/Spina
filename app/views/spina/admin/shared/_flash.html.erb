@@ -1,0 +1,7 @@
+<div class="fixed bottom-0 left-0 w-full flex justify-center">
+  <% flash.each do |type, message| %>
+    <div class="bg-gray-400 p-2 px-4 rounded-full font-medium text-white mb-5" data-controller="fade-out">
+      <%= message %>
+    </div>
+  <% end %>
+</div>
