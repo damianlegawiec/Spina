@@ -5,33 +5,6 @@ export default class extends Controller {
     return ["primary", "button", "navigation", "label"]
   }
 
-  connect() {
-    // Enable transitions after 100ms
-    this.enableTransitions()
-  }
-  
-  openOnHover(event) {
-    if (event.currentTarget.classList.contains("opacity-50")) {
-      this.openingOnHover = setTimeout(function() {
-        this.closeAllNavigations()
-      }.bind(this), 500) 
-    }
-  }
-  
-  cancelOpenOnHover(event) {
-    clearTimeout(this.openingOnHover)
-  }
-  
-  enableTransitions() {
-    this.switchClass(this.primaryTarget, "transition-none", "transition-colors")
-    this.navigationTargets.forEach(function(navigation) {
-      this.switchClass(navigation.querySelector("ul"), "transition-none", "transition-transform")
-    }.bind(this))
-    this.buttonTargets.forEach(function(button) {
-      this.switchClass(button, "transition-none", "transition-opacity")
-    }.bind(this))
-  }
-
   toggleNavigation(navigation) {
     let ul = navigation.querySelector("ul")
     if (ul.classList.contains("translate-x-full")) { 
@@ -67,13 +40,15 @@ export default class extends Controller {
     this.buttonTargets.forEach(function(button) {
       this.switchClass(button, "opacity-100", "opacity-50")
     }.bind(this))
-
+    
+    this.backToFirstLevel()
+  }
+  
+  backToFirstLevel() {
     this.navigationTargets.forEach(function(navigation) {
       this.switchClass(navigation.querySelector("ul"), "md:translate-x-20", "translate-x-full")
     }.bind(this))
-
     this.primaryTarget.classList.remove("md:bg-opacity-50")
-    
     this.labelTargets.forEach(function(label) {
       label.classList.remove("-translate-x-2")
       this.switchClass(label, 'opacity-0', 'opacity-100')

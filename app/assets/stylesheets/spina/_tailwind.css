@@ -2225,6 +2225,10 @@ trix-editor [data-trix-mutable]::selection,
   opacity: 0.25;
 }
 
+.opacity-30 {
+  opacity: 0.3;
+}
+
 .opacity-50 {
   opacity: 0.5;
 }
@@ -2794,6 +2798,10 @@ trix-editor [data-trix-mutable]::selection,
   --tw-scale-y: 1.05;
 }
 
+.rotate-180 {
+  --tw-rotate: 180deg;
+}
+
 .translate-x-6 {
   --tw-translate-x: 1.5rem;
 }
@@ -2804,10 +2812,6 @@ trix-editor [data-trix-mutable]::selection,
 
 .translate-x-full {
   --tw-translate-x: 100%;
-}
-
-.transition-none {
-  transition-property: none;
 }
 
 .transition-all {
@@ -3044,6 +3048,10 @@ trix-editor [data-trix-mutable]::selection,
 
   .md\:block {
     display: block;
+  }
+
+  .md\:flex {
+    display: flex;
   }
 
   .md\:hidden {
