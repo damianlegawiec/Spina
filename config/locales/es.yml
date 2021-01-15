@@ -174,6 +174,7 @@ es:
       concept: concepto
       create_page: Nuevo %{template}
       delete_confirmation: Seguro que quieres eliminar la página <strong>%{subject}</strong>?
+      deleted: 
       done_changing_order: Ordenamiento finalizado
       invisible_to_search_engines: Tu sitio es invisible para los motores de búsqueda
       invisible_to_search_engines_description: Ingresa a preferencias para activar los motores de búsqueda.
@@ -184,6 +185,7 @@ es:
       page_seo: Motores de búsqueda
       photo_picker: Seleccionar imagen
       photos_picker: Seleccionar imágenes
+      published: 
       rebuild_materialized_path: Recontruir ruta materializada
       save: Guardar página
       saved: Página guardada

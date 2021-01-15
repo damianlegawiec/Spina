@@ -174,6 +174,7 @@ ro:
       concept: ciornă
       create_page: "%{template} nou"
       delete_confirmation: Sunteți sigur că doriți ștergerea paginii <strong>%{subject}</strong>?
+      deleted: 
       done_changing_order: Ordine terminată
       invisible_to_search_engines: Website-ul nu este vizibil motoarelor de căutare
       invisible_to_search_engines_description: Mergeți în preferințe pentru activarea motoarele de căutare.
@@ -184,6 +185,7 @@ ro:
       page_seo: Motoare de căutare
       photo_picker: Alege imagine
       photos_picker: Alege imagini
+      published: 
       rebuild_materialized_path: Reconstruiți calea
       save: Salvează pagina
       saved: Pagină salvată

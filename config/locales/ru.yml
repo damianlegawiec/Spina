@@ -182,6 +182,7 @@ ru:
       concept: Концепция
       create_page: Создать %{template}
       delete_confirmation: Вы уверены, что хотите удалить страницу <strong>%{subject}</strong>?
+      deleted: 
       done_changing_order: Порядок изменен
       invisible_to_search_engines: Ваш сайт не виден для поисковых машин
       invisible_to_search_engines_description: Перейти к вашим параметрам, чтобы активировать поисковые системы.
@@ -192,6 +193,7 @@ ru:
       page_seo: Поисковые системы
       photo_picker: Выбрать изображение
       photos_picker: Выбрать изображения
+      published: 
       rebuild_materialized_path: Rebuild materialized path
       save: Сохранить страницу
       saved: 

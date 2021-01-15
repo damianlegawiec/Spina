@@ -174,6 +174,7 @@ bg:
       concept: чернова
       create_page: Нов %{template}
       delete_confirmation: Сигурен ли сте, че желаете да изтриете страницата <strong>%{subject}</strong>?
+      deleted: 
       done_changing_order: Приключено подреждане
       invisible_to_search_engines: Вашият сайт е невидим за търсачки
       invisible_to_search_engines_description: Отидете на Настройки за да активирате търсачки.
@@ -184,6 +185,7 @@ bg:
       page_seo: Търсачки
       photo_picker: Изберете изображение
       photos_picker: Изберете изображения
+      published: 
       rebuild_materialized_path: Възтановяване на оригинален адрес
       save: Запис на страницата
       saved: Страницата е записана

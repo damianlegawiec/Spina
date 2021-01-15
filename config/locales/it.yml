@@ -58,9 +58,9 @@ it:
         skip_to_first_child_description: Vai alla prima sottopagina
         title: Titolo
         title_placeholder: Titolo pagina
-        url_title: 
-        url_title_description: 
-        url_title_placeholder: 
+        url_title: Sovrascrivi slug
+        url_title_description: Opzionale
+        url_title_placeholder: Slug
         view_template: Template pagina
       spina/resource:
         label: Etichetta
@@ -96,7 +96,7 @@ it:
   spina:
     ago: fa
     attachments:
-      choose_attachment: 
+      choose_attachment: Scegli allegato
       insert: Inserisci documento
       insert_multiple: Inserisci documenti
     cancel: Annulla
@@ -115,17 +115,17 @@ it:
       success: Puoi usare la tua nuova password
       unknown_user: Questo utente non esiste
     images:
-      all_images: 
+      all_images: Tutte le immagini
       back: Indietro
       cannot_be_created: Non può essere creato
       choose_image: Scegli immagine
       choose_images: Scegli immagini
-      confirm_selection: 
+      confirm_selection: Conferma selezione
       delete: Cancella
       delete_confirmation: Sei sicuro di voler cancellare questa <strong> immagine </strong>?
       delete_folder: Cancella cartella
       done_organizing: Fine riordinare
-      insert_image: 
+      insert_image: Inserisci immagine
       insert_photo: Inserisci foto
       insert_photos: Inserisci foto
       link: Link
@@ -167,13 +167,14 @@ it:
       login: Devi prima effettuare il login
       wrong_username_or_password: Email o password errata
     options:
-      choose_option: 
+      choose_option: Scegli un' opzione
     pages:
       advanced: Avanzate
       change_order: Modifica ordine
       concept: bozza
       create_page: Nuova %{template}
       delete_confirmation: Sei sicuro di voler eliminare la pagina <strong>%{subject}</strong>?
+      deleted: 
       done_changing_order: Ordinamento fatto
       invisible_to_search_engines: Il tuo sito è nascosto ai motori di ricerca
       invisible_to_search_engines_description: Vai alla sezione impostazioni per attivare la visibilità per i motori di ricerca.
@@ -184,6 +185,7 @@ it:
       page_seo: Motori di ricerca
       photo_picker: Seleziona immagine
       photos_picker: Seleziona immagini
+      published: 
       rebuild_materialized_path: Ricostruisci path
       save: Salva pagina
       saved: Pagina salvata
@@ -203,7 +205,7 @@ it:
       link: 'URL immagine:'
       new_folder: Nuova cartella
       organize: Organizza immagini
-      rename_folder: 
+      rename_folder: Rinomina cartella
       select_images: Seleziona immagini
       upload_image: Carica un immagine
     preferences:

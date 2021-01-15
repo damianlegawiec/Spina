@@ -174,6 +174,7 @@ fr:
       concept: brouillon
       create_page: Nouvelle page %{template}
       delete_confirmation: 'Êtes-vous sûr de vouloir supprimer la page :  <strong>%{subject}</strong> ?'
+      deleted: 
       done_changing_order: Changement d'ordre effectué
       invisible_to_search_engines: Votre site n'apparait pas sur les moteurs de recherche
       invisible_to_search_engines_description: Allez dans vos préférences pour activer l'indexation sur les moteurs de recherche.
@@ -184,6 +185,7 @@ fr:
       page_seo: Moteurs de recherche
       photo_picker: Choisir une image
       photos_picker: Choisir des images
+      published: 
       rebuild_materialized_path: Reconstruire le chemin matérialisé
       save: Sauvegarder la page
       saved: Page enregistrée
