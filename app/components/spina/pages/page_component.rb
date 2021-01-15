@@ -16,7 +16,8 @@ module Spina
       end
   
       def depth
-        @page.depth
+        return 0 unless view_context.is_a? Spina::Pages::ListComponent
+        view_context.depth
       end
       
       def css_class
