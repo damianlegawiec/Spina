@@ -1,3 +1,7 @@
-<ul data-controller="sortable" data-sort-path="<%= helpers.spina.sort_admin_pages_path %>">
-  <%= render Spina::Pages::PageComponent.with_collection(@pages) %>
-</ul>
+<%= form_with url: helpers.spina.sort_admin_pages_path, data: {controller: "sortable", sortable_target: "form"} do |f| %>
+  <%= f.hidden_field :ids, data: {sortable_target: "ids"} %>
+  
+  <ul data-sortable-target="list">
+    <%= render Spina::Pages::PageComponent.with_collection(@pages) %>
+  </ul>
+<% end %>

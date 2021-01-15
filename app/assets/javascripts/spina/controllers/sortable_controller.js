@@ -1,33 +1,26 @@
 import { Controller } from "stimulus"
 import Sortable from "sortablejs"
+import formRequestSubmitPolyfill from 'https://cdn.skypack.dev/form-request-submit-polyfill'
 
 export default class extends Controller {
+  static get targets() {
+    return [ "ids", "form", "list" ]
+  }
 
   connect() {
-    this.sortable = Sortable.create(this.element, {
+    this.sortable = Sortable.create(this.listTarget, {
       handle: '[data-sortable-handle]',
       onEnd: this.saveSort.bind(this)
     })
   }
 
   saveSort(event) {
-    // fetch(this.sortPath, {
-    //   method: "POST",
-    //   credentials: "same-origin",
-    //   headers: {
-    //     'X-CSRF-Token': Rails.csrfToken(),
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ids: this.orderedIds})
-    // })
+    this.idsTarget.value = this.orderedIds
+    this.formTarget.requestSubmit()
   }
 
   get orderedIds() {
     return this.sortable.toArray()
-  }
-  
-  get sortPath() {
-    return this.element.dataset.sortPath
   }
 
 }
