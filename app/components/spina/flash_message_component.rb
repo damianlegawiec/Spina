@@ -10,5 +10,14 @@ module Spina
       @type == "confetti"
     end
     
+    def theme
+      case @type
+      when "alert", "error"
+        "bg-red-400"
+      else
+        "bg-gray-400"
+      end
+    end
+    
   end
 end

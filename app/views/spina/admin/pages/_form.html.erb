@@ -37,6 +37,9 @@
   <div class="p-4 md:p-8">
     <%= form_with model: @page, url: spina.admin_page_path(@page), id: dom_id(@page) do |f| %>
       <%= hidden_field_tag :locale, @locale %>
+
+      <%= render Spina::ErrorNotificationComponent.new(@page) %>
+      
       <% Mobility.with_locale(@locale) do %>
         <div data-tabs-target="pane" id="page_content">
           <div class="max-w-5xl">

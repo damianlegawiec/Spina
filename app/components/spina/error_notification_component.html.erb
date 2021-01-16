@@ -1,1 +1,9 @@
-<div><%= errors.join(", ") %></div>
+<div class="mb-6">
+  <div class="text-red-600 font-bold text-lg">
+    Saving failed
+  </div>
+  
+  <% errors.each do |error| %>
+    <div class="text-red-500 font-medium"><%= error %></div>
+  <% end %>
+</div>
