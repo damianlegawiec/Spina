@@ -37,8 +37,6 @@
   <div class="p-4 md:p-8">
     <%= form_with model: @page, url: spina.admin_page_path(@page), id: dom_id(@page) do |f| %>
       <%= hidden_field_tag :locale, @locale %>
-
-      <%= render Spina::ErrorNotificationComponent.new(@page) %>
       
       <% Mobility.with_locale(@locale) do %>
         <div data-tabs-target="pane" id="page_content">
@@ -47,7 +45,7 @@
               <%= Spina::Page.human_attribute_name(:title) %>
             </label>
           
-            <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "mt-1 form-input px-4 py-3 font-medium block w-full max-w-5xl" %>
+            <%= render Spina::TextFieldComponent.new(f, :title) %>
             
             <turbo-frame id="page_content" src="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
             </turbo-frame>
