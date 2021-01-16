@@ -55,7 +55,7 @@ module Spina
       end
 
       def sort
-        params[:ids].split(",").each.with_index do |id, index|
+        params[:ids].each.with_index do |id, index|
           Page.where(id: id).update_all(position: index + 1)
         end
         head :ok

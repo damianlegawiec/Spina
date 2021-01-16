@@ -3,9 +3,8 @@ module Spina
     class ListComponent < ApplicationComponent
       attr_reader :depth
   
-      def initialize(pages:, depth: 0)
+      def initialize(pages:)
         @pages = pages
-        @depth = depth
       end
   
     end

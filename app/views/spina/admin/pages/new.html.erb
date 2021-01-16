@@ -14,17 +14,13 @@
             <%= f.text_field :title, placeholder: Spina::Page.human_attribute_name(:title), class: "form-input w-full", data: {controller: "autofocus"} %>
           </div>
 
-          <div class="mt-6">
-            <label for="page[ancestry]" class="block text-sm font-medium leading-5 text-gray-700">
-              <%= Spina::Page.human_attribute_name :ancestry %>
-            </label>
-
-            <%= f.select :parent_id, page_ancestry_options(f.object), {include_blank: Spina::Page.human_attribute_name(:no_parent)}, class: "form-select mt-1 w-full sm:w-auto" %>
+          <div class="mt-4">
+            <%= f.select :parent_id, page_ancestry_options(f.object), {include_blank: Spina::Page.human_attribute_name(:no_parent)}, class: "form-select w-full sm:w-auto bg-transparent" %>
           </div>
         </div>
       </div>
     </div>
-    <div class="bg-gray-100 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+    <div class="px-4 pb-5 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
       <button type="submit" class="btn btn-primary w-full sm:w-auto sm:ml-2">
         Create page
       </button>

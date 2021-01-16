@@ -1,10 +1,9 @@
 import { Controller } from "stimulus"
 import Sortable from "sortablejs"
-import formRequestSubmitPolyfill from 'https://cdn.skypack.dev/form-request-submit-polyfill'
 
 export default class extends Controller {
   static get targets() {
-    return [ "ids", "form", "list" ]
+    return [ "form", "list" ]
   }
 
   connect() {
@@ -15,8 +14,20 @@ export default class extends Controller {
   }
 
   saveSort(event) {
-    this.idsTarget.value = this.orderedIds
-    this.formTarget.requestSubmit()
+    if (this.hasFormTarget) {
+      this.prepareForm()
+      this.formTarget.requestSubmit()
+    }
+  }
+  
+  prepareForm() {
+    // Empty form
+    this.formTarget.innerHTML = ''
+    
+    // Add hidden fields to store ids
+    this.orderedIds.forEach(function(id) {
+      this.formTarget.insertAdjacentHTML("beforeend", `<input type="hidden" name="ids[]" value="${id}" />`)
+    }.bind(this))
   }
 
   get orderedIds() {

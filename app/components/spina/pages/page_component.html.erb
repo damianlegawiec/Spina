@@ -18,6 +18,6 @@
   </div>
 
   <% if children.any? %>
-    <%= render Spina::Pages::ListComponent.new(pages: children, depth: depth + 1) %>
+    <%= render Spina::Pages::ListComponent.new(pages: children) %>
   <% end %>
 </li>
