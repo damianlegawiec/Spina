@@ -7,11 +7,11 @@ module Spina
       @method = method
     end
     
-    def styles
+    def error_styles
       if has_errors?
-        "border-red-500 ring-red-500 ring-1 mt-1 form-input px-4 py-3 font-medium block w-full max-w-5xl"
+        "border-red-500 ring-red-500 ring-1"
       else
-        "mt-1 form-input px-4 py-3 font-medium block w-full max-w-5xl"
+        ""
       end
     end
     
