@@ -15,8 +15,12 @@ module Spina
       end
     end
     
+    def error_messages
+      f.object.errors[method.to_sym]
+    end
+    
     def has_errors?
-      f.object.errors.any?
+      error_messages.present?
     end
     
     def placeholder

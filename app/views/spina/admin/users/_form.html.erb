@@ -1,0 +1,19 @@
+<%= render Spina::HeaderComponent.new do |header| %>
+  <% header.with(:actions) do %>
+    <%= button_tag type: :submit, form: dom_id(@user), class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} do %>
+      <%= icon('check', css: 'w-5 h-5 mr-1 -ml-2') %>
+      <%=t 'spina.users.save' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="p-8">
+  <%= form_with model: [spina, :admin, @user], id: dom_id(@user) do |f| %>
+    <%= render Spina::TextFieldComponent.new(f, :name) %>
+    <%= render Spina::TextFieldComponent.new(f, :email) %>
+    <%= render Spina::PasswordFieldComponent.new(f, :password) %>
+    <%= render Spina::PasswordFieldComponent.new(f, :password_confirmation) %>
+    
+    <%= render Spina::SwitchComponent.new(f, :admin) %>
+  <% end %>
+</div>

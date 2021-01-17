@@ -1,0 +1,11 @@
+<%= render Spina::HeaderComponent.new do |header| %>
+  <% header.with(:after_breadcrumbs) do %>
+    <%= link_to spina.new_admin_user_path, class: 'btn btn-default h-8 px-2 ml-2' do %>
+      <%= icon('plus', css: 'w-6 h-6') %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="p-8">
+  <%= render partial: 'user', collection: @users %>
+</div>
