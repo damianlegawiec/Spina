@@ -7,7 +7,7 @@ module Spina
       admin_section :settings
 
       def index
-        @users = User.all
+        @users = User.order(:name)
         add_breadcrumb I18n.t('spina.preferences.users'), spina.admin_users_path
       end
 
