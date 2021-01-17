@@ -20,7 +20,7 @@ module Spina
           @page.navigations << Spina::Navigation.where(auto_add_pages: true)
           redirect_to spina.edit_admin_page_url(@page)
         else
-          render partial: 'error', status: :unprocessable_entity
+          render :new, status: :unprocessable_entity
         end
       end
 
@@ -59,10 +59,12 @@ module Spina
       end
 
       def sort
-        params[:ids].each.with_index do |id, index|
+        params[:ids].each.with_index do |id, index| 
           Page.where(id: id).update_all(position: index + 1)
         end
-        head :ok
+        
+        flash.now[:info] = t("spina.pages.sort_saved")
+        render inline: turbo_stream.update("flash", partial: "spina/admin/shared/flash")
       end
 
       def children
