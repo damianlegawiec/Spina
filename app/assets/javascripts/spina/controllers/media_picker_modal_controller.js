@@ -14,7 +14,11 @@ export default class extends Controller {
 	
 	confirm(event) {
 		let imageSelectedEvent = new CustomEvent("media-picker:done", {detail: this.imageData})
-		this.element.dispatchEvent(imageSelectedEvent)
+		this.target.dispatchEvent(imageSelectedEvent)
+	}
+	
+	get target() {
+		return document.getElementById(this.element.dataset.target)
 	}
 	
 	get imageData() {

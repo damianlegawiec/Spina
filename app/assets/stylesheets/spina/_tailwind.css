@@ -2256,7 +2256,7 @@ a, button {
 /* Trix */
 
 trix-toolbar {
-  button {
+  button, a {
     display: flex;
     align-items: center;
     justify-content: center;

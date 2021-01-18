@@ -22,6 +22,13 @@ export default class extends Controller {
     if (event.key === 'Enter') event.preventDefault() // Prevent form submit from alt text fields
   }
   
+  insertAttachment(event) {
+    let attachment = new Trix.Attachment({content: `<span class="trix-attachment-spina-image" data-label="Alt text">
+      <img src="${event.detail.embeddedUrl}" />
+    </span>`, contentType: "Spina::Image"})
+    this.editor.insertAttachment(attachment)
+  }
+  
   setAltText(event) {
     let alt = event.currentTarget.value
     let altLabel = alt

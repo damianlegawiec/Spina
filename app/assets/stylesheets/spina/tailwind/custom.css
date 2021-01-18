@@ -135,7 +135,7 @@
 
   /* Trix */
   trix-toolbar {
-    button {
+    button, a {
       @apply text-gray-700 w-9 h-9 flex items-center justify-center;
     }
   

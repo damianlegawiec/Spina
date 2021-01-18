@@ -3,7 +3,6 @@ module Spina
     class MediaPickerController < AdminController
       
       def show
-        render Spina::MediaPicker::ModalComponent.new
       end
       
     end

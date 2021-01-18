@@ -10,17 +10,6 @@ export default class extends Controller {
     this.sortable = Sortable.create(this.collectionTarget)
   }
   
-  openModal() {    
-    fetch(this.element.dataset.mediaPickerPath)
-      .then(response => response.text())
-      .then(function(modal) {
-        document.body.insertAdjacentHTML("beforeend", modal)
-        
-        this.modal = document.querySelector(`[data-controller*="media-picker-modal"]`)
-        this.modal.addEventListener("media-picker:done", this.handleDone.bind(this))
-      }.bind(this))
-  }
-  
   removeImage(event) {
     let id = event.currentTarget.dataset.id
     let image = document.getElementById(id)
