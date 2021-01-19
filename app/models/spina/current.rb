@@ -3,5 +3,6 @@ module Spina
     attribute :page
     attribute :account
     attribute :user
+    attribute :theme
   end
 end

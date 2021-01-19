@@ -9,7 +9,7 @@
       <div hidden data-reveal data-transition class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-gray-200">
         <div class="rounded-md bg-white shadow-xs">
           <div class="py-1">
-            <% current_theme.new_page_templates.each do |template| %>
+            <% Spina::Current.theme.new_page_templates.each do |template| %>
               <%= link_to spina.new_admin_page_path(view_template: template[0]), class: "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900", data: {turbo_frame: "modal"} do %>
                 <div class="font-medium text-gray-700"><%= template[1] %></div>
                 <div class="text-gray-400"><%= template[2] %></div>
@@ -19,6 +19,18 @@
         </div>
       </div>
     </div>
+  <% end %>
+  
+  <% header.with(:navigation) do %>
+    <nav class="-mb-3 mt-4">
+      <ul class="inline-flex w-auto rounded-md bg-white">
+        <%= render Spina::TabLinkComponent.new("#{icon('document-text', css: 'w-4 h-4 mr-1 -ml-1 opacity-75')} #{t('spina.website.all_pages')}".html_safe, spina.admin_pages_path, active: true) %>
+        
+        <% Spina::Navigation.order(:position).each do |navigation| %>
+          <%= render Spina::TabLinkComponent.new(navigation.label, spina.admin_navigation_path(navigation)) %>
+        <% end %>
+      </ul>
+    </nav>
   <% end %>
 <% end %>
 

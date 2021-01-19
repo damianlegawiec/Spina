@@ -15,7 +15,7 @@
         <% end %>
 
         <% nav.with(:links) do %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name == "pages") %>
+          <%= render Spina::Menu::LinkComponent.new(t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(pages navigations))) %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.layout'), helpers.spina.edit_admin_layout_path, active: controller_name == "layout") %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.media_library'), helpers.spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments))) %>
           

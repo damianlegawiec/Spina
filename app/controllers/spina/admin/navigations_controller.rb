@@ -1,10 +1,10 @@
 module Spina
   module Admin
     class NavigationsController < AdminController
-      layout 'spina/admin/pages'
-
       before_action :set_breadcrumb, except: [:show]
       before_action :set_navigation, only: [:show, :edit, :update]
+      
+      admin_section :website
 
       def show        
         add_breadcrumb t('spina.website.pages')
