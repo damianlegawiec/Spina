@@ -21,11 +21,11 @@
       <div class="col-span-2">
         <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
           <%= f.label :name, class: 'font-semibold text-sm text-gray-700 block' %>
-          <%= f.text_field :name, placeholder: "Name", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl", data: {controller: ("autofocus" if @user.name.blank?)} %>
+          <%= render Spina::TextFieldComponent.new(f, :name, autofocus: @user.name.blank?) %>
           
           <div class="mt-5">
             <%= f.label :email, class: 'font-semibold text-sm text-gray-700 block' %>
-            <%= f.email_field :email, placeholder: "Email", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl" %>
+            <%= render Spina::TextFieldComponent.new(f, :email) %>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
           
           <%= f.label :password, class: 'font-semibold text-sm text-gray-700 block' %>          
-          <%= f.password_field :password, placeholder: "Password", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl" %>
+          <%= render Spina::PasswordFieldComponent.new(f, :password) %>
           
           <% if @user != Spina::Current.user %>
             <div class="mt-5">

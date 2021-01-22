@@ -11,7 +11,7 @@ module Spina
 
       def update
         current_account.update(account_params)
-        redirect_back fallback_location: spina.edit_admin_account_path
+        redirect_back fallback_location: spina.edit_admin_account_path, flash: {success: "Account saved"}
       end
 
       def analytics

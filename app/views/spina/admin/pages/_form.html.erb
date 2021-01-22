@@ -45,7 +45,7 @@
               <%= Spina::Page.human_attribute_name(:title) %>
             </label>
           
-            <%= render Spina::TextFieldComponent.new(f, :title) %>
+            <%= render Spina::TextFieldComponent.new(f, :title, size: "lg") %>
             
             <turbo-frame id="page_content" src="<%= spina.edit_content_admin_page_path(f.object, locale: @locale) %>">
             </turbo-frame>

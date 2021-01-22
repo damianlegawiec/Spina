@@ -2,7 +2,7 @@
 
   <%= render Spina::HeaderComponent.new do |header| %>
     <%= header.with(:actions) do %>
-      <%= button_tag "Save account", type: :submit, class: 'btn btn-primary' %>
+      <%= button_tag "Save account", type: :submit, class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} %>
     <% end %>
   <% end %>
   
@@ -11,39 +11,70 @@
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
         <div class="col-span-1">
-          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+          <label class="font-medium block text-lg">
             <%= Spina::Account.human_attribute_name(:name) %>
           </label>
-          <div class="text-gray-400 text-sm">Your website name</div>
+          <div class="text-gray-600 text-sm">Your website name</div>
         </div>
     
         <div class="col-span-2">
-          <%= f.text_field :name, placeholder: Spina::Account.human_attribute_name(:name), class: "form-input block w-full sm:text-sm sm:leading-5" %>
+          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+            <%= f.label :name, class: 'font-semibold text-sm text-gray-700 block' %>
+            <%= render Spina::TextFieldComponent.new(f, :name) %>
+          </div>
         </div>
+      </div>
         
+      <div class="border-t border-gray-200 my-6"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
         <div class="col-span-1 mt-6 md:mt-0">
-          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+          <label class="font-medium block text-lg">
             <%= Spina::Account.human_attribute_name(:address) %>
           </label>
-          <div class="text-gray-400 text-sm">Optional</div>
+          <div class="text-gray-600 text-sm">Optional</div>
         </div>
     
         <div class="col-span-2">
-          <%= f.text_field :address, placeholder: Spina::Account.human_attribute_name(:address), class: "form-input block w-full sm:text-sm sm:leading-5" %>
-          <%= f.text_field :postal_code, placeholder: Spina::Account.human_attribute_name(:postal_code), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
-          <%= f.text_field :city, placeholder: Spina::Account.human_attribute_name(:city), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
+          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+            <div class="">
+              <%= f.label :address, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= render Spina::TextFieldComponent.new(f, :address) %>
+            </div>
+            
+            <div class="mt-5">
+              <%= f.label :postal_code, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= render Spina::TextFieldComponent.new(f, :postal_code) %>
+            </div>
+            
+            <div class="mt-5">
+              <%= f.label :city, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= render Spina::TextFieldComponent.new(f, :city) %>
+            </div>
+          </div>
         </div>
-        
+      </div>
+      
+      <div class="border-t border-gray-200 my-6"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
         <div class="col-span-1 mt-6 md:mt-0">
-          <label class="block text-sm font-medium leading-5 text-gray-700 flex items-center">
+          <label class="font-medium block text-lg">
             Contact details
           </label>
-          <div class="text-gray-400 text-sm">Email and phone</div>
+          <div class="text-gray-600 text-sm">Email and phone</div>
         </div>
     
         <div class="col-span-2">
-          <%= f.text_field :email, placeholder: Spina::Account.human_attribute_name(:email), class: "form-input block w-full sm:text-sm sm:leading-5" %>
-          <%= f.text_field :phone, placeholder: Spina::Account.human_attribute_name(:phone), class: "form-input block w-full sm:text-sm sm:leading-5 mt-2" %>
+          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+            <%= f.label :email, class: 'font-semibold text-sm text-gray-700 block' %>
+            <%= render Spina::TextFieldComponent.new(f, :email) %>
+            
+            <div class="mt-5">
+              <%= f.label :phone, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= render Spina::TextFieldComponent.new(f, :phone) %>
+            </div>
+          </div>
         </div>
       </div>
       
