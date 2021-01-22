@@ -9,11 +9,66 @@
 
 <div class="p-8">
   <%= form_with model: [spina, :admin, @user], id: dom_id(@user) do |f| %>
-    <%= render Spina::TextFieldComponent.new(f, :name) %>
-    <%= render Spina::TextFieldComponent.new(f, :email) %>
-    <%= render Spina::PasswordFieldComponent.new(f, :password) %>
-    <%= render Spina::PasswordFieldComponent.new(f, :password_confirmation) %>
+  
+    <div class="grid grid-cols-3 gap-x-6">
+      <div class="col-span-1">
+        <%= label_tag :profile, class: "font-medium block text-lg" do %>
+          Profile
+        <% end %>
+        <div class="text-gray-600 text-sm">This information will be used to identify different users. Users will use their email address to login.</div>
+      </div>
+      
+      <div class="col-span-2">
+        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
+          <%= f.label :name, class: 'font-semibold text-sm text-gray-700 block' %>
+          <%= f.text_field :name, placeholder: "Name", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl", data: {controller: ("autofocus" if @user.name.blank?)} %>
+          
+          <div class="mt-5">
+            <%= f.label :email, class: 'font-semibold text-sm text-gray-700 block' %>
+            <%= f.email_field :email, placeholder: "Email", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl" %>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <%= render Spina::SwitchComponent.new(f, :admin) %>
+    <div class="border-t border-gray-200 my-6"></div>
+    
+    <div class="grid grid-cols-3 gap-x-6 mt-3">
+      <div class="col-span-1">
+        <%= f.label "Authorization", class: "font-medium mt-1 block" %>
+        <div class="text-gray-600 text-sm">
+          Administrators can manage users. Regular users cannot.
+        </div>
+      </div>
+      
+      <div class="col-span-2">
+        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+          
+          <%= f.label :password, class: 'font-semibold text-sm text-gray-700 block' %>          
+          <%= f.password_field :password, placeholder: "Password", class: "mt-1 form-input text-sm font-medium block w-full max-w-5xl" %>
+          
+          <% if @user != Spina::Current.user %>
+            <div class="mt-5">
+              <%= f.label :admin, class: "font-semibold text-sm text-gray-700 block mb-1" %>
+              <%= render Spina::SwitchComponent.new(f, :admin) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if @user.persisted? && @user != Spina::Current.user %>
+    <div class="border-t border-gray-200 my-6"></div>
+    
+    <div class="grid grid-cols-3 gap-x-6 mt-3">
+      <div class="col-span-1"></div>    
+      <div class="col-span-2 flex justify-end">
+        <%= button_to spina.admin_user_path(@user), method: :delete, class: 'btn btn-default', form: {data: {controller: "confirm", confirm_message: "Are you sure you want to <span class='font-semibold'>delete</span> this user?"}} do %>
+          <%= icon('trash', css: 'w-4 h-4 mr-1 -ml-1') %>
+          Delete user
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

@@ -36,6 +36,7 @@ module Spina
 
       def update
         if @user.update(user_params)
+          flash[:success] = "User saved"
           redirect_to spina.admin_users_url
         else
           flash.now[:alert] = I18n.t('spina.users.cannot_be_created')
@@ -45,8 +46,11 @@ module Spina
         end
       end
 
-      def destroy        
-        @user.destroy unless @user == current_spina_user
+      def destroy
+        unless @user == current_spina_user   
+          @user.destroy 
+          flash[:success] == "User destroyed"
+        end
         redirect_to admin_users_url
       end
 
