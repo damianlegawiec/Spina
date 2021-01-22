@@ -45,7 +45,7 @@ module Spina
           @image.file.blob.update(filename: filename)
         end
         if @image.saved_change_to_media_folder_id?
-          render turbo_stream: turbo_stream.remove(@image)
+          render :update
         else
           render partial: 'image', object: @image
         end
