@@ -23,15 +23,43 @@
   </div>
   
   <div class="pt-0 p-4 md:p-8 md:pt-2">
-    <div class="max-w-5xl">
-      <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, current_theme.layout_parts) do |ff| %>
-        <%= ff.hidden_field :type, value: ff.object.class %>
-        <%= ff.hidden_field :name %>
-        <%= ff.hidden_field :title %>
-
-        <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
-      <% end %>
+    
+    <div class="grid grid-cols-3 gap-x-6 mt-6">
+      <div class="col-span-1">
+        <%= label_tag :profile, class: "font-medium block text-lg" do %>
+          Theme
+        <% end %>
+        <div class="text-gray-600 text-sm">By changing your theme, everything changes.</div>
+      </div>
+      
+      <div class="col-span-2">
+        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
+          <%= f.label :theme, class: 'font-medium text-sm text-gray-700 block' %>
+          <%= f.select :theme, Spina::Theme.all.map(&:name), {}, class: "mt-1 form-select" %>
+        </div>
+      </div>
     </div>
+    
+    <% if Spina::Current.theme.layout_parts.any? %>
+      <div class="border-t border-gray-200 my-6"></div>
+      
+      <div class="max-w-5xl">
+        <div class="max-w-xs pr-10">
+          <%= label_tag :layout, class: "font-medium block text-lg" do %>
+            Layout content
+          <% end %>
+          <div class="text-gray-600 text-sm">Global content that does not belong to any one page.</div>
+        </div>
+        
+        <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, Spina::Current.theme.layout_parts) do |ff| %>
+          <%= ff.hidden_field :type, value: ff.object.class %>
+          <%= ff.hidden_field :name %>
+          <%= ff.hidden_field :title %>
+  
+          <%= render "spina/admin/parts/#{parts_partial_namespace(ff.object.class.to_s)}/form", f: ff %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
 <% end %>

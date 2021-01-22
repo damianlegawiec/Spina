@@ -19,7 +19,7 @@
     
         <div class="col-span-2">
           <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
-            <%= f.label :name, class: 'font-semibold text-sm text-gray-700 block' %>
+            <%= f.label :name, class: 'font-medium text-sm text-gray-700 block' %>
             <%= render Spina::TextFieldComponent.new(f, :name) %>
           </div>
         </div>
@@ -38,17 +38,17 @@
         <div class="col-span-2">
           <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
             <div class="">
-              <%= f.label :address, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= f.label :address, class: 'font-medium text-sm text-gray-700 block' %>
               <%= render Spina::TextFieldComponent.new(f, :address) %>
             </div>
             
             <div class="mt-5">
-              <%= f.label :postal_code, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= f.label :postal_code, class: 'font-medium text-sm text-gray-700 block' %>
               <%= render Spina::TextFieldComponent.new(f, :postal_code) %>
             </div>
             
             <div class="mt-5">
-              <%= f.label :city, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= f.label :city, class: 'font-medium text-sm text-gray-700 block' %>
               <%= render Spina::TextFieldComponent.new(f, :city) %>
             </div>
           </div>
@@ -67,11 +67,11 @@
     
         <div class="col-span-2">
           <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
-            <%= f.label :email, class: 'font-semibold text-sm text-gray-700 block' %>
+            <%= f.label :email, class: 'font-medium text-sm text-gray-700 block' %>
             <%= render Spina::TextFieldComponent.new(f, :email) %>
             
             <div class="mt-5">
-              <%= f.label :phone, class: 'font-semibold text-sm text-gray-700 block' %>
+              <%= f.label :phone, class: 'font-medium text-sm text-gray-700 block' %>
               <%= render Spina::TextFieldComponent.new(f, :phone) %>
             </div>
           </div>
