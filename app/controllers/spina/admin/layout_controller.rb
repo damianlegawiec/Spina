@@ -2,6 +2,8 @@ module Spina::Admin
   class LayoutController < AdminController
     before_action :set_account
     before_action :set_locale
+    
+    admin_section :settings
 
     def edit
     end
