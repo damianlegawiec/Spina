@@ -57,7 +57,7 @@ Spina is released under the [MIT license](LICENSE.md).
 
 ## Acknowledgements
 
-All icons in Spina were made by Brent Jackson [Geomicons](http://jxnblk.com/geomicons-wired/).
+Icons were designed by [@steveschoger](https://twitter.com/steveschoger) - [Heroicons](https://github.com/tailwindlabs/heroicons).
 
 The font used in Spina's admin panel is called Metropolis and was created by Chris Simpson [Metropolis](https://github.com/chrismsimpson/Metropolis)
 
@@ -68,5 +68,3 @@ The font used in Spina's admin panel is called Metropolis and was created by Chr
     http://scripts.sil.org/OFL
 
     Version 2.0 - 18 March 2012
-
-Some early parts of Spina are influenced by Refinery CMS. Credits to [the Refinery team](https://www.refinerycms.com/).
