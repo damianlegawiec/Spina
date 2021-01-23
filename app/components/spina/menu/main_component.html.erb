@@ -4,9 +4,7 @@
     <ul class="flex md:flex-col">
       <%= render Spina::Menu::ListComponent.new(:website) do |nav| %>
         <% nav.with(:icon) do %>
-          <!-- <svg class="text-white h-8 w-8 hidden md:block md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
- -->          
-          <%= helpers.icon('document-text-small', css: 'text-white h-8 w-8 hidden md:block md:mr-3') %>
+          <%= helpers.heroicon('document-text', style: :solid, class: 'w-8 h-8 text-white mr-3') %>
           
           <div class="hidden md:block text-white font-semibold md:block transform -translate-x-2 ease-in-out duration-300 opacity-0 transition-all" data-navigation-target="label">
             Content
@@ -15,11 +13,8 @@
 
         <% nav.with(:links) do %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(pages))) %>
-          
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.menus'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(navigations))) %>
-          
-          <%= render Spina::Menu::LinkComponent.new("Layout", helpers.spina.edit_admin_layout_path, active: controller_name.in?(%w(layout))) %>
-          
+          <%= render Spina::Menu::LinkComponent.new("Layout", helpers.spina.edit_admin_layout_path, active: controller_name == "layout") %>
           <%= render Spina::Menu::LinkComponent.new(t('spina.website.media_library'), helpers.spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments))) %>
           
           <%= render Spina::Hooks::HookComponent.new(partial: "website_secondary_navigation") %>
@@ -30,7 +25,7 @@
 
       <%= render Spina::Menu::ListComponent.new(:settings) do |nav| %>
         <% nav.with(:icon) do %>
-          <svg class="text-white h-7 w-7 md:h-8 md:w-8 md:mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>
+          <%= helpers.heroicon('cog', style: :solid, class: 'w-8 h-8 text-white mr-3') %>
           
           <div class="hidden md:block text-white font-semibold md:block transform -translate-x-2 ease-in-out duration-300 opacity-0 transition-all" data-navigation-target="label">
             Settings
@@ -49,11 +44,13 @@
 
     <ul>
       <li>
-        <button type="button" class="flex w-full items-center p-1 h-14 md:h-auto" data-action="navigation#closeAllNavigations">
-          <%= image_tag Spina::Current.user.gravatar_url, class: "w-12 h-12 rounded-md" %>
+        <!-- <button type="button" class="flex w-full items-center p-1 h-14 md:h-auto" data-action="navigation#closeAllNavigations"> -->
+        <%= link_to helpers.spina.admin_logout_path, class: 'p-3 w-14 block flex justify-center opacity-50 hover:opacity-100 transition duration-200 ease' do %>
+          <%= helpers.heroicon('logout', style: :solid, class: 'h-8 w-8 text-white') %>
           
-          <%= link_to t('spina.logout'), helpers.spina.admin_logout_path, class: "hidden md:block text-white font-semibold md:block ml-1 transform -translate-x-2 ease-in-out duration-300 opacity-0 transition-all block w-full p-3 text-left", data: {navigation_target: "label", turbo: false} %>
-        </button>
+          <!-- 
+          <%= link_to t('spina.logout'), helpers.spina.admin_logout_path, class: "hidden md:block text-white font-semibold md:block ml-1 transform -translate-x-2 ease-in-out duration-300 opacity-0 transition-all block w-full p-3 text-left", data: {navigation_target: "label", turbo: false} %> -->
+        <% end %>
       </li>
     </ul>
 

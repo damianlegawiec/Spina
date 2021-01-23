@@ -2,7 +2,7 @@
   <% header.with(:actions) do %>
     <div class="relative ml-3 w-auto" data-controller="reveal" data-reveal-away>
       <button type="button" class="btn btn-primary w-full" data-action="reveal#toggle">
-        <%= heroicon("plus", style: :solid, size: 7, class: "-ml-2") %>
+        <%= heroicon("plus", style: :solid, class: "w-7 h-7 -ml-2") %>
         <%=t 'spina.pages.new' %>
       </button>
 
@@ -24,10 +24,10 @@
   <% header.with(:navigation) do %>
     <nav class="-mb-3 mt-4">
       <ul class="inline-flex w-auto rounded-md bg-white">
-        <%= render Spina::TabLinkComponent.new("#{heroicon('collection', style: :solid, size: 4, class: 'mr-1 -ml-1 opacity-75')} #{t('spina.website.main')}".html_safe, spina.admin_pages_path, active: true) %>
+        <%= render Spina::TabLinkComponent.new("#{heroicon('collection', style: :solid, class: 'h-4 w-4 mr-1 -ml-1 opacity-75')} #{t('spina.website.main')}".html_safe, spina.admin_pages_path, active: true) %>
         
         <% Spina::Resource.order(:name).each do |page_collection| %>
-          <%= render Spina::TabLinkComponent.new("#{heroicon('collection', size: 4, class: 'mr-1 -ml-1 opacity-75')} #{page_collection.label}".html_safe, spina.admin_resource_path(page_collection)) %>
+          <%= render Spina::TabLinkComponent.new("#{heroicon('collection', class: 'h-4 w-4 mr-1 -ml-1 opacity-75')} #{page_collection.label}".html_safe, spina.admin_resource_path(page_collection)) %>
         <% end %>
       </ul>
     </nav>
