@@ -1,5 +1,22 @@
+require 'nokogiri'
+
 module Spina::Admin
-	module IconHelper
+	module IconsHelper
+	
+		class FileNotFound < StandardError
+	  end
+		
+		def heroicon(name, style: :outline, size: nil, **options)
+	    file = read_file(Spina::Engine.root.join("app/assets/icons/heroicons", style.to_s, "#{name}.svg"))
+	    
+	    size ||= style == :outline ? 6 : 5
+	    
+	    doc = Nokogiri::XML(file)
+	    svg = doc.root
+	    classes = ["h-#{size}", "w-#{size}", options[:class]].compact
+	    svg[:class] = classes.join(" ")
+	    ActiveSupport::SafeBuffer.new(svg.to_s)
+	  end
 		
 		def icon(name, css: "")
 			case name.to_s
@@ -99,6 +116,11 @@ module Spina::Admin
 			def heroicons_medium
 				{viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", xmlns: "http://www.w3.org/2000/svg"}
 			end
+  
+	    def read_file(path)
+	      File.exist?(path) || raise(FileNotFound, "File #{path} not found")
+	      File.read(path)
+	    end  
 
 	end
 end
