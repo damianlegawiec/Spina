@@ -10,6 +10,19 @@
           </div>
         </div>
       </div>
+      
+      <nav class="-mb-3 mt-4">
+        <ul class="inline-flex w-auto rounded-md bg-white">
+          <button type="button" class="block px-3 leading-relaxed py-1 hover:text-gray-800 rounded-md text-gray-400 font-medium text-sm flex items-center cursor-default text-gray-900 bg-spina-dark bg-opacity-10" data-action="tabs#show" data-tabs-target="button" data-pane-id="page_content">
+            <%= icon('document-text', css: 'w-4 h-4 mr-1 -ml-1 opacity-75') %>
+            Global content
+          </button>
+          <button type="button" class="block px-3 leading-relaxed py-1 rounded-md hover:text-gray-800 text-gray-400 font-medium text-sm flex items-center" data-action="tabs#show" data-tabs-target="button" data-pane-id="seo">
+            <%= icon('search', css: 'w-4 h-4 mr-1 -ml-1 opacity-75') %>
+            Menus
+          </button>
+        </ul>
+      </nav>
     </div>
     
     <div class="bg-gray-100 md:bg-transparent border-t md:border-0 flex p-4 items-center fixed w-full z-20 bottom-0 md:bottom-auto md:w-auto md:z-20 md:absolute md:top-0 md:right-0 md:h-full md:items-center md:pr-8">
@@ -18,38 +31,43 @@
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>
         Save changes
-      </button>
+      </button>      
     </div>
   </div>
   
   <div class="pt-0 p-4 md:p-8 md:pt-2">
-    
-    <div class="grid grid-cols-3 gap-x-6 mt-6">
-      <div class="col-span-1">
-        <%= label_tag :profile, class: "font-medium block text-lg" do %>
-          Theme
-        <% end %>
-        <div class="text-gray-600 text-sm">By changing your theme, everything changes.</div>
-      </div>
-      
-      <div class="col-span-2">
-        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
-          <%= f.label :theme, class: 'font-medium text-sm text-gray-700 block' %>
-          <%= f.select :theme, Spina::Theme.all.map(&:name), {}, class: "mt-1 form-select" %>
+    <% if false %>
+      <div class="grid grid-cols-3 gap-x-6 mt-6">
+        <div class="col-span-1">
+          <%= label_tag :profile, class: "font-medium block text-lg" do %>
+            Theme
+          <% end %>
+          <div class="text-gray-600 text-sm">By changing your theme, everything changes.</div>
+        </div>
+        
+        <div class="col-span-2">
+          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
+            <%= f.label :theme, class: 'font-medium text-sm text-gray-700 block' %>
+            <%= f.select :theme, Spina::Theme.all.map(&:name), {}, class: "mt-1 form-select" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
     
     <% if Spina::Current.theme.layout_parts.any? %>
-      <div class="border-t border-gray-200 my-6"></div>
+      <% if false %>
+        <div class="border-t border-gray-200 my-6"></div>
+      <% end %>
       
       <div class="max-w-5xl">
-        <div class="max-w-xs pr-10">
-          <%= label_tag :layout, class: "font-medium block text-lg" do %>
-            Layout content
-          <% end %>
-          <div class="text-gray-600 text-sm">Global content that does not belong to any one page.</div>
-        </div>
+        <% if false %>
+          <div class="max-w-xs pr-10">
+            <%= label_tag :layout, class: "font-medium block text-lg" do %>
+              Layout content
+            <% end %>
+            <div class="text-gray-600 text-sm">Global content that does not belong to any one page.</div>
+          </div>
+        <% end %>
         
         <%= f.fields_for "#{@locale}_content".to_sym, build_parts(f.object, Spina::Current.theme.layout_parts) do |ff| %>
           <%= ff.hidden_field :type, value: ff.object.class %>

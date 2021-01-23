@@ -2190,6 +2190,8 @@ a, button {
 }
 
 .form-select:focus {
+  --tw-border-opacity: 1;
+  border-color: rgba(121, 122, 184, var(--tw-border-opacity));
   --tw-ring-opacity: 1;
   --tw-ring-color: rgba(121, 122, 184, var(--tw-ring-opacity));
 }

@@ -101,6 +101,7 @@
   }
   
   .form-select:focus {
+    @apply border-spina-light;
     @apply ring-spina-light;
   }
   

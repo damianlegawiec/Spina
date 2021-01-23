@@ -31,6 +31,10 @@ module Spina::Admin
 				content_tag(:svg, heroicons_small.merge(class: css)) do
 					'<path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />'.html_safe
 				end
+			when 'collection-medium'
+				content_tag(:svg, heroicons_medium.merge(class: css)) do
+					'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />'.html_safe
+				end
 			when 'folder'
 				content_tag(:svg, heroicons_small.merge(class: css)) do
 					'<path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />'.html_safe
@@ -58,6 +62,10 @@ module Spina::Admin
 			when 'document-text'
 				content_tag(:svg, heroicons_medium.merge(class: css)) do
 					'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />'.html_safe
+				end
+			when 'document-text-small'
+				content_tag(:svg, heroicons_small.merge(class: css)) do
+					'<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />'.html_safe
 				end
 			when 'search'
 				content_tag(:svg, heroicons_small.merge(class: css)) do
