@@ -7,12 +7,12 @@ module Spina
       admin_section :content
       
       def index
-        navigation = Spina::Navigation.order(:label).first
+        navigation = Spina::Navigation.order(:position).first
         redirect_to spina.edit_admin_navigation_path(navigation)
       end
 
       def edit
-        @navigations = Spina::Navigation.order(:label)
+        @navigations = Spina::Navigation.order(:position)
         render layout: 'spina/admin/admin'
       end
 
