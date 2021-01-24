@@ -1,18 +1,18 @@
 module Spina
   module Admin
     class NavigationsController < AdminController
-      before_action :set_breadcrumb, except: [:show]
+      before_action :set_breadcrumb
       before_action :set_navigation, only: [:show, :edit, :update]
       
-      admin_section :website
-
-      def show        
-        add_breadcrumb t('spina.website.pages')
+      admin_section :content
+      
+      def index
+        navigation = Spina::Navigation.order(:label).first
+        redirect_to spina.edit_admin_navigation_path(navigation)
       end
 
-      def edit        
-        add_breadcrumb @navigation.label, spina.admin_navigation_path(@navigation)
-        add_breadcrumb t('spina.edit')
+      def edit
+        @navigations = Spina::Navigation.order(:label)
         render layout: 'spina/admin/admin'
       end
 
@@ -48,7 +48,7 @@ module Spina
         end
 
         def set_breadcrumb
-          add_breadcrumb t('spina.website.pages'), spina.admin_pages_path
+          add_breadcrumb t('spina.website.menus')
         end
 
         def navigation_params

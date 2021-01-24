@@ -3,7 +3,7 @@ module Spina
     class ListComponent < ApplicationComponent
       with_content_areas :icon, :links
       
-      def initialize(name = :website)
+      def initialize(name = :content)
         @name = name
       end
       

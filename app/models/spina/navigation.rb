@@ -11,5 +11,10 @@ module Spina
     def cache_key
       super + "_" + Mobility.locale.to_s
     end
+    
+    def to_partial_path
+      "spina/admin/navigations/navigation"
+    end
+    
   end
 end

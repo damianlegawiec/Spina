@@ -2,7 +2,7 @@
   <div class="flex flex-row md:flex-col justify-between h-full w-full bg-black p-1 md:p-3 bg-opacity-0 duration-300 ease-in-out transition-colors md:bg-opacity-50" data-navigation-target="primary">
 
     <ul class="flex md:flex-col">
-      <%= render Spina::Menu::ListComponent.new(:website) do |nav| %>
+      <%= render Spina::Menu::ListComponent.new(:content) do |nav| %>
         <% nav.with(:icon) do %>
           <%= helpers.heroicon('document-text', style: :solid, class: 'w-8 h-8 text-white mr-3') %>
           
@@ -12,10 +12,14 @@
         <% end %>
 
         <% nav.with(:links) do %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(pages))) %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.website.menus'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(navigations))) %>
-          <%= render Spina::Menu::LinkComponent.new("Layout", helpers.spina.edit_admin_layout_path, active: controller_name == "layout") %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.website.media_library'), helpers.spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments))) %>
+        
+          <%= render Spina::Menu::LinkComponent.new t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name == "pages" %>
+          
+          <%= render Spina::Menu::LinkComponent.new t('spina.website.menus'), helpers.spina.admin_navigations_path, active: controller_name == "navigations" %>
+          
+          <%= render Spina::Menu::LinkComponent.new "Layout", helpers.spina.edit_admin_layout_path, active: controller_name == "layout" %>
+          
+          <%= render Spina::Menu::LinkComponent.new t('spina.website.media_library'), helpers.spina.admin_images_path, active: controller_name.in?(%w(images media_folders attachments)) %>
           
           <%= render Spina::Hooks::HookComponent.new(partial: "website_secondary_navigation") %>
         <% end %>

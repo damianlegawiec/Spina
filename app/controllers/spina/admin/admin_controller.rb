@@ -4,7 +4,7 @@ module Spina
       before_action :set_admin_locale
       before_action :authorize_spina_user
       
-      admin_section :website
+      admin_section :content
 
       private
 

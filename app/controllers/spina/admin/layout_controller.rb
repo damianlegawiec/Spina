@@ -3,7 +3,7 @@ module Spina::Admin
     before_action :set_account
     before_action :set_locale
     
-    admin_section :website
+    admin_section :content
 
     def edit
     end
