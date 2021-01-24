@@ -13,5 +13,10 @@
 <% end %>
 
 <div class="p-8">
-  Menu form here
+  <%= form_with model: @navigation, url: spina.admin_navigation_path(@navigation) do |f| %>
+    <span class="font-mono"><%= @navigation.name %></span>
+    <%= render Spina::TextFieldComponent.new(f, :label) %>
+    
+    <div class="bg-gray-200">Add menu item +</div>
+  <% end %>
 </div>

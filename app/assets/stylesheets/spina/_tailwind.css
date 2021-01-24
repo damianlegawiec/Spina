@@ -510,7 +510,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 /**
@@ -13688,6 +13688,10 @@ trix-editor [data-trix-mutable]::selection,
 
 .font-body {
   font-family: Metropolis;
+}
+
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 .font-thin {
@@ -46399,6 +46403,10 @@ trix-editor [data-trix-mutable]::selection,
     font-family: Metropolis;
   }
 
+  .sm\:font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
+
   .sm\:font-thin {
     font-weight: 100;
   }
@@ -78944,6 +78952,10 @@ trix-editor [data-trix-mutable]::selection,
 
   .md\:font-body {
     font-family: Metropolis;
+  }
+
+  .md\:font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   .md\:font-thin {
@@ -111493,6 +111505,10 @@ trix-editor [data-trix-mutable]::selection,
     font-family: Metropolis;
   }
 
+  .lg\:font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
+
   .lg\:font-thin {
     font-weight: 100;
   }
@@ -144040,6 +144056,10 @@ trix-editor [data-trix-mutable]::selection,
     font-family: Metropolis;
   }
 
+  .xl\:font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  }
+
   .xl\:font-thin {
     font-weight: 100;
   }
@@ -176585,6 +176605,10 @@ trix-editor [data-trix-mutable]::selection,
 
   .\32xl\:font-body {
     font-family: Metropolis;
+  }
+
+  .\32xl\:font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   .\32xl\:font-thin {

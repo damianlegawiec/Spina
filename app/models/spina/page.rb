@@ -95,7 +95,7 @@ module Spina
     private
 
       def set_resource_from_parent
-        self.resource_id = parent.resource_id 
+        self.resource_id = parent.resource_id
       end
 
       def touch_navigations

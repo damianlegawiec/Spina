@@ -10,7 +10,8 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      body: ['Metropolis']
+      body: ['Metropolis'],
+      mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace']
     },
     extend: {
       colors: {

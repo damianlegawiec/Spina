@@ -18,7 +18,7 @@ module Spina
 
       def update        
         if @navigation.update(navigation_params)
-          redirect_to spina.admin_navigation_path(@navigation)
+          redirect_to spina.edit_admin_navigation_path(@navigation)
         else
           render :edit
         end
@@ -52,7 +52,7 @@ module Spina
         end
 
         def navigation_params
-          params.require(:navigation).permit(:auto_add_pages, page_ids: [])
+          params.require(:navigation).permit(:label, :auto_add_pages, page_ids: [])
         end
 
         def set_navigation
