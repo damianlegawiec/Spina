@@ -252,6 +252,7 @@ en:
       pages_description: All pages on your website
       photos: Images
       title: Your website
+      theme: Theme
     wysiwyg:
       heading_1: Heading 1
       heading_2: Heading 2

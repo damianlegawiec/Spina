@@ -1,0 +1,29 @@
+<%= form_with model: Spina::Current.account, url: spina.admin_theme_path do |f| %>
+
+  <%= render Spina::HeaderComponent.new do |header| %>
+    <%= header.with(:actions) do %>
+      <%= button_tag "Save theme", type: :submit, class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} %>
+    <% end %>
+  <% end %>
+  
+  <div class="p-4 md:p-8">
+    <div class="max-w-screen-2xl">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+        <div class="col-span-1">
+          <label class="font-medium block">
+            <%= Spina::Account.human_attribute_name(:theme) %>
+          </label>
+          <div class="text-gray-600 text-sm">Configure your theme</div>
+        </div>
+    
+        <div class="col-span-2">
+          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+            <%= f.select :theme, Spina::Theme.all.map{|theme| [theme.title, theme.name]}, {}, class: "form-select" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<% end %>

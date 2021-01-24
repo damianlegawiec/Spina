@@ -38,7 +38,7 @@
 
         <% nav.with(:links) do %>
           <%= render Spina::Menu::LinkComponent.new("General", helpers.spina.edit_admin_account_path, active: controller_name == "accounts") %>
-          <%= render Spina::Menu::LinkComponent.new(t('spina.website.theme'), helpers.spina.edit_admin_layout_path, active: controller_name == "layout") %>
+          <%= render Spina::Menu::LinkComponent.new(t('spina.website.theme'), helpers.spina.edit_admin_theme_path, active: controller_name == "theme") %>
           <%= render Spina::Menu::LinkComponent.new("Users", helpers.spina.admin_users_path, active: controller_name == "users") %>
           
           <%= render Spina::Hooks::HookComponent.new(partial: "settings_secondary_navigation") %>
