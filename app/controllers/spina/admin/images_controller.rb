@@ -4,8 +4,6 @@ module Spina
       before_action :set_media_folder
       before_action :set_breadcrumbs
 
-      layout "spina/admin/media_library"
-
       def index
         @media_folders = MediaFolder.order(:name)
       end

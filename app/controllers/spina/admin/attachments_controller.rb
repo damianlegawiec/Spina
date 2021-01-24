@@ -3,8 +3,6 @@ module Spina
     class AttachmentsController < AdminController
       before_action :set_breadcrumbs
 
-      layout "spina/admin/media_library"
-
       def index
         @attachments = Attachment.sorted
       end
