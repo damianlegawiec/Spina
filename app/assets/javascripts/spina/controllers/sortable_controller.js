@@ -9,7 +9,8 @@ export default class extends Controller {
   connect() {
     this.sortable = Sortable.create(this.listTarget, {
       handle: '[data-sortable-handle]',
-      onEnd: this.saveSort.bind(this)
+      onEnd: this.saveSort.bind(this),
+      animation: 150
     })
   }
 
