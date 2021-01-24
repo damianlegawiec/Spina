@@ -11,7 +11,7 @@ module Spina
       when "title"
         super.joins(:translations).where(spina_page_translations: {locale: I18n.locale}).order("spina_page_translations.title")
       else
-        super.order(created_at: :desc)
+        super
       end
     end
     

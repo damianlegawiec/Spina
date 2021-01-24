@@ -65,25 +65,22 @@
   <div class="col-span-2">
     <%= render Spina::SwitchComponent.new(f, :skip_to_first_child) %>
   </div>
-
-</div>
-
-
-<div>
-  <div class="mt-1">
-    <% if false %>
-      <div class="mt-6">
-        <div class="col-span-1 py-2">
-          <label for="country" class="block text-sm font-medium leading-5 text-gray-700">Category</label>
-          <div class="text-sm text-gray-500">Where should your page live</div>
-        </div>
-
-        <div class="col-span-2">
-          <select id="country" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-            <option>Pages</option>
-          </select>
-        </div>
+  
+  <% if Spina::Resource.any? %>
+  
+    <div class="col-span-1 mt-6 md:mt-0">
+      <label class="font-medium text-sm leading-5 w-full text-gray-700">
+        <%= Spina::Page.human_attribute_name :page_collection %>
+      </label>
+      <div class="text-sm leading-5">
+        <p class="text-gray-500"><%= Spina::Page.human_attribute_name :page_collection_description %></p>
       </div>
-    <% end %>
-  </div>
+    </div>
+    
+    <div class="col-span-2">
+      <%= f.select :resource_id, Spina::Resource.pluck(:label, :id), {include_blank: "Main"}, class: "form-select" %>
+    </div>
+    
+  <% end %>
+
 </div>

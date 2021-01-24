@@ -6,7 +6,13 @@ module Spina
 
       def index
         add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path
-        @pages = Page.active.sorted.roots.regular_pages.includes(:translations)
+        
+        if params[:page_collection_id]
+          @page_collection = Resource.find(params[:page_collection_id])
+          @pages = @page_collection.pages.active.sorted.roots.includes(:translations)
+        else
+          @pages = Page.active.sorted.roots.main.includes(:translations)
+        end
       end
 
       def new
@@ -85,11 +91,12 @@ module Spina
         end
   
         def add_index_breadcrumb
+          path = spina.admin_pages_path
           if @page.resource.present?
-            add_breadcrumb @page.resource.label, spina.admin_resource_path(@page.resource), class: 'text-gray-400'
-          else
-            add_breadcrumb I18n.t('spina.website.pages'), spina.admin_pages_path, class: 'text-gray-400'
+            path = spina.admin_pages_path(page_collection_id: @page.resource_id)
           end
+          
+          add_breadcrumb t('spina.website.pages'), path, class: 'text-gray-400'
         end
   
         def page_params
