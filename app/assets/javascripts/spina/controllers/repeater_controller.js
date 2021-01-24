@@ -10,7 +10,8 @@ export default class extends Controller {
     this.sortable = Sortable.create(this.listTarget, {
       handle: 'button svg',
       dataIdAttr: "data-pane-id",
-      onEnd: this.sort.bind(this)
+      onEnd: this.sort.bind(this),
+      animation: 150
     })
   }
 
