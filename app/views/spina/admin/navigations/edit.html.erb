@@ -13,10 +13,54 @@
 <% end %>
 
 <div class="p-8">
-  <%= form_with model: @navigation, url: spina.admin_navigation_path(@navigation) do |f| %>
-    <span class="font-mono"><%= @navigation.name %></span>
-    <%= render Spina::TextFieldComponent.new(f, :label) %>
+  <div data-controller="sortable">
+
+    <div class="space-y-2" data-sortable-target="list">
+      <% @navigation.navigation_items.sorted.each do |navigation_item| %>
+        <div class="flex flex-col">
+          <div class="btn btn-default max-w-max justify-start pr-2">
+            <div data-sortable-handle>
+              <%= heroicon('menu-alt-4', style: :solid, class: 'w-4 h-4 -ml-1 mr-2 text-gray-400') %>  
+            </div>
+            
+            <div class="w-32 truncate text-left"><%= navigation_item.menu_title %></div>
+            
+            <div class="border-l border-gray-200 pl-2">
+              <%= heroicon('chevron-down', class: 'w-4 h-4 mr-1 text-gray-400') %>
+            </div>
+          </div>
+          
+          <% if navigation_item.children.any? %>
+            <div class="space-y-2 ml-8 mt-2">
+              <% navigation_item.children.sorted.each do |navigation_item| %>
+                <div class="btn btn-default max-w-max justify-start pr-2">
+                  <div data-sortable-handle>
+                    <%= heroicon('menu-alt-4', style: :solid, class: 'w-4 h-4 -ml-1 mr-2 text-gray-400') %>  
+                  </div>
+                  
+                  <div class="w-32 truncate text-left"><%= navigation_item.menu_title %></div>
+                  
+                  <div class="border-l border-gray-200 pl-2">
+                    <%= heroicon('chevron-down', class: 'w-4 h-4 mr-1 text-gray-400') %>
+                  </div>
+                </div>
+              <% end %>
+              
+            
+              <button type="button" class="btn btn-default mt-2 bg-transparent text-xs h-8 px-3">
+                <%= heroicon('plus', style: :outline, class: "w-4 h-4 -ml-1 mr-1 text-gray-400") %>
+                Add menu item
+              </button>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     
-    <div class="bg-gray-200">Add menu item +</div>
-  <% end %>
+    <button type="button" class="btn btn-default mt-2 bg-transparent text-xs h-8 px-3">
+      <%= heroicon('plus', style: :outline, class: "w-4 h-4 -ml-1 mr-1 text-gray-400") %>
+      Add menu item
+    </button>
+      
+  </div>
 </div>

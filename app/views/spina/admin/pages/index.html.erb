@@ -34,6 +34,14 @@
   <% end %>
 <% end %>
 
-<div class="my-6 md:m-8 bg-white md:rounded-lg border-l-0 border-r-0 border md:border-r md:border-l border-gray-200 border-b-0 shadow-sm">
-  <%= render Spina::Pages::ListComponent.new(pages: @pages) %>
-</div>
+<% if @pages.any? %>
+  
+  <div class="my-6 md:m-8 bg-white md:rounded-lg border-l-0 border-r-0 border md:border-r md:border-l border-gray-200 border-b-0 shadow-sm">
+    <%= render Spina::Pages::ListComponent.new(pages: @pages) %>
+  </div>
+  
+<% else %>
+
+  <div class="m-8 my-6 italic text-gray-400">No pages yet</div>
+  
+<% end %>
