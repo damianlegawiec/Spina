@@ -24,12 +24,10 @@
       <%= render @navigation.navigation_items.sorted.roots %>
     </ul>
     
-    <div class="w-72">
-      <%= link_to spina.new_admin_navigation_navigation_item_path(@navigation), class: 'btn btn-default mt-2 bg-transparent pr-2', data: {turbo_frame: "modal"} do %>
-        <%= heroicon('plus', style: :solid, class: "w-5 h-5 -ml-1 mr-1 text-gray-400") %>
-        <div class="w-32 text-left truncate">Add menu item</div>
-        <div class="pl-2 w-4 mr-3"></div>
-      <% end %>
-    </div>
+    <%= link_to spina.new_admin_navigation_navigation_item_path(@navigation), class: 'btn btn-default w-56 mt-2 bg-transparent', data: {turbo_frame: "modal"} do %>
+      <%= heroicon('plus', style: :solid, class: "w-6 h-6 -ml-1 mr-1 text-gray-400") %>
+      <div class="w-full">Add menu item</div>
+    <% end %>
+
   </div>
 </div>
