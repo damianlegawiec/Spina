@@ -3,7 +3,7 @@ module Spina
     belongs_to :navigation, touch: true
     belongs_to :page
 
-    has_ancestry orphan_strategy: :adopt
+    has_ancestry
 
     scope :regular_pages, -> { joins(:page).where(spina_pages: {resource_id: nil}) }
     scope :sorted, -> { order('spina_navigation_items.position') }
@@ -14,5 +14,9 @@ module Spina
     validates :page, uniqueness: {scope: :navigation}
 
     delegate :menu_title, :materialized_path, :draft?, to: :page
+    
+    def to_partial_path
+      "spina/admin/navigation_items/navigation_item"
+    end
   end
 end

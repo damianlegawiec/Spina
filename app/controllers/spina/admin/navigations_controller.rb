@@ -25,11 +25,12 @@ module Spina
       end
 
       def sort
-        params[:list].each_pair do |parent_pos, parent_node|
-          update_child_pages_position(parent_node)
-          update_navigation_item_position(parent_node[:id], parent_pos, nil)
+        params[:ids].each.with_index do |id, index| 
+          NavigationItem.where(id: id).update_all(position: index + 1)
         end
-        head :ok
+        
+        flash.now[:info] = t("spina.navigations.sorting_saved")
+        render inline: turbo_stream.update("flash", partial: "spina/admin/shared/flash")
       end
 
       private

@@ -37,6 +37,7 @@ Spina::Engine.routes.draw do
 
     resources :navigations do
       post :sort, on: :member
+      resources :navigation_items
     end
 
     resources :attachments do

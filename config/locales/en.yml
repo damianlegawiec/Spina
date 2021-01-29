@@ -161,6 +161,8 @@ en:
     modal:
       agree: Yes, I'm sure
       cancel: No, cancel
+    navigations:
+      sorting_saved: Sorting saved
     notifications:
       alert: Oops! Something went wrong
       information: Information
@@ -191,6 +193,7 @@ en:
       saved: Page saved
       saving: Saving...
       show_in_menu: invisible
+      sorting_saved: Sorting saved
       skip_to_first_child: forward to first child page
     permanently_delete: Permanently delete
     photos:

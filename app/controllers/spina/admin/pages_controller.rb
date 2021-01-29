@@ -69,7 +69,7 @@ module Spina
           Page.where(id: id).update_all(position: index + 1)
         end
         
-        flash.now[:info] = t("spina.pages.sort_saved")
+        flash.now[:info] = t("spina.pages.sorting_saved")
         render inline: turbo_stream.update("flash", partial: "spina/admin/shared/flash")
       end
 
