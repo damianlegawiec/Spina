@@ -20,6 +20,12 @@ export default class RevealController extends Controller {
 
     this._init(event, true)
   }
+  
+  hideLater(event) {
+    setTimeout(function() {
+      this.hide(event)
+    }.bind(this), 100)
+  }
 
   /**
    * Hides elements connected to the controller.
