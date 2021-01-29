@@ -1,6 +1,6 @@
 <div class="relative" data-controller="reveal" data-reveal-away>
   <button type="button" class="btn btn-default px-3" data-action="reveal#toggle">
-    <%= helpers.icon("chat-alt", css: 'w-4 h-4 text-gray-300') %>
+    <%= helpers.heroicon("chat-alt", style: :solid, class: 'w-4 h-4 text-gray-300') %>
     <% if @label.present? %>
       <span class="ml-1 font-semibold"><%= @label %></span>
     <% elsif missing_locales.any? %>

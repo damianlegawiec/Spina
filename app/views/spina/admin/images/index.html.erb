@@ -2,7 +2,7 @@
   <% header.with(:actions) do %>
     <% if @media_folder.blank? %>
       <%= link_to spina.new_admin_media_folder_path, class: "btn btn-default", data: {turbo_frame: "modal"} do %>
-        <%= icon("folder", css: 'w-4 h-4 mr-1 -ml-1') %>
+        <%= heroicon("folder", style: :solid, class: 'w-4 h-4 mr-1 -ml-1') %>
         Add folder
       <% end %>
     <% end %>
@@ -13,7 +13,7 @@
       <%= f.file_field :files, multiple: true, accept: "image/*", id: "new_image_file_field", class: 'hidden', data: {action: "loading-button#loading form#requestSubmit", file_manager_target: "fileField"} %>
       
       <button type="button" class="btn btn-default" data-controller="delegate-click" data-action="delegate-click#click" data-loading-button-target="button" data-delegate-click-target="#new_image_file_field">
-        <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+        <%= heroicon("upload", style: :solid, class: "w-4 h-4 -ml-1 mr-1") %>
         <%=t 'spina.images.upload' %>
       </button>
     <% end %>
@@ -22,8 +22,8 @@
   <% header.with(:navigation) do %>
     <nav class="-mb-3 mt-4">
       <ul class="inline-flex w-auto rounded-md bg-white">
-        <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path, active: true) %>
-        <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path) %>
+        <%= render Spina::TabLinkComponent.new("#{heroicon('photograph', style: :solid, class: 'w-5 h-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path, active: true) %>
+        <%= render Spina::TabLinkComponent.new("#{heroicon('document', style: :solid, class: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path) %>
       </ul>
     </nav>
   <% end %>
@@ -34,7 +34,7 @@
     <div class="flex items-center h-12 hover:bg-white border-b border-gray-200 px-8">
       <%= link_to spina.admin_images_path, class: 'flex h-full items-center flex-1' do %>
         <div class="w-8 mr-4 flex justify-center">
-          <%= icon("collection", css: "w-7 h-7 text-spina") %>
+          <%= heroicon("collection", style: :solid, class: "w-7 h-7 text-spina") %>
         </div>
         <div class="font-medium text-spina flex-1 text-sm">
           Back to all

@@ -1,7 +1,7 @@
 <li data-id="<%= @page.id %>">
   <div class="flex items-center border-gray-200 border-b <%= css_class %> bg-opacity-50">
     <div data-sortable-handle class="p-4 text-gray-300 hover:text-gray-600 cursor-move">
-      <%= helpers.icon("grip", css: "w-4 h-4 -mr-4") %>
+      <%= helpers.heroicon("menu-alt-4", style: :solid, class: "w-4 h-4 -mr-4") %>
     </div>
     
     <%= link_to helpers.spina.edit_admin_page_path(@page), class: "block text-spina font-medium text-sm p-4 hover:text-spina-dark" do %>

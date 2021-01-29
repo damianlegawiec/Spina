@@ -1,7 +1,7 @@
 <%= render Spina::HeaderComponent.new do |header| %>
   <% header.with(:actions) do %>
     <%= button_tag type: :submit, form: dom_id(@user), class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} do %>
-      <%= icon('check', css: 'w-5 h-5 mr-1 -ml-2') %>
+      <%= heroicon('check', style: :solid, class: 'w-5 h-5 mr-1 -ml-2') %>
       <%=t 'spina.users.save' %>
     <% end %>
   <% end %>
@@ -65,7 +65,7 @@
       <div class="col-span-1"></div>    
       <div class="col-span-2 flex justify-end">
         <%= button_to spina.admin_user_path(@user), method: :delete, class: 'btn btn-default', form: {data: {controller: "confirm", confirm_message: "Are you sure you want to <span class='font-semibold'>delete</span> this user?"}} do %>
-          <%= icon('trash', css: 'w-4 h-4 mr-1 -ml-1') %>
+          <%= heroicon('trash', class: 'w-4 h-4 mr-1 -ml-1') %>
           Delete user
         <% end %>
       </div>

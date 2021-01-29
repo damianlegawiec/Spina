@@ -1,7 +1,6 @@
 module Spina
   module Admin
     class MediaFoldersController < AdminController
-      layout "spina/admin/media_library"
 
       def new
         @media_folder = MediaFolder.new

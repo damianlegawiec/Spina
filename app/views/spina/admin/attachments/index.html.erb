@@ -5,7 +5,7 @@
         <%= f.file_field :files, multiple: true, class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
         
         <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
-          <%= icon("upload", css: "w-4 h-4 -ml-1 mr-1") %>
+          <%= heroicon("upload", style: :solid, class: "w-4 h-4 -ml-1 mr-1") %>
           <%=t 'spina.attachments.upload' %>
         </button>
       <% end %>
@@ -14,8 +14,8 @@
     <% header.with(:navigation) do %>
       <nav class="-mb-3 mt-4">
         <ul class="inline-flex w-auto rounded-md bg-white">
-          <%= render Spina::TabLinkComponent.new("#{icon('photograph', css: 'w-5 h\-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path) %>
-          <%= render Spina::TabLinkComponent.new("#{icon('document', css: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path, active: true) %>
+          <%= render Spina::TabLinkComponent.new("#{heroicon('photograph', style: :solid, class: 'w-5 h\-5 mr-2 -ml-1')} Images".html_safe, spina.admin_images_path) %>
+          <%= render Spina::TabLinkComponent.new("#{heroicon('document', style: :solid, class: 'w-5 h-5 mr-2 -ml-1')} Files".html_safe, spina.admin_attachments_path, active: true) %>
         </ul>
       </nav>
     <% end %>

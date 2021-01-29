@@ -12,14 +12,14 @@
         </div>
         
         <button type="submit" class="btn btn-default px-2">
-          <%= helpers.icon("check", css: "w-5 h-5") %>
+          <%= helpers.heroicon("check", style: :solid, class: "w-5 h-5") %>
         </button>
       </div>
     <% end %>
     
     <div data-file-target="actions" class="absolute opacity-0 group-hover:opacity-100 flex items-center right-0 pr-3">
       <button type="button" data-action="file#rename" class="btn btn-default h-7 px-2 mr-2 text-xs">
-        <%= helpers.icon('pencil', css: 'w-4 h-4 mr-1 text-gray-600') %>
+        <%= helpers.heroicon('pencil', style: :solid, class: 'w-4 h-4 mr-1 text-gray-600') %>
         Rename
       </button>
     </div>
@@ -33,7 +33,7 @@
   <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l @attachment.created_at, format: :short %></div>
   <div class="">
     <%= link_to helpers.admin_attachment_path(@attachment), class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", data: {method: :delete, controller: "confirm", confirm_message: "Are you sure? This attachment <span class='font-semibold'>might</span> be in use on a page."} do %>
-      <%= helpers.icon('trash', css: 'w-5 h-5') %>
+      <%= helpers.heroicon('trash', class: 'w-5 h-5') %>
     <% end %>
   </div>
 </div>

@@ -13,7 +13,7 @@
           <div data-selectable-target="item">
             <button type="button" data-action="infinite-scroll#changePath selectable#select" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>" class="font-semibold w-full bg-spina-dark bg-opacity-20 text-gray-900 text-sm px-3 py-2 rounded-lg flex items-center justify-between" data-selected-class="text-gray-900 bg-spina-dark bg-opacity-20" data-deselected-class="text-gray-600 hover:bg-gray-200 bg-opacity-100">
               <div class="flex items-center">
-                <%= helpers.icon("collection", css: "w-5 h-5 mr-2 text-spina-light") %>
+                <%= helpers.heroicon("collection", style: :solid, class: "w-5 h-5 mr-2 text-spina-light") %>
                 All images
               </div>
               
@@ -27,7 +27,7 @@
             <div data-selectable-target="item">
               <button type="button" data-action="infinite-scroll#changePath selectable#select" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_media_folder_path(media_folder) %>" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center justify-between"  data-selected-class="text-gray-900 bg-spina-dark bg-opacity-20" data-deselected-class="text-gray-600 hover:bg-gray-200 bg-opacity-100">
                 <div class="flex items-center">
-                  <%= helpers.icon('folder', css: 'w-5 h-5 mr-2 text-spina-light') %>
+                  <%= helpers.heroicon('folder', style: :solid, class: 'w-5 h-5 mr-2 text-spina-light') %>
                   <%= media_folder.name %>
                 </div>
                 
@@ -42,14 +42,14 @@
             <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
             
             <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
-              <%= helpers.icon("upload", css: "w-5 h-5 text-spina mr-2") %>
+              <%= helpers.heroicon("upload", style: :solid, class: "w-5 h-5 text-spina mr-2") %>
               Upload from device...
             </button>
           <% end %>
         </div>
         
         <button type="button" class="btn btn-primary w-full mt-3" data-action="media-picker-modal#confirm modal#close">
-          <%= helpers.icon("plus", css: "text-white w-6 h-6") %>
+          <%= helpers.heroicon("plus", style: :solid, class: "text-white w-6 h-6") %>
           Insert image
         </button>
       </div>
