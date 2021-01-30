@@ -1,10 +1,10 @@
-<div data-controller="file-manager">
+<div>
   <%= render Spina::HeaderComponent.new do |header| %>
     <% header.with(:actions) do %>
-      <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path(format: :html), data: {action: "ajax:success->file-manager#uploaded", file_manager_target: "uploadForm"} do |f| %>
+      <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path(format: :html) do |f| %>
         <%= f.file_field :files, multiple: true, class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
         
-        <button type="button" class="btn btn-default" data-action="file-manager#chooseFiles" data-file-manager-target="uploadButton" data-controller="button" data-loading-message="Uploading...">
+        <button type="button" class="btn btn-default" data-controller="button" data-loading-message="Uploading...">
           <%= heroicon("upload", style: :solid, class: "w-4 h-4 -ml-1 mr-1") %>
           <%=t 'spina.attachments.upload' %>
         </button>
@@ -23,7 +23,7 @@
   
   <div class="my-8 border-t border-gray-200">
     
-    <div data-file-manager-target="container" data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
+    <div data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
       <!-- Attachments -->
     </div>
     
