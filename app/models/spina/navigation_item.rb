@@ -14,9 +14,5 @@ module Spina
     validates :page, uniqueness: {scope: :navigation}
 
     delegate :menu_title, :materialized_path, :draft?, to: :page
-    
-    def to_partial_path
-      "spina/admin/navigation_items/navigation_item"
-    end
   end
 end

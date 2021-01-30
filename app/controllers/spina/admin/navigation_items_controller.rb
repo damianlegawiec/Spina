@@ -10,7 +10,7 @@ module Spina
       def create
         @navigation_item = NavigationItem.new(navigation_item_params)
         if @navigation_item.save
-          render turbo_stream: turbo_stream.append(@navigation_item.parent || @navigation, partial: "spina/admin/navigation_items/navigation_item", locals: {navigation_item: @navigation_item})
+          render turbo_stream: turbo_stream.append(@navigation_item.parent || @navigation, @navigation_item)
         else
           
         end

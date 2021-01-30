@@ -30,7 +30,7 @@ module Spina
         end
         
         flash.now[:info] = t("spina.navigations.sorting_saved")
-        render inline: turbo_stream.update("flash", partial: "spina/admin/shared/flash")
+        render_flash
       end
 
       private
