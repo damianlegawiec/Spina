@@ -23,7 +23,7 @@
     
     <div class="border absolute inset-0 <%= ratio_tailwind_class_for_image_part(f.object) %> h-36 bg-gray-100 rounded-lg shadow-md overflow-hidden" data-media-picker-target="thumbnail">
       <% if f.object.signed_blob_id.present? && f.object.spina_image.present? %>
-        <%= image_tag thumbnail_url(f.object.spina_image), class: 'object-contain h-36 w-full' %>
+        <%= image_tag thumbnail_url(f.object.spina_image), class: 'object-contain h-36 w-full', data: {controller: "image-fade-in"} %>
       <% end %>
     </div>
   <% end %>
