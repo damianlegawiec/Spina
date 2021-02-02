@@ -1,0 +1,55 @@
+<%= render Spina::HeaderComponent.new do |header| %>
+  <% header.with(:actions) do %>
+    <%= button_tag type: :submit, form: dom_id(@resource), class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} do %>
+      <%= heroicon('check', style: :solid, class: 'w-5 h-5 mr-1 -ml-2') %>
+      <%=t 'spina.resources.save' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="p-8">
+  <%= form_with model: [spina, :admin, @resource], id: dom_id(@resource) do |f| %>
+    <%= hidden_field_tag :locale, @locale %>
+    
+    <div class="grid grid-cols-3 gap-x-12">
+      <div class="col-span-1">
+        <%= label_tag :label, class: "font-medium block" do %>
+          Label
+        <% end %>
+        <div class="text-gray-600 text-sm">User-facing label for this page collection.</div>
+      </div>
+      
+      <div class="col-span-2">
+        <%= render Spina::TextFieldComponent.new(f, :label, size: "lg", autofocus: @resource.label.blank?) %>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-200 my-6"></div>
+    
+    <div class="grid grid-cols-3 gap-x-12">
+      <div class="col-span-1">
+        <%= label_tag :label, class: "font-medium block" do %>
+          Settings
+        <% end %>
+        <div class="text-gray-600 text-sm">All pages inside this collection will be prepended with this slug.</div>
+      </div>
+      
+      <div class="col-span-2">
+        <%= f.label :slug, class: 'font-medium text-sm text-gray-700 block' %>
+        <%= render Spina::TextFieldComponent.new(f, :slug) %>
+        
+        <div class="mt-5">
+          <%= f.label :view_template, class: 'font-medium text-sm text-gray-700 block' %>
+          
+          <% options = options_for_select(current_theme.view_templates.map { |template| [template[:title], template[:name]] }, @resource.view_template) %>
+          <%= f.select :view_template, options, {include_blank: true}, class: 'form-select' %>
+        </div>
+        
+        <div class="mt-5">
+          <%= f.label :order_by, class: 'font-medium text-sm text-gray-700 block' %>
+          <%= f.select :order_by, [], {include_blank: true}, class: 'form-select' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

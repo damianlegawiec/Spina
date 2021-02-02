@@ -9,7 +9,7 @@
   <div class="p-4 md:p-8">
     <div class="max-w-screen-2xl">
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
         <div class="col-span-1">
           <label class="font-medium block">
             <%= Spina::Account.human_attribute_name(:name) %>
@@ -18,7 +18,7 @@
         </div>
     
         <div class="col-span-2">
-          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+          <div classs="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
             <%= f.label :name, class: 'font-medium text-sm text-gray-700 block' %>
             <%= render Spina::TextFieldComponent.new(f, :name) %>
           </div>
@@ -27,7 +27,7 @@
         
       <div class="border-t border-gray-200 my-6"></div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
         <div class="col-span-1 mt-6 md:mt-0">
           <label class="font-medium block">
             <%= Spina::Account.human_attribute_name(:address) %>
@@ -36,7 +36,7 @@
         </div>
     
         <div class="col-span-2">
-          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+          <div classs="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
             <div class="">
               <%= f.label :address, class: 'font-medium text-sm text-gray-700 block' %>
               <%= render Spina::TextFieldComponent.new(f, :address) %>
@@ -57,7 +57,7 @@
       
       <div class="border-t border-gray-200 my-6"></div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
         <div class="col-span-1 mt-6 md:mt-0">
           <label class="font-medium block">
             Contact details
@@ -66,7 +66,7 @@
         </div>
     
         <div class="col-span-2">
-          <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+          <div classs="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
             <%= f.label :email, class: 'font-medium text-sm text-gray-700 block' %>
             <%= render Spina::TextFieldComponent.new(f, :email) %>
             

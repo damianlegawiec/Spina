@@ -1,5 +1,12 @@
 <%= render Spina::HeaderComponent.new do |header| %>
   <% header.with(:actions) do %>
+    <% if @page_collection %>
+      <%= link_to spina.edit_admin_resource_path(@page_collection), class: 'btn btn-default' do %>
+        <%= heroicon('pencil', style: :solid, class: 'w-4 h-4 -ml-1 mr-1') %>
+        Edit
+      <% end %>
+    <% end %>
+  
     <div class="relative ml-3 w-auto" data-controller="reveal" data-reveal-away>
       <button type="button" class="btn btn-primary w-full" data-action="reveal#toggle">
         <%= heroicon("plus", style: :solid, class: "w-7 h-7 -ml-2") %>

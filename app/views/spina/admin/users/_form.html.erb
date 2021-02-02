@@ -10,7 +10,7 @@
 <div class="p-8">
   <%= form_with model: [spina, :admin, @user], id: dom_id(@user) do |f| %>
   
-    <div class="grid grid-cols-3 gap-x-6">
+    <div class="grid grid-cols-3 gap-x-12">
       <div class="col-span-1">
         <%= label_tag :profile, class: "font-medium block" do %>
           Profile
@@ -19,7 +19,7 @@
       </div>
       
       <div class="col-span-2">
-        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
+        <div classs="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">          
           <%= f.label :name, class: 'font-medium text-sm text-gray-700 block' %>
           <%= render Spina::TextFieldComponent.new(f, :name, autofocus: @user.name.blank?) %>
           
@@ -33,7 +33,7 @@
     
     <div class="border-t border-gray-200 my-6"></div>
     
-    <div class="grid grid-cols-3 gap-x-6 mt-3">
+    <div class="grid grid-cols-3 gap-x-12 mt-3">
       <div class="col-span-1">
         <%= f.label "Authorization", class: "font-medium mt-1 block" %>
         <div class="text-gray-600 text-sm">
@@ -42,7 +42,7 @@
       </div>
       
       <div class="col-span-2">
-        <div class="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
+        <div classs="bg-white p-5 shadow-sm rounded-lg border-gray-200 border">
           
           <%= f.label :password, class: 'font-medium text-sm text-gray-700 block' %>          
           <%= render Spina::PasswordFieldComponent.new(f, :password) %>

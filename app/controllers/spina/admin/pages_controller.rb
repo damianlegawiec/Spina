@@ -92,7 +92,7 @@ module Spina
   
         def add_index_breadcrumb
           path = spina.admin_pages_path
-          if @page.resource.present?
+          if @page.resource
             path = spina.admin_pages_path(page_collection_id: @page.resource_id)
           end
           

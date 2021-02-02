@@ -11,23 +11,52 @@
 <% end %>
 
 <div class="p-4 md:p-8">
-  <label class="font-medium block">
-    <%= @navigation.label %> menu
-  </label>
-  <div class="text-gray-600 text-sm">Add and sort items as you see fit.<br />You can add nested menu items, but don't have to.</div>
-
-  <div class="py-5">
-    <ul class="space-y-2" data-controller="sortable" data-sortable-target="list" id="<%= dom_id(@navigation) %>">
-      <%= form_with url: spina.sort_admin_navigation_path(@navigation), data: {sortable_target: "form"} do |f| %>
-      <% end %>
-      
-      <%= render @navigation.navigation_items.sorted.roots %>
-    </ul>
+  <div class="max-w-screen-2xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
+      <div class="col-span-1">
+        <label class="font-medium block">
+          <%= @navigation.label %> menu
+        </label>
+        <div class="text-gray-600 text-sm">Add and sort items as you see fit.<br />You can add nested menu items, but don't have to.</div>
+      </div>
     
-    <%= link_to spina.new_admin_navigation_navigation_item_path(@navigation), class: 'btn btn-default w-56 mt-2 bg-transparent', data: {turbo_frame: "modal"} do %>
-      <%= heroicon('plus', style: :solid, class: "w-6 h-6 -ml-1 mr-1 text-gray-400") %>
-      <div class="w-full">Add menu item</div>
-    <% end %>
-
+      <div class="col-span-2">
+        <ul class="space-y-2" data-controller="sortable" data-sortable-target="list" id="<%= dom_id(@navigation) %>">
+          <%= form_with url: spina.sort_admin_navigation_path(@navigation), data: {sortable_target: "form"} do |f| %>
+          <% end %>
+          
+          <%= render @navigation.navigation_items.sorted.roots %>
+        </ul>
+        
+        <%= link_to spina.new_admin_navigation_navigation_item_path(@navigation), class: 'btn btn-default w-56 mt-2 bg-transparent', data: {turbo_frame: "modal"} do %>
+          <%= heroicon('plus', style: :solid, class: "w-6 h-6 -ml-1 mr-1 text-gray-400") %>
+          <div class="w-full">Add menu item</div>
+        <% end %>
+        
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-200 my-6"></div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-12">
+      <div class="col-span-1">
+        <label class="font-medium block">
+          Reference
+        </label>
+        <div class="text-gray-600 text-sm">Use this name in your code.</div>
+      </div>
+    
+      <div class="col-span-2">
+        <span class="font-mono text-gray-600"><%= @navigation.name %></span>
+        
+        <div class="text-gray-700 text-sm leading-loose mt-3">
+          <span class="font-medium">Example:</span>
+          <br />
+          <code class="text-gray-500 text-sm bg-gray-200 p-1 px-2 rounded-md">
+            Spina::Navigation.find_by(name: "<%= @navigation.name %>")
+          </code>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
