@@ -2,8 +2,8 @@
   <% header.with(:actions) do %>
     <% if @page_collection %>
       <%= link_to spina.edit_admin_resource_path(@page_collection), class: 'btn btn-default' do %>
-        <%= heroicon('pencil', style: :solid, class: 'w-4 h-4 -ml-1 mr-1') %>
-        Edit
+        <%= heroicon('cog', style: :solid, class: 'text-gray-300 w-5 h-5 -ml-1 mr-1') %>
+        <%= @page_collection.label %> settings
       <% end %>
     <% end %>
   
