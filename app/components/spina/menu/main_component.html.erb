@@ -13,7 +13,7 @@
 
         <% nav.with(:links) do %>
         
-          <%= render Spina::Menu::LinkComponent.new t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name == "pages" %>
+          <%= render Spina::Menu::LinkComponent.new t('spina.website.pages'), helpers.spina.admin_pages_path, active: controller_name.in?(%w(pages resources)) %>
           
           <%= render Spina::Menu::LinkComponent.new t('spina.website.menus'), helpers.spina.admin_navigations_path, active: controller_name == "navigations" %>
           
