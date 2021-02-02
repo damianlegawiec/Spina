@@ -6,6 +6,7 @@ module Spina::Admin
     admin_section :content
 
     def edit
+      add_breadcrumb "Layout"
     end
 
     def update

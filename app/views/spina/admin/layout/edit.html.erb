@@ -1,26 +1,14 @@
-<%= form_with model: @account, url: spina.admin_layout_path do |f| %>
+<%= render Spina::HeaderComponent.new do |header| %>
+  <% header.with(:actions) do %>
+    <%= button_tag type: :submit, form: dom_id(@account), class: 'btn btn-primary', data: {controller: "button", action: "button#loading", loading_message: "Saving..."} do %>
+      <%= heroicon('check', style: :solid, class: 'w-5 h-5 mr-1 -ml-2') %>
+      Save changes
+    <% end %>
+  <% end %>
+<% end %>
+  
+<%= form_with model: @account, url: spina.admin_layout_path, id: dom_id(@account) do |f| %>
   <%= hidden_field_tag :locale, @locale %>
-
-  <div class="relative">
-    <div class="bg-white border-b border-gray-200 p-4 pb-6 md:p-6 md:pl-8 sticky top-0 z-20">
-      <div class="flex justify-between items-center">
-        <div class="text-xl md:text-2xl font-normal text-gray-800 flex md:items-center flex-col md:flex-row w-full">
-          <div class="flex items-center">
-            Layout
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="bg-gray-100 md:bg-transparent border-t md:border-0 flex p-4 items-center fixed w-full z-20 bottom-0 md:bottom-auto md:w-auto md:z-20 md:absolute md:top-0 md:right-0 md:h-full md:items-center md:pr-8">
-      <button type="submit" class="btn btn-primary w-full md:w-auto" data-controller="button" data-action="button#loading" data-loading-message="Saving...">
-        <svg class="w-5 h-5 mr-1 -ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-        </svg>
-        Save changes
-      </button>      
-    </div>
-  </div>
   
   <div class="pt-0 p-4 md:p-8 md:pt-2">
     <% if false %>
