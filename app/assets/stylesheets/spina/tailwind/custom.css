@@ -95,6 +95,10 @@
     @apply rounded-md;
   }
   
+  .form-input::placeholder {
+    @apply text-gray-400;
+  }
+  
   .form-select {
     @apply text-sm font-medium;
     @apply pr-12;
