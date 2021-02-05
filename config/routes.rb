@@ -28,6 +28,8 @@ Spina::Engine.routes.draw do
         get :edit_template
         get :children
       end
+      
+      resource :move, controller: "move_pages"
 
       post :sort, on: :collection
     end

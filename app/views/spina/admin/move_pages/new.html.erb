@@ -1,0 +1,42 @@
+<%= render(Spina::ModalComponent.new) do %>
+  <%= form_with model: @page, url: spina.admin_page_move_path(@page), data: {turbo_frame: "_top"} do |f| %>
+  
+    <div class="px-4 pt-5 sm:p-6 sm:pb-4">
+      <div class="sm:flex sm:items-start">
+        <div class="mt-3 text-center sm:mt-0 sm:text-left">
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+            Move page
+          </h3>
+          <div class="mt-2">
+            <p class="text-sm leading-5 text-gray-500 mb-4">
+              Current location: <%= @page.materialized_path %>
+            </p>
+
+            <label for="page[view_template]" class="block text-sm font-medium leading-5 text-gray-700">
+              <%= Spina::Page.human_attribute_name :parent_id %>
+            </label>
+
+            <%= f.select :parent_id, [], {}, class: "mt-1 form-select w-full" %>
+            
+            <p class="text-sm leading-5 text-gray-500 mt-4">
+              New location: <%= @page.materialized_path %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 py-6 sm:px-6 sm:flex sm:flex-row-reverse">
+      <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+        <button type="submit" class="btn btn-primary">
+          Change page template
+        </button>
+      </span>
+      <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+        <button type="button" class="btn btn-default" data-action="modal#close">
+          Cancel
+        </button>
+      </span>
+    </div>
+  
+  <% end %>
+<% end %>

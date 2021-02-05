@@ -26,7 +26,7 @@ module.exports = {
   variants: {
     boxShadow: ['active'],
     extend: {
-      backgroundColor: ['even']
+      backgroundColor: ['even', 'checked']
     }
   },
   plugins: [
