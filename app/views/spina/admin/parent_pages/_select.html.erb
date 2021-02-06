@@ -1,1 +1,0 @@
-<%= select_tag "page[parent_id]", options_for_select(@pages.map{|page| [page.menu_title, page.id]}), include_blank: "No parent page", class: "form-select hover:bg-gray-100 border-none focus:ring-0 bg-none shadow-none w-auto bg-transparent border-none cursor-pointer pr-2 flex-auto truncate", data: {controller: "select-placeholder", action: "select-placeholder#update"} %>

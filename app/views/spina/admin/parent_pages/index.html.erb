@@ -1,0 +1,3 @@
+<%= turbo_frame_tag("parent_pages") do %>
+  <%= render Spina::Pages::PageSelectComponent.new("page[parent_id]", @pages, include_blank: "No parent page") %>
+<% end %>
