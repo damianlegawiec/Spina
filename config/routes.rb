@@ -10,7 +10,7 @@ Spina::Engine.routes.draw do
     patch "/settings/:plugin", to: "settings#update", as: :settings
 
     resources :users
-
+    
     # Sessions
     resources :sessions
     get "login" => "sessions#new"
@@ -33,6 +33,7 @@ Spina::Engine.routes.draw do
 
       post :sort, on: :collection
     end
+    resources :parent_pages
     resource :layout, controller: :layout, only: [:edit, :update]
 
     resources :resources, only: [:show, :edit, :update]

@@ -29,7 +29,7 @@ module Spina
       end
   
       def children
-        @children ||= @page.children.active.sorted.regular_pages
+        @children ||= @page.children.active.sorted
       end
   
     end
