@@ -16,8 +16,8 @@ module Spina
       end
 
       def new
-        @resource = Resource.find_by(id: params[:resource_id])
-        @page = Page.new(view_template: params[:view_template], resource: @resource)
+        @page_collection = Resource.find_by(id: params[:page_collection_id])
+        @page = Page.new(view_template: params[:view_template], resource: @page_collection)
       end
 
       def create
