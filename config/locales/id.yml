@@ -179,6 +179,7 @@ id:
       invisible_to_search_engines: Website anda tak terlihat di mesin pencarian
       invisible_to_search_engines_description: Pergi ke preferensi anda untuk mengaktifkan mesin pencari.
       materialize_path_confirmation: Apakah anda yakin ingin membangun ulang path untuk halaman ini?
+      moved: 
       new: Halaman baru
       page_content: Konten
       page_part: Bagian halaman
@@ -192,6 +193,7 @@ id:
       saving: Menyimpan...
       show_in_menu: tak terlihat
       skip_to_first_child: maju ke halaman anak pertama
+      sorting_saved: 
     permanently_delete: Hapus Permanen
     photos:
       cannot_be_created: 'Gambar tidak dapat diproses:'

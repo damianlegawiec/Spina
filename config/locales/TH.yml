@@ -179,6 +179,7 @@ th:
       invisible_to_search_engines: เว็บไซต์ของคุณไม่สามารถใช้งานได้กับเครื่องมือค้นหา
       invisible_to_search_engines_description: ป้อนการตั้งค่าเพื่อเปิดใช้งานเครื่องมือค้นหา
       materialize_path_confirmation: คุณแน่ใจหรือว่าต้องการสร้างเส้นทางสำหรับหน้านี้ใหม่
+      moved: 
       new: หน้าใหม่
       page_content: เนื้อหา
       page_part: ส่วนของหน้า
@@ -192,6 +193,7 @@ th:
       saving: กำลังบันทึก
       show_in_menu: มองไม่เห็น
       skip_to_first_child: ข้ามไปที่หน้าแรก
+      sorting_saved: 
     permanently_delete: ลบอย่างถาวร
     photos:
       cannot_be_created: 'รูปภาพของคุณไม่สามารถประมวลผลได้:'

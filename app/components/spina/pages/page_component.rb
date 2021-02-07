@@ -1,9 +1,11 @@
 module Spina
   module Pages
     class PageComponent < ApplicationComponent
+      attr_reader :sortable
   
-      def initialize(page:)
+      def initialize(page:, sortable: true)
         @page = page
+        @sortable = sortable
       end
       
       def label
@@ -13,6 +15,10 @@ module Spina
         labels << t("spina.pages.skip_to_first_child") if @page.skip_to_first_child?
         return nil if labels.size.zero?
         "(#{labels.join(", ")})"
+      end
+      
+      def sortable?
+        sortable
       end
   
       def depth

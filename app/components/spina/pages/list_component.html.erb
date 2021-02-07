@@ -3,6 +3,6 @@
   <% end %>
   
   <ul data-sortable-target="list">
-    <%= render Spina::Pages::PageComponent.with_collection(@pages) %>
+    <%= render Spina::Pages::PageComponent.with_collection(@pages, sortable: sortable) %>
   </ul>
 </div>

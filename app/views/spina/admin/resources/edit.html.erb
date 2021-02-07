@@ -42,12 +42,12 @@
           <%= f.label :view_template, class: 'font-medium text-sm text-gray-700 block' %>
           
           <% options = options_for_select(current_theme.view_templates.map { |template| [template[:title], template[:name]] }, @resource.view_template) %>
-          <%= f.select :view_template, options, {include_blank: true}, class: 'form-select' %>
+          <%= f.select :view_template, options, {include_blank: "No default template"}, class: 'form-select', data: {controller: "select-placeholder", action: "select-placeholder#update"} %>
         </div>
         
         <div class="mt-5">
           <%= f.label :order_by, class: 'font-medium text-sm text-gray-700 block' %>
-          <%= f.select :order_by, [], {include_blank: true}, class: 'form-select' %>
+          <%= f.select :order_by, [["Title", "title"], ["Created at", "created_at"]], {include_blank: "Manual sorting"}, class: 'form-select' %>
         </div>
       </div>
     </div>

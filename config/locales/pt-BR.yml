@@ -179,6 +179,7 @@ pt-BR:
       invisible_to_search_engines: Seu site não está visível para os sistemas de busca
       invisible_to_search_engines_description: Vá para as preferências para ativar os sistemas de busca
       materialize_path_confirmation: Você está certo que quer reconstruir o caminho para esta página?
+      moved: 
       new: Nova página
       page_content: Conteúdo
       page_part: Seção de página
@@ -192,6 +193,7 @@ pt-BR:
       saving: Salvando...
       show_in_menu: invisível
       skip_to_first_child: encaminhar para a primeira página filha
+      sorting_saved: 
     permanently_delete: Remover permanentemente
     photos:
       cannot_be_created: 'Imagem não pôde ser processada:'

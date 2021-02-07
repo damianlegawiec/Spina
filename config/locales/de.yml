@@ -179,6 +179,7 @@ de:
       invisible_to_search_engines: Deine Website ist für Suchmaschinen nicht sichtbar.
       invisible_to_search_engines_description: Gehe zu deinen Einstellungen um Suchmaschinen-Support zu aktivieren.
       materialize_path_confirmation: Bist du sicher, dass du den Pfad für diese Seite neu erzeugen willst?
+      moved: 
       new: Neue Seite
       page_content: Inhalt
       page_part: Seiteninhalt
@@ -192,6 +193,7 @@ de:
       saving: Speichert...
       show_in_menu: unsichtbar
       skip_to_first_child: Springe zur ersten Unterseite
+      sorting_saved: 
     permanently_delete: Permanent Löschen
     photos:
       cannot_be_created: 'Bild kann nicht verarbeitet werden:'

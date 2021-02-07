@@ -179,6 +179,7 @@ nl:
       invisible_to_search_engines: Je website is niet zichtbaar voor zoekmachines
       invisible_to_search_engines_description: Bij voorkeuren voor Statistieken en zoekmachines kun je dit activeren.
       materialize_path_confirmation: Weet je zeker dat je het pad opnieuw wilt opbouwen voor deze pagina?
+      moved: 
       new: Nieuwe pagina
       page_content: Inhoud
       page_part: Paginasectie
@@ -192,6 +193,7 @@ nl:
       saving: "<i></i> Opslaan..."
       show_in_menu: onzichtbaar
       skip_to_first_child: doorsturen naar 1<sup>e</sup> subpagina
+      sorting_saved: 
     permanently_delete: Definitief verwijderen
     photos:
       cannot_be_created: 'Foto kon niet worden verwerkt:'

@@ -179,6 +179,7 @@ fr:
       invisible_to_search_engines: Votre site n'apparait pas sur les moteurs de recherche
       invisible_to_search_engines_description: Allez dans vos préférences pour activer l'indexation sur les moteurs de recherche.
       materialize_path_confirmation: Êtes-vous sûr de vouloir reconstruire le chemin pour cette page ?
+      moved: 
       new: Nouvelle page
       page_content: Contenu
       page_part: Section de page
@@ -192,6 +193,7 @@ fr:
       saving: Enregistrement...
       show_in_menu: invisible
       skip_to_first_child: Renvoyer vers la première page enfant
+      sorting_saved: 
     permanently_delete: Supprimer définitivement
     photos:
       cannot_be_created: 'L''image n''a pas pu être traitée :'

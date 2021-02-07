@@ -179,6 +179,7 @@ ro:
       invisible_to_search_engines: Website-ul nu este vizibil motoarelor de căutare
       invisible_to_search_engines_description: Mergeți în preferințe pentru activarea motoarele de căutare.
       materialize_path_confirmation: Sunteți sigur că doriți să reconstruiți calea pentru această pagină?
+      moved: 
       new: Pagină nouă
       page_content: Conținut
       page_part: Secțiune pagină
@@ -192,6 +193,7 @@ ro:
       saving: Salvare...
       show_in_menu: invizibil
       skip_to_first_child: redirecționare către prima pagină copil
+      sorting_saved: 
     permanently_delete: Șterge definitiv
     photos:
       cannot_be_created: 'Imaginea nu a putut fi procesată:'

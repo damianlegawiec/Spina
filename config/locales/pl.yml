@@ -179,6 +179,7 @@ pl:
       invisible_to_search_engines: Witryna jest niewidoczna dla wyszukiwarek
       invisible_to_search_engines_description: Przejdź do preferencji aby zmienić widoczność dla wyszukiwarek.
       materialize_path_confirmation: Czy na pewno przebudować adres dla tej strony?
+      moved: 
       new: Nowa strona
       page_content: Zawartość
       page_part: Sekcja
@@ -192,6 +193,7 @@ pl:
       saving: Zapisuję...
       show_in_menu: niewidoczna
       skip_to_first_child: ustawione na pierwszym miejscu
+      sorting_saved: 
     permanently_delete: Skasuj
     photos:
       cannot_be_created: 'Obrazek nie mógł być przetworzony:'

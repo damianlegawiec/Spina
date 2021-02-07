@@ -1,11 +1,13 @@
 module Spina::Pages
   class PageSelectComponent < Spina::ApplicationComponent
-    attr_accessor :name, :pages, :include_blank
+    attr_accessor :name, :pages, :include_blank, :selected, :disabled
     
-    def initialize(name, pages, include_blank: false)
+    def initialize(name, pages, include_blank: false, selected: nil, disabled: nil)
       @name = name
       @pages = pages
       @include_blank = include_blank
+      @selected = selected
+      @disabled = disabled
     end
     
     def options

@@ -179,6 +179,7 @@ zh-CN:
       invisible_to_search_engines: 对搜索引擎隐身
       invisible_to_search_engines_description: 设置对搜索引擎显隐
       materialize_path_confirmation: 
+      moved: 
       new: 新页面
       page_content: 内容
       page_part: 局部页面
@@ -192,6 +193,7 @@ zh-CN:
       saving: 
       show_in_menu: 隐藏
       skip_to_first_child: 跳转到首个子页面
+      sorting_saved: 
     permanently_delete: 永久删除
     photos:
       cannot_be_created: '图片不能被处理:'

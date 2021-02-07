@@ -179,6 +179,7 @@ tr:
       invisible_to_search_engines: Siteniz arama motorlarına görünmez durumda
       invisible_to_search_engines_description: Seçenekler bölümünden arama motorlarını aktif ediniz.
       materialize_path_confirmation: 
+      moved: 
       new: Yeni sayfa
       page_content: İçerik
       page_part: Sayfa bölümü
@@ -192,6 +193,7 @@ tr:
       saving: 
       show_in_menu: görünmez
       skip_to_first_child: ilk sıraya gönder
+      sorting_saved: 
     permanently_delete: Sil
     photos:
       cannot_be_created: 'Resim işlenemedi:'

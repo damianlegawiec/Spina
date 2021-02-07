@@ -179,6 +179,7 @@ it:
       invisible_to_search_engines: Il tuo sito è nascosto ai motori di ricerca
       invisible_to_search_engines_description: Vai alla sezione impostazioni per attivare la visibilità per i motori di ricerca.
       materialize_path_confirmation: Sei sicuro di voler reimpostare il percorso di questa pagina
+      moved: 
       new: Nuova pagina
       page_content: Contenuto
       page_part: Sezione pagina
@@ -192,6 +193,7 @@ it:
       saving: Salvataggio ...
       show_in_menu: nascosto
       skip_to_first_child: Vai alla prima sottopagina
+      sorting_saved: 
     permanently_delete: Elimina definitivamente
     photos:
       cannot_be_created: 'L''immagine non può essere processata:'

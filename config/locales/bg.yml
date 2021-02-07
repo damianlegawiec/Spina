@@ -179,6 +179,7 @@ bg:
       invisible_to_search_engines: Вашият сайт е невидим за търсачки
       invisible_to_search_engines_description: Отидете на Настройки за да активирате търсачки.
       materialize_path_confirmation: Сигурен ли сте, че искате да възтановите оригиналния адрес на тази страница?
+      moved: 
       new: Нова страница
       page_content: Съдържание на страницата
       page_part: Секция от страницата
@@ -192,6 +193,7 @@ bg:
       saving: Запис...
       show_in_menu: невидима
       skip_to_first_child: изпрати към първата дъщерна страница
+      sorting_saved: 
     permanently_delete: Изтрий завинаги
     photos:
       cannot_be_created: 'Изображението неможе да бъде обработено:'

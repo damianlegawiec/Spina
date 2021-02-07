@@ -2,9 +2,9 @@ module Spina::Pages
   class LocationComponent < Spina::ApplicationComponent
     attr_accessor :f
     
-    def initialize(f, page_collection = nil)
+    def initialize(f, page = nil)
       @f = f
-      @page_collection = page_collection
+      @page = page
     end
     
     def page_collections
@@ -22,7 +22,7 @@ module Spina::Pages
     end
     
     def default_parent_pages_path
-      helpers.spina.admin_parent_pages_path(page_collection_id: @page_collection&.id)
+      helpers.spina.admin_parent_pages_path(page_collection_id: @page&.resource_id, parent_id: @page&.parent_id, page_id: @page&.id)
     end
     
   end

@@ -179,6 +179,7 @@ sv:
       invisible_to_search_engines: Din hemsida är osynlig för sökmotorer
       invisible_to_search_engines_description: Gå till inställningar för att aktivera sökmotorer.
       materialize_path_confirmation: Är du säker på att du vill bygga om sökvägen för denna sida?
+      moved: 
       new: Ny sida
       page_content: Innehåll
       page_part: Sidsektion
@@ -192,6 +193,7 @@ sv:
       saving: Sparar...
       show_in_menu: osynlig
       skip_to_first_child: gå till första undersida
+      sorting_saved: 
     permanently_delete: Radera permanent
     photos:
       cannot_be_created: 'Bilden kunde inte behandlas:'

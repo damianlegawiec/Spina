@@ -1,10 +1,11 @@
 module Spina
   module Pages
     class ListComponent < ApplicationComponent
-      attr_reader :depth
+      attr_reader :depth, :sortable
   
-      def initialize(pages:)
+      def initialize(pages:, sortable: true)
         @pages = pages
+        @sortable = sortable
       end
   
     end
