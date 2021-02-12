@@ -14,7 +14,7 @@ module Spina
           redirect_to spina.admin_root_url
         else
           flash.now[:alert] = I18n.t('spina.notifications.wrong_username_or_password')
-          render "new"
+          render "new", status: :unprocessable_entity
         end
       end
 
