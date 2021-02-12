@@ -9,8 +9,7 @@
     </div>
   </div>
   <div class="text-gray-500 text-xs w-32 text-right whitespace-nowrap"><%=l @attachment.created_at, format: :short %></div>
-  <div class="">
-    
+  <div>
     <%= button_to helpers.spina.admin_attachment_path(@attachment), method: :delete, class: "block py-3 px-4 ml-2 text-gray-500 hover:text-gray-900", form: {data: {controller: "confirm", confirm_message: "Are you sure? This attachment <span class='font-semibold'>might</span> be in use on a page."}} do %>
       <%= helpers.heroicon('trash', class: 'w-5 h-5') %>
     <% end %>
