@@ -1,9 +1,6 @@
 module Spina
   module Admin
     class SessionsController < AdminController
-
-      layout "spina/login"
-
       skip_before_action :authorize_spina_user
 
       def new

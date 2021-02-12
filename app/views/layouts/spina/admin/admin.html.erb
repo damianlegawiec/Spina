@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="turbo-cache-control" content="no-preview" />
-    <%= csrf_meta_tags %>
+<% content_for(:body) do %>
+  <div class="flex flex-col md:flex-row md:h-screen min-h-screen w-full">
+    <%= render Spina::Menu::MainComponent.new %>
     
-    <link rel="icon" href="<%= image_url('spina/favicon.png') %>" />
-    
-    <title>Spina CMS</title>
-    
-    <!-- Tailwind -->    
-    <%= stylesheet_link_tag 'spina/application', data: {turbolinks_track: true} %>
-    
-    <!-- Turbo and Stimulus -->
-    <%= turbo_include_tags %>
-    <%= spina_include_tags %>
-    
-    <!-- Plugins & Hooks -->
-    <%= yield(:head) %>
-    <%= render Spina::Hooks::HookComponent.new(partial: "head") %>
-  </head>
-
-  <body>
-    <div class="flex flex-col md:flex-row md:h-screen min-h-screen w-full">
-      <%= render Spina::Menu::MainComponent.new %>
+    <section class="w-full md:overflow-scroll">
+      <%= yield %>
       
-      <section class="w-full md:overflow-scroll">
-        <%= yield %>
-        
-        <%= turbo_frame_tag "flash" do %>
-          <%= render partial: "spina/admin/shared/flash" %>
-        <% end %>
-      </section>
-    </div>
-    
-    <!-- Make sure all modals are rendered in this frame -->
-    <%= turbo_frame_tag "modal" %>
-  </body>
-</html>
+      <%= turbo_frame_tag "flash" do %>
+        <%= render partial: "spina/admin/shared/flash" %>
+      <% end %>
+    </section>
+  </div>
+  
+  <!-- Make sure all modals are rendered in this frame -->
+  <%= turbo_frame_tag "modal" %>
+<% end %>
+
+<%= render template: 'layouts/spina/admin/application' %>
