@@ -45,7 +45,7 @@ module Spina
         if @image.saved_change_to_media_folder_id?
           render :update
         else
-          render partial: 'image', object: @image
+          render @image
         end
       end
 
@@ -53,7 +53,6 @@ module Spina
         @image = Image.find(params[:id])
         @image.destroy
         render turbo_stream: turbo_stream.remove(@image)
-        # redirect_back fallback_location: spina.admin_images_url
       end
 
       private

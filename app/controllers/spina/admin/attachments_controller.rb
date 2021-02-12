@@ -13,7 +13,11 @@ module Spina
           attachment.file.attach(file)
           attachment
         end
-        render Spina::FileManager::AttachmentComponent.with_collection(@attachments), layout: false
+        
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.prepend(:file_list, partial: "attachment", collection: @attachments)}
+          format.html { redirect_to spina.admin_attachments_url }
+        end
       end
       
       def update
@@ -29,7 +33,7 @@ module Spina
       def destroy
         @attachment = Attachment.find(params[:id])
         @attachment.destroy
-        redirect_to spina.admin_attachments_url
+        render turbo_stream: turbo_stream.remove(@attachment)
       end
 
       private

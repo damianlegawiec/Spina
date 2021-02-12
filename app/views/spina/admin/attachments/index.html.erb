@@ -1,16 +1,16 @@
 <div>
   <%= render Spina::HeaderComponent.new do |header| %>
     <% header.with(:actions) do %>
-      <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path(format: :html) do |f| %>
-        <%= f.file_field :files, multiple: true, class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
+      <%= form_with model: [:admin, Spina::Attachment.new], url: spina.admin_attachments_path, data: {controller: "form loading-button", loading_message: "Uploading...", file_manager_target: "uploadForm", action: "turbo-submit-end->loading-button#doneLoading"} do |f| %>
+      
+        <%= f.file_field :files, multiple: true, id: "new_attachment_file_field", class: 'hidden', data: {action: "loading-button#loading form#requestSubmit", file_manager_target: "fileField"} %>
         
-        <button type="button" class="btn btn-default" data-controller="button" data-loading-message="Uploading...">
+        <button type="button" class="btn btn-default" data-controller="delegate-click" data-action="delegate-click#click" data-loading-button-target="button" data-delegate-click-target="#new_attachment_file_field">
           <%= heroicon("upload", style: :solid, class: "w-4 h-4 -ml-1 mr-1") %>
           <%=t 'spina.attachments.upload' %>
         </button>
       <% end %>
-    <% end %>
-    
+    <% end %>    
     <% header.with(:navigation) do %>
       <nav class="-mb-3 mt-4">
         <ul class="inline-flex w-auto rounded-md bg-white">
@@ -23,9 +23,11 @@
   
   <div class="my-8 border-t border-gray-200">
     
-    <div data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
-      <!-- Attachments -->
-    </div>
+    <turbo-frame id="file_list">
+      <div data-controller="infinite-scroll" data-infinite-scroll-path="<%= spina.admin_file_manager_attachments_path(page: 1) %>" data-infinite-scroll-target="container">
+        <!-- Attachments -->
+      </div>
+    </turbo-frame>
     
   </div>
 </div>
