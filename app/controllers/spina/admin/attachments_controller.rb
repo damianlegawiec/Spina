@@ -6,6 +6,10 @@ module Spina
       def index
         @attachments = Attachment.sorted
       end
+      
+      def edit
+        @attachment = Attachment.find(params[:id])
+      end
 
       def create
         @attachments = params[:attachment][:files].map do |file|
@@ -27,7 +31,8 @@ module Spina
           filename = "#{params[:filename]}.#{extension}"
           @attachment.file.blob.update(filename: filename)
         end
-        render Spina::FileManager::AttachmentComponent.new(attachment: @attachment)
+        
+        render @attachment
       end
 
       def destroy
