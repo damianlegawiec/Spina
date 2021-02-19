@@ -27,7 +27,7 @@ module Spina
       def update
         @media_folder = MediaFolder.find(params[:id])
         @media_folder.update(media_folder_params)
-        redirect_to spina.admin_media_folder_path(@media_folder)
+        redirect_to spina.admin_media_folder_images_path(@media_folder)
       end
 
       def destroy

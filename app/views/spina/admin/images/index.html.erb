@@ -5,6 +5,11 @@
         <%= heroicon("folder", style: :solid, class: 'w-4 h-4 mr-1 -ml-1') %>
         Add folder
       <% end %>
+    <% else %>
+      <%= link_to spina.edit_admin_media_folder_path(@media_folder), class: "btn btn-default", data: {turbo_frame: "modal"} do %>
+        <%= heroicon("pencil", style: :solid, class: "w-4 h-4 mr-1 -ml-1") %>
+        Rename folder
+      <% end %>
     <% end %>
     
     <%= form_with model: [:admin, Spina::Image.new], url: spina.admin_images_path, data: {controller: "form loading-button", loading_message: "Uploading...", file_manager_target: "uploadForm", action: "turbo:submit-end->loading-button#doneLoading"} do |f| %>
