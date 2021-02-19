@@ -19,9 +19,6 @@ Spina::Engine.routes.draw do
     # Passwords
     resources :password_resets
 
-    # Media library
-    get 'media_library' => 'images#index', as: "media_library"
-
     resources :pages do
       member do
         get :edit_content

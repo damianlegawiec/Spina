@@ -9,7 +9,8 @@ module Spina
       def update
         @page = Page.find(params[:page_id])
         @page.update(page_params)
-        redirect_to spina.edit_admin_page_url(@page), flash: {success: t('spina.pages.moved')}
+        flash[:success] = t('spina.pages.moved')
+        redirect_back fallback_location: spina.edit_admin_page_url(@page)
       end
       
       private

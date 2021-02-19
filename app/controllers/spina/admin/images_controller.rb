@@ -6,6 +6,7 @@ module Spina
 
       def index
         @media_folders = MediaFolder.order(:name)
+        @images = Image.sorted.where(media_folder: @media_folder).with_attached_file.page(params[:page]).per(25)
       end
       
       def edit

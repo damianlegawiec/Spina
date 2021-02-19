@@ -7,10 +7,4 @@
   <%= helpers.heroicon('chevron-right', style: :solid, class: 'w-5 h-5 text-gray-600 flex-none') %>
   
   <%= helpers.turbo_frame_tag "parent_pages", src: default_parent_pages_path, class: 'flex-auto', data: {parent_pages_target: "frame"} %>
-  
-  <% if @page.parent_id.present? %>
-    <%= helpers.heroicon('chevron-right', style: :solid, class: 'w-5 h-5 text-gray-600 flex-none') %>
-  
-    <div class="text-sm font-medium text-gray-400 px-2 whitespace-nowrap truncate"><%= @page.menu_title %></div>
-  <% end %>
 </div>

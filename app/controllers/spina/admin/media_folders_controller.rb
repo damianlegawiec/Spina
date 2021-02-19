@@ -10,14 +10,6 @@ module Spina
         @media_folder = MediaFolder.find(params[:id])
       end
 
-      def show
-        add_breadcrumb I18n.t('spina.website.media_library'), admin_media_library_path
-        add_breadcrumb I18n.t('spina.website.images'), spina.admin_images_path
-        @media_folder = MediaFolder.find(params[:id])
-        add_breadcrumb @media_folder.name
-        @images = @media_folder.images.sorted.page(params[:page])
-      end
-
       def create
         @media_folder = MediaFolder.new(media_folder_params)
         if @media_folder.save

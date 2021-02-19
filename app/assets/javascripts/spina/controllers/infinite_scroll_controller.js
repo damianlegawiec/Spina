@@ -6,62 +6,28 @@ export default class extends Controller {
   }
 
   connect() {
-    this.element['infiniteScroll'] = this
-    this.scrollElement.addEventListener("scroll", this.loadNextPage.bind(this))
-    this.initialLoad()
+    this.scrollElement.addEventListener("scroll", this.load.bind(this))
   }
 
   disconnect() {
-    this.scrollElement.removeEventListener("scroll", this.loadNextPage.bind(this))
+    this.scrollElement.removeEventListener("scroll", this.load.bind(this))
   }
-
-  initialLoad() {
-    if (this.element.dataset.infiniteScrollPath !== undefined) {
-      this.containerTarget.innerHTML = ''
-      this.load(this.element.dataset.infiniteScrollPath) 
-    }
-  }
-
-  changePath(event) {
-    this.containerTarget.innerHTML = ''
-    this.load(event.currentTarget.dataset.infiniteScrollPath) 
-  }
-
-  loadNextPage() {
+  
+  load() {
     if (this.hasButtonTarget) {
-      this.containerTarget.removeChild(this.buttonTarget)
-      if (this.path !== undefined) this.load(this.path)
-    } else {
-      this.disconnect()
+      let top = this.buttonTarget.getBoundingClientRect().top
+      if (top < this.scrollElement.innerHeight + 500) {
+        this.buttonTarget.click()
+      }
     }
   }
-
-  load(path) {
-    fetch(path)
-      .then(response => response.text())
-      .then(function(html) {
-        this.containerTarget.insertAdjacentHTML('beforeend', html)
-
-        // Button target
-        if (this.hasButtonTarget) {
-          let top = this.buttonTarget.getBoundingClientRect().top
-          if (top < window.innerHeight + 500) {
-            this.loadNextPage()
-          }
-        }
-      }.bind(this))
-  }
-
+  
   get scrollElement() {
     if (this.hasContainerTarget) {
       return this.containerTarget
     } else {
       return window
     }
-  }
-
-  get path() {
-    return this.buttonTarget.dataset.path
   }
 
 }

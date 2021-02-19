@@ -2,8 +2,9 @@ module Spina
   module MediaPicker
     class ModalComponent < ApplicationComponent
       
-      def initialize(target)
+      def initialize(target, images:)
         @target = target
+        @images = images
       end
 
       def media_folders

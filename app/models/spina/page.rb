@@ -55,6 +55,10 @@ module Spina
     def slug
       url_title&.parameterize
     end
+    
+    def homepage?
+      name == 'homepage'
+    end
 
     def custom_page?
       !deletable
@@ -117,7 +121,7 @@ module Spina
       def generate_materialized_path
         path_fragments = [resource&.slug]
         path_fragments.append *ancestors.collect(&:slug)
-        path_fragments.append(slug) unless name == 'homepage'
+        path_fragments.append(slug) unless homepage?
         path_fragments.compact.map(&:parameterize).join('/')
       end
 
