@@ -26,7 +26,7 @@ module Spina
           @page.navigations << Spina::Navigation.where(auto_add_pages: true)
           redirect_to spina.edit_admin_page_url(@page)
         else
-          render :new, status: :unprocessable_entity
+          render turbo_stream: turbo_stream.update(view_context.dom_id(@page, :new_page_form), partial: "new_page_form")
         end
       end
 
