@@ -1,5 +1,5 @@
 <%= render(Spina::ModalComponent.new(size: "max-w-6xl h-full")) do |component| %>
-  <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal" data-target="<%= @target %>" data-infinite-scroll-path="<%= helpers.spina.admin_media_picker_images_path %>">
+  <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal">
     <div class="flex flex-col md:flex-row h-full w-full">
 
       <div class="flex-1 bg-white flex flex-col max-h-full relative overflow-hidden">
@@ -15,7 +15,7 @@
             
             <% if @images.next_page %>
               <turbo-frame id="images-<%= @images.next_page %>">
-                <%= link_to "Load next", helpers.path_to_next_page(@images) %>
+                <%= link_to "Load next", helpers.path_to_next_page(@images), data: {infinite_scroll_target: "button"} %>
               </turbo-frame>
             <% end %>
             
@@ -54,13 +54,15 @@
             </div>
           <% end %>
           
-          <%= form_with model: Spina::Image.new, url: helpers.spina.admin_media_picker_images_path do |f| %>
-            <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
-            
-            <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center" data-controller="button" data-loading-message="Uploading...">
-              <%= helpers.heroicon("upload", style: :solid, class: "w-5 h-5 text-spina mr-2") %>
-              Upload from device...
-            </button>
+          <% if false %>
+            <%= form_with model: Spina::Image.new, url: '#' do |f| %>
+              <%= f.file_field :files, multiple: true, accept: "image/*", class: 'hidden', data: {action: "file-manager#startUpload", file_manager_target: "fileField"} %>
+              
+              <button type="button" class="font-medium w-full text-gray-600 text-sm hover:bg-gray-200 px-3 py-2 cursor-pointer rounded-lg flex items-center" data-controller="button" data-loading-message="Uploading...">
+                <%= helpers.heroicon("upload", style: :solid, class: "w-5 h-5 text-spina mr-2") %>
+                Upload from device...
+              </button>
+            <% end %>
           <% end %>
         </div>
         

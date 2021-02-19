@@ -55,19 +55,12 @@ Spina::Engine.routes.draw do
     end
     
     namespace :file_manager do
-      resources :images
       resources :attachments
     end
 
     resources :images
-
-    namespace :media_picker do
-      resources :images
-      resources :media_folders
-    end
-
-    get :media_picker, to: 'media_picker#show'
-    post :media_picker, to: 'media_picker#select'
+    
+    resource :media_picker, controller: "media_picker", only: [:show]
   end
 
   # Sitemap
