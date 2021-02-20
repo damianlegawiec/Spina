@@ -1,5 +1,5 @@
 <%= render(Spina::ModalComponent.new(size: "max-w-6xl h-full")) do |component| %>
-  <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal">
+  <div class="h-full w-full" data-controller="infinite-scroll media-picker-modal" data-target="<%= @target %>">
     <div class="flex flex-col md:flex-row h-full w-full">
 
       <div class="flex-1 bg-white flex flex-col max-h-full relative overflow-hidden">
