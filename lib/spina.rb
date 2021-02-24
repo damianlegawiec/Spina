@@ -22,7 +22,7 @@ module Spina
 
   self.locales = [I18n.default_locale]
   
-  # Don't like confetti? If party_pooper is set to true, all party celebrations will be disabled
+  # Don't like confetti?
   self.party_pooper = false
 
   # Images that are embedded in the Trix editor are resized to fit

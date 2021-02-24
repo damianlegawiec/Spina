@@ -11,6 +11,12 @@ Spina.configure do |config|
 
   # Specify a backend path. Defaults to /admin.
   # config.backend_path = 'admin'
+  
+  # Confetti
+  # ===============
+  # 
+  # For people who don't appreciate confetti, you can disable that here 
+  # config.party_pooper = true
 
   # Pages Options
   # ===============
