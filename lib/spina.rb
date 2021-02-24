@@ -12,7 +12,7 @@ module Spina
   PARTS = []
   PLUGINS = []
   THEMES = []
-  config_accessor :backend_path, :disable_frontend_routes, :max_page_depth, :locales, :embedded_image_size
+  config_accessor :backend_path, :disable_frontend_routes, :max_page_depth, :locales, :embedded_image_size, :party_pooper
 
   self.backend_path = 'admin'
 
@@ -21,6 +21,9 @@ module Spina
   self.max_page_depth = 5
 
   self.locales = [I18n.default_locale]
+  
+  # Don't like confetti? If party_pooper is set to true, all party celebrations will be disabled
+  self.party_pooper = false
 
   # Images that are embedded in the Trix editor are resized to fit
   # You can optimize this for your website and go for a smaller (or larger) size

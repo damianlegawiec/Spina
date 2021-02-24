@@ -7,7 +7,7 @@ module Spina
     end
     
     def confetti?
-      @type == "confetti"
+      @type == "confetti" && !Spina.config.party_pooper
     end
     
     def theme
