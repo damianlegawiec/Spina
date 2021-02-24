@@ -48,7 +48,7 @@ module Spina
 
     def embedded_image_url(image)
       return "" if image.nil?
-      variant(image.file, resize: Spina.config.embedded_image_size)
+      variant(image.file, resize: Spina.config.embedded_image_size, loader: {page: nil})
     end
 
   end
